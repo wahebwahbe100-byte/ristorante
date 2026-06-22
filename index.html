@@ -1046,88 +1046,299 @@ header nav ul li a {
 }
 
 
-/* === FINAL DESIGN POLISH + TOP HERO BLUR === */
-.hero {
-    padding-top: 152px;
-    isolation: isolate;
+
+/* === STANDORTE – COVER / POLAROID DESIGN === */
+.locations-showcase {
+    padding: 0;
+    background: #f8f1e7;
+    overflow: hidden;
 }
-.hero-top-blur {
+.locations-intro {
+    padding: 104px 5% 24px;
+    background:
+        radial-gradient(circle at 18% 12%, rgba(158,42,43,0.08), transparent 28%),
+        linear-gradient(180deg, #fffaf2 0%, #f8f1e7 100%);
+}
+.locations-intro .section-title {
+    color: #2b211d;
+}
+.locations-intro .sub-text {
+    margin-bottom: 0;
+    color: #6b5b51;
+}
+.location-band {
+    position: relative;
+    padding: 86px 5% 104px;
+    background:
+        radial-gradient(circle at 7% 45%, rgba(158,42,43,0.06), transparent 28%),
+        linear-gradient(135deg, #f6eadc 0%, #fff8ee 52%, #f3e4d3 100%);
+}
+.location-band-alt {
+    background:
+        radial-gradient(circle at 86% 38%, rgba(158,42,43,0.07), transparent 30%),
+        linear-gradient(135deg, #f1e6d8 0%, #fbf3e9 56%, #eadfD2 100%);
+}
+.location-band::before,
+.location-band::after {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 245px;
-    z-index: 1;
     pointer-events: none;
-    background:
-        linear-gradient(180deg, rgba(0,0,0,0.54) 0%, rgba(0,0,0,0.28) 44%, rgba(0,0,0,0.00) 100%),
-        radial-gradient(circle at 50% 0%, rgba(158,42,43,0.26), rgba(0,0,0,0.00) 58%);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.92) 34%, rgba(0,0,0,0.18) 78%, transparent 100%);
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.92) 34%, rgba(0,0,0,0.18) 78%, transparent 100%);
+    opacity: 0.55;
 }
-.hero-brand {
-    margin-top: 22px;
+.location-band::before {
+    left: -80px;
+    top: 12%;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.42);
+    filter: blur(2px);
 }
-.hero-svg-wrap {
-    width: min(690px, 82vw);
-    margin-bottom: 44px;
+.location-band::after {
+    right: 7%;
+    bottom: 34px;
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(158,42,43,0.45), transparent);
 }
-.hero-tagline {
-    max-width: 1050px;
-    text-shadow: 0 10px 34px rgba(0,0,0,0.72);
+.location-editorial-row {
+    position: relative;
+    z-index: 2;
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(300px, 480px) minmax(0, 1fr);
+    gap: clamp(50px, 7vw, 96px);
+    align-items: center;
 }
-.hero-subtitle {
-    max-width: 880px;
-    padding: 0 18px;
+.location-editorial-row.reverse {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 480px);
 }
-.hero-actions .btn-hero {
-    border: 1px solid rgba(255,255,255,0.16);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+.location-cover {
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.hero-actions .btn-hero:nth-child(2) {
-    background: rgba(255,255,255,0.10) !important;
+.location-polaroid {
+    position: relative;
+    width: min(430px, 92vw);
+    padding: 18px 18px 58px;
+    background: #fffdf8;
+    box-shadow: 0 28px 70px rgba(68, 44, 33, 0.20);
+    transform: rotate(-5deg);
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
 }
-section:not(.hero):not(.story-section):not(.job-section) {
-    background-image:
-        radial-gradient(circle at 8% 12%, rgba(158,42,43,0.045), transparent 26%),
-        radial-gradient(circle at 90% 22%, rgba(212,175,55,0.055), transparent 28%);
+.location-editorial-row.reverse .location-polaroid {
+    transform: rotate(4deg);
 }
-.location-card,
-.reservation-box,
-.configurator,
-.catering-box,
-.flip-card-front {
-    border: 1px solid rgba(212,175,55,0.26);
-    box-shadow: 0 22px 55px rgba(35, 23, 18, 0.10);
+.location-polaroid::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -24px;
+    width: 168px;
+    height: 38px;
+    background: rgba(113, 111, 90, 0.34);
+    transform: translateX(-50%) rotate(-4deg);
+    box-shadow: 0 8px 22px rgba(55, 42, 32, 0.10);
+    z-index: 3;
 }
-.location-card:hover,
-.reservation-box:hover,
-.configurator:hover,
-.catering-box:hover {
-    box-shadow: 0 30px 70px rgba(35, 23, 18, 0.14);
+.location-editorial-row.reverse .location-polaroid::before {
+    transform: translateX(-50%) rotate(5deg);
 }
-.section-title {
-    color: #241815;
+.location-polaroid:hover {
+    transform: rotate(-2deg) translateY(-8px);
+    box-shadow: 0 34px 84px rgba(68, 44, 33, 0.26);
 }
-.sub-text {
-    color: #5d514a;
+.location-editorial-row.reverse .location-polaroid:hover {
+    transform: rotate(2deg) translateY(-8px);
 }
-.btn-hero,
-.reservation-box .btn {
-    letter-spacing: 0.2px;
+.location-polaroid img {
+    width: 100%;
+    aspect-ratio: 1.12 / 1;
+    display: block;
+    object-fit: cover;
+    filter: saturate(0.96) contrast(0.98);
 }
-footer {
-    background:
-        radial-gradient(circle at 20% 0%, rgba(158,42,43,0.20), transparent 34%),
-        linear-gradient(135deg, #120d0b 0%, #151515 70%);
+.location-handnote {
+    position: absolute;
+    left: -138px;
+    top: 145px;
+    max-width: 150px;
+    font-family: 'Lobster', cursive;
+    font-size: 1.75rem;
+    line-height: 1.06;
+    color: rgba(70, 57, 50, 0.72);
+    transform: rotate(-9deg);
+    text-align: center;
 }
-@media (max-width: 768px) {
-    .hero { padding-top: 138px; }
-    .hero-top-blur { height: 215px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-    .hero-svg-wrap { width: min(620px, 92vw); }
+.location-handnote span {
+    display: block;
+    margin-top: 10px;
+    color: var(--primary-red);
+    font-size: 1.25rem;
+}
+.location-editorial-row.reverse .location-handnote {
+    left: auto;
+    right: -138px;
+    transform: rotate(8deg);
+}
+.location-badge-round {
+    position: absolute;
+    right: -42px;
+    bottom: 34px;
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: linear-gradient(135deg, #b23739, #8d2427);
+    color: #fff8ed;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 18px 38px rgba(158,42,43,0.28);
+    transform: rotate(7deg);
+}
+.location-badge-round small {
+    font-size: 0.86rem;
+    opacity: 0.88;
+}
+.location-badge-round strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.42rem;
+    line-height: 1;
+}
+.location-copy {
+    max-width: 590px;
+}
+.location-editorial-row.reverse .location-copy {
+    justify-self: end;
+    text-align: right;
+}
+.location-kicker {
+    margin-bottom: 10px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(158,42,43,0.78);
+}
+.location-script {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5.2vw, 5.15rem);
+    line-height: 0.98;
+    font-weight: 700;
+    color: #352722;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
+    text-wrap: balance;
+}
+.location-script em {
+    display: block;
+    font-family: 'Lobster', cursive;
+    font-size: 0.62em;
+    line-height: 0.95;
+    font-style: normal;
+    font-weight: 400;
+    color: var(--primary-red);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+.location-address {
+    display: inline-block;
+    font-size: 1.12rem;
+    line-height: 1.35;
+    font-weight: 700;
+    color: #4b3932;
+    margin-bottom: 18px;
+}
+.location-divider {
+    width: 100%;
+    max-width: 520px;
+    height: 2px;
+    margin: 12px 0 26px;
+    background: linear-gradient(90deg, var(--primary-red), rgba(158,42,43,0.08));
+}
+.location-editorial-row.reverse .location-divider {
+    margin-left: auto;
+    background: linear-gradient(90deg, rgba(158,42,43,0.08), var(--primary-red));
+}
+.location-description {
+    font-size: 1.14rem;
+    line-height: 1.86;
+    color: #574841;
+    margin-bottom: 30px;
+}
+.location-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+}
+.location-editorial-row.reverse .location-actions {
+    justify-content: flex-end;
+}
+.location-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 30px;
+    background: var(--primary-red);
+    color: #fff;
+    font-weight: 900;
+    font-size: 0.98rem;
+    border-radius: 999px;
+    box-shadow: 0 14px 26px rgba(158,42,43,0.22);
+}
+.location-btn:hover {
+    background: var(--dark-red);
+    transform: translateY(-2px);
+}
+.location-contact-link {
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--primary-red);
+}
+.location-contact-link:hover { color: var(--dark-red); }
+@media (max-width: 980px) {
+    .location-editorial-row,
+    .location-editorial-row.reverse {
+        grid-template-columns: 1fr;
+        gap: 34px;
+    }
+    .location-editorial-row.reverse .location-cover { order: -1; }
+    .location-editorial-row.reverse .location-copy,
+    .location-copy {
+        justify-self: stretch;
+        text-align: left;
+        max-width: none;
+    }
+    .location-editorial-row.reverse .location-divider {
+        margin-left: 0;
+        background: linear-gradient(90deg, var(--primary-red), rgba(158,42,43,0.08));
+    }
+    .location-editorial-row.reverse .location-actions { justify-content: flex-start; }
+    .location-cover { min-height: 360px; }
+    .location-handnote { left: 0; top: auto; bottom: -22px; font-size: 1.4rem; }
+    .location-editorial-row.reverse .location-handnote { right: 0; }
+}
+@media (max-width: 640px) {
+    .locations-intro { padding: 78px 5% 12px; }
+    .location-band { padding: 52px 5% 72px; }
+    .location-cover { min-height: 320px; }
+    .location-polaroid { width: min(330px, 88vw); padding: 12px 12px 42px; }
+    .location-polaroid::before { width: 120px; height: 30px; top: -17px; }
+    .location-badge-round { width: 92px; height: 92px; right: -16px; bottom: 22px; }
+    .location-badge-round strong { font-size: 1.08rem; }
+    .location-handnote { display: none; }
+    .location-script { font-size: clamp(2.35rem, 11vw, 3.4rem); }
+    .location-description { font-size: 1.04rem; line-height: 1.76; }
 }
 
 </style>
@@ -1151,7 +1362,6 @@ footer {
 
     <!-- HERO -->
     <section id="home" class="hero">
-        <div class="hero-top-blur" aria-hidden="true"></div>
         <div class="hero-brand" aria-label="Cappuccino Ristorante - Italienische Küche mit Herz & Leidenschaft">
             <div class="hero-svg-wrap">
                 <svg version="1.1" id="Ebene_1" class="hero-exact-svg-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -1387,25 +1597,56 @@ footer {
     </section>
 
     <!-- STANDORTE -->
-    <section id="locations" class="fade-up" style="background: var(--light-bg);">
-        <h2 class="section-title">Unsere Standorte</h2>
-        <div class="grid-2">
-            <div class="location-card">
-                <div class="loc-badge">Spandau</div>
-                <h3>Klosterstraße 34-35</h3>
-                <p>13581 Berlin · Nahe der City Spandau</p>
-                <p>Oase der Ruhe & erste Adresse für Genießer. Direkt im Trubel der Stadt.</p>
-                <div style="margin-top:10px;"><a href="tel:+493028508496" style="font-weight:600;">📞 030 – 28 50 84 96</a></div>
-                <div><a href="mailto:spandau@ristorante-cappuccino.de">✉️ spandau@ristorante-cappuccino.de</a></div>
-            </div>
-            <div class="location-card">
-                <div class="loc-badge">Gatow</div>
-                <h3>Alt Gatow 1-3</h3>
-                <p>14089 Berlin · An der Havel</p>
-                <p>Großer Garten & direktem Blick auf die Havel. Perfekt für Events und Hochzeiten.</p>
-                <div style="margin-top:10px;"><a href="tel:+493036992263" style="font-weight:600;">📞 030 – 36 99 22 63</a></div>
-                <div><a href="mailto:gatow@ristorante-cappuccino.de">✉️ gatow@ristorante-cappuccino.de</a></div>
-            </div>
+    <section id="locations" class="locations-showcase fade-up">
+        <div class="locations-intro">
+            <h2 class="section-title">Unsere Standorte</h2>
+            <p class="sub-text">Zwei Adressen, ein Gefühl: italienische Küche, herzlicher Service und besondere Momente in Berlin.</p>
+        </div>
+
+        <div class="location-band">
+            <article class="location-editorial-row">
+                <div class="location-cover" aria-label="Cappuccino Spandau Bildkarte">
+                    <div class="location-handnote">Mitten in Spandau genießen <span>♡</span></div>
+                    <figure class="location-polaroid">
+                        <img src="images/standort-spandau.jpg" alt="Cappuccino Spandau Restaurant" loading="lazy" onerror="this.onerror=null;this.src='images/event-festsaal.jpg';">
+                        <div class="location-badge-round"><small>Standort</small><strong>Spandau</strong></div>
+                    </figure>
+                </div>
+                <div class="location-copy">
+                    <div class="location-kicker">Restaurant · Berlin Spandau</div>
+                    <h3 class="location-script"><em>Cappuccino</em>Spandau</h3>
+                    <p class="location-address">Klosterstraße 34–35 · 13581 Berlin<br>Nahe der City Spandau</p>
+                    <div class="location-divider" aria-hidden="true"></div>
+                    <p class="location-description">In Spandau erwartet Sie ein gemütlicher Ort für echte italienische Genussmomente: frische Pasta, aromatische Klassiker, ausgewählte Weine und herzlicher Service. Perfekt für eine kurze Auszeit, ein entspanntes Abendessen oder schöne Stunden mit Familie und Freunden.</p>
+                    <div class="location-actions">
+                        <a class="location-btn" href="tel:+493028508496">…nach Spandau</a>
+                        <a class="location-contact-link" href="mailto:spandau@ristorante-cappuccino.de">spandau@ristorante-cappuccino.de</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="location-band location-band-alt">
+            <article class="location-editorial-row reverse">
+                <div class="location-copy">
+                    <div class="location-kicker">Restaurant · Garten · Eventlocation</div>
+                    <h3 class="location-script"><em>Cappuccino</em>Gatow</h3>
+                    <p class="location-address">Alt Gatow 1–3 · 14089 Berlin<br>An der Havel</p>
+                    <div class="location-divider" aria-hidden="true"></div>
+                    <p class="location-description">Cappuccino Gatow ist unsere Adresse für besondere Anlässe. Der große Garten, die Nähe zur Havel und der angrenzende Festsaal schaffen den passenden Rahmen für Hochzeiten, Geburtstage, Firmenfeiern und genussvolle Abende in stilvoller Atmosphäre.</p>
+                    <div class="location-actions">
+                        <a class="location-btn" href="tel:+493036992263">…nach Gatow</a>
+                        <a class="location-contact-link" href="mailto:gatow@ristorante-cappuccino.de">gatow@ristorante-cappuccino.de</a>
+                    </div>
+                </div>
+                <div class="location-cover" aria-label="Cappuccino Gatow Bildkarte">
+                    <div class="location-handnote">Feiern an der Havel <span>♡</span></div>
+                    <figure class="location-polaroid">
+                        <img src="images/standort-gatow.jpg" alt="Cappuccino Gatow Restaurant und Eventlocation" loading="lazy" onerror="this.onerror=null;this.src='images/event-garten-havel.jpg';">
+                        <div class="location-badge-round"><small>Standort</small><strong>Gatow</strong></div>
+                    </figure>
+                </div>
+            </article>
         </div>
     </section>
 
