@@ -287,64 +287,99 @@
         .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .fade-up.active { opacity: 1; transform: translateY(0); }
 
-        /* === STORY / COUNTER-BAND === */
+        /* === STORY / COUNTER-BAND DARK DESIGN === */
         .story-section {
-            background: linear-gradient(180deg, #fff8ed 0%, #f9f1e6 100%);
-            padding-left: 0;
-            padding-right: 0;
+            padding: 112px 0 106px;
+            background:
+                radial-gradient(circle at 50% 10%, rgba(158,42,43,0.22), transparent 34%),
+                linear-gradient(135deg, #120d0b 0%, #21110f 46%, #2a1513 100%);
+            color: #fff8ed;
+            overflow: hidden;
         }
+        .story-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(212,175,55,0.05), transparent 28%, transparent 72%, rgba(212,175,55,0.05)),
+                radial-gradient(circle at 15% 70%, rgba(212,175,55,0.10), transparent 30%);
+            pointer-events: none;
+        }
+        .story-section > .section-title,
+        .story-section > .sub-text,
+        .story-section > .story-counter-strip,
+        .story-section > .story-timeline { position: relative; z-index: 2; }
         .story-section > .section-title,
         .story-section > .sub-text {
             padding-left: 5%;
             padding-right: 5%;
         }
+        .story-section .section-title {
+            color: #ffffff;
+            font-size: clamp(3rem, 5vw, 5.2rem);
+            line-height: 1;
+            margin-bottom: 18px;
+            text-shadow: 0 18px 40px rgba(0,0,0,0.45);
+        }
+        .story-section .section-title::after {
+            width: 96px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            box-shadow: 0 0 18px rgba(212,175,55,0.35);
+        }
+        .story-section .sub-text {
+            color: rgba(255,248,237,0.86);
+            font-size: clamp(1.08rem, 1.6vw, 1.35rem);
+            margin-bottom: 44px;
+        }
         .story-counter-strip {
-            width: 100%;
-            margin: 42px 0 0;
-            padding: 0 5%;
-            background: linear-gradient(90deg, #4a2600 0%, #65400b 46%, #4a2600 100%);
-            box-shadow: 0 24px 55px rgba(74, 38, 0, 0.18);
+            width: min(1460px, calc(100% - 48px));
+            margin: 48px auto 0;
+            padding: 0;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #4a2600 0%, #6d4208 48%, #4a2600 100%);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.34);
+            border: 1px solid rgba(245,210,126,0.25);
+            overflow: hidden;
         }
         .story-counter-inner {
-            max-width: 1280px;
+            max-width: 100%;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
         }
         .story-counter-item {
-            min-height: 146px;
-            padding: 28px 30px;
+            min-height: 166px;
+            padding: 32px 30px;
             display: grid;
-            grid-template-columns: 58px 1fr;
+            grid-template-columns: 66px 1fr;
             align-items: center;
-            gap: 20px;
-            border-right: 1px solid rgba(245, 210, 126, 0.35);
+            gap: 22px;
+            border-right: 1px solid rgba(245, 210, 126, 0.32);
             color: #fff;
         }
         .story-counter-item:last-child { border-right: 0; }
         .story-counter-icon {
-            width: 58px;
-            height: 58px;
-            border-radius: 18px;
+            width: 66px;
+            height: 66px;
+            border-radius: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 248, 237, 0.12);
-            border: 1px solid rgba(245, 210, 126, 0.32);
-            font-size: 2rem;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+            background: linear-gradient(135deg, rgba(255,248,237,0.15), rgba(212,175,55,0.12));
+            border: 1px solid rgba(245, 210, 126, 0.34);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.07), 0 14px 28px rgba(0,0,0,0.18);
         }
-
         .story-counter-icon img {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             display: block;
             object-fit: contain;
-            filter: drop-shadow(0 3px 8px rgba(0,0,0,0.22));
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.28));
         }
         .story-counter-number {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 4vw, 3.45rem);
+            font-size: clamp(2.35rem, 4vw, 3.65rem);
             line-height: 0.95;
             font-weight: 700;
             color: #f5d27e;
@@ -364,34 +399,39 @@
             margin-top: 8px;
             font-size: 0.94rem;
             line-height: 1.45;
-            color: rgba(255,248,237,0.86);
+            color: rgba(255,248,237,0.84);
         }
         .story-timeline {
-            max-width: 1180px;
-            margin: 46px auto 0;
+            max-width: 1240px;
+            margin: 54px auto 0;
             padding: 0 5%;
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 18px;
+            gap: 22px;
         }
         .story-item {
-            background: rgba(255,255,255,0.92);
-            padding: 24px 22px;
-            border-radius: 22px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(212,175,55,0.22);
+            background: rgba(255,255,255,0.055);
+            padding: 28px 24px;
+            border-radius: 26px;
+            box-shadow: 0 24px 55px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,248,237,0.13);
+            backdrop-filter: blur(8px);
             transition: 0.3s ease;
         }
-        .story-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+        .story-item:hover {
+            transform: translateY(-7px);
+            border-color: rgba(212,175,55,0.42);
+            box-shadow: 0 34px 70px rgba(0,0,0,0.34);
+        }
         .story-item .year {
             font-family: 'Playfair Display', serif;
-            font-size: 2.15rem;
+            font-size: 2.35rem;
             line-height: 1;
             font-weight: 700;
-            color: var(--primary-red);
+            color: #d43e4d;
         }
-        .story-item h4 { margin: 12px 0 8px; color: #2b1b15; }
-        .story-item p { color: #5a4a40; }
+        .story-item h4 { margin: 14px 0 10px; color: #fff8ed; }
+        .story-item p { color: rgba(255,248,237,0.76); }
 
         /* === LOCATIONS === */
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
@@ -732,7 +772,181 @@
             .story-counter-item:last-child { border-bottom: 0; }
             .story-timeline { grid-template-columns: 1fr; }
         }
-    </style>
+    
+/* فقط تغيير لون كلمة Geschichte */
+.red-title-word {
+    color: var(--primary-red);
+}
+
+/* === STORY COUNTER – DARK MENU INSPIRED CONNECTED DESIGN === */
+.story-section {
+    background:
+        radial-gradient(circle at 50% 12%, rgba(195,54,73,0.16), transparent 36%),
+        linear-gradient(135deg, #120d0b 0%, #1b100e 52%, #241210 100%);
+}
+.story-section::before {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(195,54,73,0.10), transparent 34%),
+        radial-gradient(circle at 80% 72%, rgba(212,175,55,0.08), transparent 30%);
+}
+.story-section .section-title {
+    color: #ffffff;
+}
+.story-section .section-title .red-title-word,
+.story-section .story-item .year {
+    color: #c83b4b;
+}
+.story-section .sub-text {
+    color: rgba(255,248,237,0.88);
+}
+.story-counter-strip {
+    width: min(1460px, calc(100% - 56px));
+    margin: 54px auto 0;
+    padding: 0;
+    background: rgba(43, 36, 33, 0.86);
+    border: 1px solid rgba(255, 248, 237, 0.16);
+    border-radius: 30px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.34);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+.story-counter-inner {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+}
+.story-counter-item {
+    min-height: 208px;
+    padding: 36px 34px;
+    grid-template-columns: 72px 1fr;
+    gap: 24px;
+    align-items: center;
+    background: transparent;
+    border: 0 !important;
+    border-right: 1px solid rgba(255,248,237,0.16) !important;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    transition: background .28s ease;
+}
+.story-counter-item:last-child {
+    border-right: 0 !important;
+}
+.story-counter-item:hover {
+    transform: none;
+    background: rgba(255,255,255,0.045);
+    border-color: rgba(255,248,237,0.16) !important;
+    box-shadow: none;
+}
+.story-counter-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(195,54,73,0.22), rgba(212,175,55,0.14));
+    border: 1px solid rgba(255,248,237,0.18);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 0 16px 34px rgba(0,0,0,0.22);
+}
+.story-counter-icon span {
+    font-size: 2rem;
+    line-height: 1;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+}
+.story-counter-icon img {
+    width: 52px;
+    height: 52px;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+}
+.story-counter-icon span { display: none; }
+.story-counter-number {
+    color: #d9a64f;
+    font-size: clamp(2.55rem, 4vw, 3.95rem);
+}
+.story-counter-label {
+    color: #fff8ed;
+    letter-spacing: 1px;
+}
+.story-counter-text {
+    color: rgba(255,248,237,0.78);
+    font-size: 1rem;
+}
+.story-item {
+    background: rgba(43, 36, 33, 0.70);
+    border: 1px solid rgba(255,248,237,0.14);
+}
+@media (max-width: 1024px) {
+    .story-counter-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
+    .story-counter-item:nth-child(2) { border-right: 0 !important; }
+    .story-counter-item:nth-child(1),
+    .story-counter-item:nth-child(2) { border-bottom: 1px solid rgba(255,248,237,0.16) !important; }
+}
+@media (max-width: 640px) {
+    .story-counter-strip { width: min(100% - 28px, 520px); }
+    .story-counter-inner { grid-template-columns: 1fr; gap: 0; }
+    .story-counter-item {
+        min-height: auto;
+        grid-template-columns: 60px 1fr;
+        padding: 26px 22px;
+        border-right: 0 !important;
+        border-bottom: 1px solid rgba(255,248,237,0.16) !important;
+    }
+    .story-counter-item:last-child { border-bottom: 0 !important; }
+    .story-counter-icon { width: 60px; height: 60px; border-radius: 18px; }
+    .story-counter-icon img { width: 46px; height: 46px; }
+}
+
+
+
+/* === FINAL STORY COLOR UPDATE – no yellow, elegant dark red/cream === */
+#story.story-section {
+    background:
+        radial-gradient(circle at 50% 10%, rgba(200,59,75,0.20), transparent 34%),
+        linear-gradient(135deg, #120d0b 0%, #231715 48%, #2b1b18 100%);
+}
+#story.story-section::before {
+    background:
+        linear-gradient(90deg, rgba(255,248,237,0.045), transparent 28%, transparent 72%, rgba(255,248,237,0.045)),
+        radial-gradient(circle at 15% 70%, rgba(200,59,75,0.12), transparent 30%);
+}
+#story .section-title::after {
+    background: linear-gradient(90deg, transparent, #c83b4b, transparent);
+    box-shadow: 0 0 18px rgba(200,59,75,0.34);
+}
+#story .story-counter-strip {
+    background: linear-gradient(90deg, rgba(36,28,25,0.96) 0%, rgba(52,38,34,0.96) 50%, rgba(36,28,25,0.96) 100%);
+    border-color: rgba(255,248,237,0.18);
+}
+#story .story-counter-item {
+    border-right-color: rgba(255,248,237,0.16) !important;
+}
+#story .story-counter-item:hover {
+    background: rgba(200,59,75,0.075);
+}
+#story .story-counter-icon {
+    background: linear-gradient(135deg, rgba(200,59,75,0.28), rgba(255,248,237,0.08));
+    border-color: rgba(255,248,237,0.20);
+}
+#story .story-counter-number {
+    color: #fff8ed;
+    text-shadow: 0 0 22px rgba(200,59,75,0.24);
+}
+#story .story-counter-label {
+    color: #e45768;
+}
+#story .story-item {
+    background: rgba(36,28,25,0.78);
+    border-color: rgba(255,248,237,0.14);
+}
+#story .story-item:hover {
+    border-color: rgba(200,59,75,0.42);
+}
+#story .story-item .year,
+#story .section-title .red-title-word {
+    color: #e45768;
+}
+
+</style>
 </head>
 <body>
 
@@ -920,7 +1134,7 @@
 
     <!-- STORY / ÜBER UNS MIT ZÄHLERN -->
     <section id="story" class="story-section fade-up">
-        <h2 class="section-title">Unsere Geschichte</h2>
+        <h2 class="section-title">Unsere <span class="red-title-word">Geschichte</span></h2>
         <p class="sub-text">Seit über 25 Jahren bringt die Familie Bianchi italienische Leidenschaft nach Berlin.</p>
 
 
