@@ -35,7 +35,8 @@
 
         /* === NAVIGATION === */
         header {
-            position: fixed; top: 0; width: 100%; padding: 14px 5%;
+            position: fixed; top: 0; width: 100%; padding: 10px 5%;
+            min-height: 82px;
             background: linear-gradient(180deg, rgba(15,10,8,0.78), rgba(15,10,8,0.32));
             backdrop-filter: blur(12px);
             z-index: 1000;
@@ -51,10 +52,11 @@
         .logo::first-letter { color: var(--primary-red); }
         .logo img {
             display: block;
-            height: 64px;
+            height: 82px;
             width: auto;
             max-width: 240px;
             object-fit: contain;
+            transform: translateY(2px);
             filter: drop-shadow(0 3px 18px rgba(0,0,0,0.45));
         }
         nav ul { display: flex; gap: 30px; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; color: #fff; }
@@ -360,7 +362,7 @@
 
         /* === RESPONSIVE === */
         @media (max-width: 768px) {
-            .logo img { height: 64px; max-width: 230px; }
+            .logo img { height: 74px; max-width: 240px; }
             .hero-logo-word { font-size: 4.4rem; letter-spacing: 1px; }
             .hero-ristorante { font-size: 1rem; letter-spacing: 9px; padding-left: 9px; margin-top: 14px; }
             .hero-tagline { font-size: 2.1rem; margin-top: 30px; }
