@@ -953,17 +953,18 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 78px;
+    height: 102px;
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     border-bottom: 0 !important;
     box-shadow: none !important;
-    transition: background 0.32s ease, backdrop-filter 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease;
+    transition: height 0.32s ease, background 0.32s ease, backdrop-filter 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease;
 }
 
 /* When the visitor scrolls a little, restore the full navigation bar */
 header.header-scrolled {
+    height: 78px;
     background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.28)) !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
@@ -971,15 +972,27 @@ header.header-scrolled {
     box-shadow: 0 10px 30px rgba(0,0,0,0.14) !important;
 }
 
-/* Bigger logo, still without adding a rectangle on the hero */
+/* Logo is very large on the hero, then returns to the current size when the bar appears */
 header .logo {
-    width: 220px;
-    height: 78px;
+    width: 330px;
+    height: 102px;
+    flex: 0 0 330px;
+    transition: width 0.32s ease, height 0.32s ease, flex-basis 0.32s ease;
 }
 header .logo img {
+    height: 152px;
+    max-width: 360px;
+    text-shadow: 0 3px 14px rgba(0,0,0,0.65);
+    transition: height 0.32s ease, max-width 0.32s ease, transform 0.32s ease, filter 0.32s ease;
+}
+header.header-scrolled .logo {
+    width: 220px;
+    height: 78px;
+    flex: 0 0 220px;
+}
+header.header-scrolled .logo img {
     height: 98px;
     max-width: 240px;
-    text-shadow: 0 3px 14px rgba(0,0,0,0.65);
 }
 
 header .logo,
@@ -997,7 +1010,7 @@ header nav ul li a {
 
 @media (max-width: 768px) {
     header {
-        height: 82px;
+        height: 96px;
         background: transparent !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
@@ -1005,6 +1018,7 @@ header nav ul li a {
         box-shadow: none !important;
     }
     header.header-scrolled {
+        height: 82px;
         background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.28)) !important;
         backdrop-filter: blur(10px) !important;
         -webkit-backdrop-filter: blur(10px) !important;
@@ -1012,11 +1026,20 @@ header nav ul li a {
         box-shadow: 0 10px 30px rgba(0,0,0,0.14) !important;
     }
     header .logo {
+        width: 230px;
+        flex: 0 0 230px;
+        height: 96px;
+    }
+    header .logo img {
+        height: 122px;
+        max-width: 250px;
+    }
+    header.header-scrolled .logo {
         width: 170px;
         flex: 0 0 170px;
         height: 82px;
     }
-    header .logo img {
+    header.header-scrolled .logo img {
         height: 84px;
         max-width: 170px;
     }
