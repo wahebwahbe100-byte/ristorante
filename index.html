@@ -13,7 +13,7 @@
         body {
             font-family: 'Source Sans Pro', sans-serif;
             color: #1a1a1a;
-            background-color: #fdfcf8;
+            background: linear-gradient(180deg, #fffdf8 0%, #f9f5f0 100%);
             line-height: 1.6;
             scroll-behavior: smooth;
             overflow-x: hidden;
@@ -29,13 +29,15 @@
             --light-bg: #f9f5f0;
             --shadow: 0 10px 30px rgba(0,0,0,0.06);
             --shadow-hover: 0 20px 40px rgba(0,0,0,0.12);
+            --cream: #fff8ed;
+            --dark-red: #741f23;
         }
 
         /* === NAVIGATION === */
         header {
             position: fixed; top: 0; width: 100%; padding: 14px 5%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.28));
-            backdrop-filter: blur(10px);
+            background: linear-gradient(180deg, rgba(15,10,8,0.78), rgba(15,10,8,0.32));
+            backdrop-filter: blur(12px);
             z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -68,7 +70,7 @@
         .hero {
             min-height: 100vh;
             height: auto;
-            padding: 128px 5% 72px;
+            padding: 128px 5% 96px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -77,6 +79,7 @@
             position: relative;
             z-index: 1;
             background: url('images/hero.png') center/cover no-repeat;
+            image-rendering: auto;
             color: white;
             overflow: hidden;
         }
@@ -85,10 +88,57 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(circle at 50% 45%, rgba(158,42,43,0.22), rgba(0,0,0,0.34) 42%, rgba(0,0,0,0.78) 100%),
-                linear-gradient(180deg, rgba(0,0,0,0.48), rgba(0,0,0,0.82));
+                radial-gradient(circle at 50% 45%, rgba(158,42,43,0.12), rgba(0,0,0,0.12) 42%, rgba(0,0,0,0.44) 100%),
+                linear-gradient(180deg, rgba(0,0,0,0.22), rgba(0,0,0,0.54));
             z-index: 0;
         }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -1px;
+            width: 110%;
+            height: 118px;
+            transform: translateX(-50%);
+            background: var(--light-bg);
+            clip-path: ellipse(58% 46% at 50% 100%);
+            z-index: 1;
+        }
+        .hero-ornament {
+            position: absolute;
+            left: 50%;
+            bottom: 26px;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: rgba(255,255,255,0.92);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            letter-spacing: 8px;
+            text-shadow: 0 4px 18px rgba(0,0,0,0.45);
+            pointer-events: none;
+        }
+        .hero-ornament::before,
+        .hero-ornament::after {
+            content: "";
+            display: block;
+            width: min(170px, 24vw);
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.95), transparent);
+            box-shadow: 0 0 12px rgba(212,175,55,0.45);
+        }
+        .hero-ornament span {
+            width: 12px;
+            height: 12px;
+            border: 1px solid rgba(212,175,55,0.95);
+            transform: rotate(45deg);
+            background: rgba(158,42,43,0.72);
+            box-shadow: 0 0 16px rgba(212,175,55,0.42);
+        }
+
         .hero-brand,
         .hero-actions {
             position: relative;
@@ -213,7 +263,8 @@
         .btn-hero:hover { transform: translateY(-2px) scale(1.03); background: #b33739; }
 
         /* === ALLGEMEINES === */
-        section { position: relative; z-index: 1; padding: 90px 5%; }
+        section { position: relative; z-index: 1; padding: 96px 5%; }
+        .story-section { padding-top: 118px; }
         .section-title {
             text-align: center; font-size: 3rem; margin-bottom: 10px;
             position: relative; display: block; width: 100%;
@@ -229,7 +280,8 @@
         /* === STORY (NEU) === */
         .story-section { background: var(--light-bg); }
         .story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
-        .story-item { background: white; padding: 25px; border-radius: 20px; box-shadow: var(--shadow); text-align: center; }
+        .story-item { background: white; padding: 28px; border-radius: 24px; box-shadow: var(--shadow); text-align: center; border: 1px solid rgba(212,175,55,0.20); transition: 0.3s ease; }
+        .story-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
         .story-item .year { font-size: 2.5rem; font-weight: 700; color: var(--primary-red); }
         .story-item h4 { margin: 10px 0; }
 
@@ -239,7 +291,7 @@
         .location-card {
             background: white; padding: 35px; border-radius: 24px;
             box-shadow: var(--shadow); transition: 0.3s;
-            border: 1px solid #eee; text-align: center;
+            border: 1px solid rgba(212,175,55,0.22); text-align: center;
         }
         .location-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
         .loc-badge { background: var(--primary-red); color: white; padding: 4px 20px; border-radius: 20px; font-size: 0.8rem; letter-spacing: 1px; display: inline-block; margin-bottom: 15px; }
@@ -249,7 +301,7 @@
         .event-flex { display: flex; gap: 50px; flex-wrap: wrap; align-items: center; }
         .event-text { flex: 1; min-width: 280px; }
         .event-gallery { flex: 1.2; min-width: 280px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-        .event-gallery .pic { width: 100%; height: 200px; border-radius: 20px; background: #ddd; display: flex; align-items: center; justify-content: center; color: #999; font-size: 1.2rem; border: 2px dashed #ccc; }
+        .event-gallery .pic { width: 100%; height: 200px; border-radius: 22px; background: linear-gradient(135deg, rgba(158,42,43,0.10), rgba(212,175,55,0.18)); display: flex; align-items: center; justify-content: center; color: var(--dark-red); font-size: 1.15rem; border: 1px solid rgba(212,175,55,0.35); box-shadow: var(--shadow); font-weight: 700; }
         .event-gallery .pic-small { width: calc(50% - 8px); height: 150px; }
 
         /* === RESERVIERUNG (SMART) === */
@@ -315,6 +367,9 @@
             .hero-subtitle { font-size: 1.05rem; max-width: 92vw; margin-top: 18px; }
             header { flex-direction: column; gap: 10px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .hero { padding-bottom: 106px; }
+            .hero-ornament { bottom: 24px; gap: 10px; }
+            .hero-ornament::before, .hero-ornament::after { width: 24vw; }
         }
     </style>
 </head>
@@ -429,6 +484,7 @@
             <button class="btn-hero" onclick="document.getElementById('reservierung').scrollIntoView({behavior:'smooth'})">📅 Jetzt reservieren</button>
             <button class="btn-hero" style="background: transparent; border: 2px solid white; box-shadow:none;" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">Unsere Geschichte</button>
         </div>
+        <div class="hero-ornament" aria-hidden="true"><span></span></div>
     </section>
 
     <!-- STORY / ÜBER UNS (AUSFÜHRLICH) -->
