@@ -287,13 +287,111 @@
         .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .fade-up.active { opacity: 1; transform: translateY(0); }
 
-        /* === STORY (NEU) === */
-        .story-section { background: var(--light-bg); }
-        .story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
-        .story-item { background: white; padding: 28px; border-radius: 24px; box-shadow: var(--shadow); text-align: center; border: 1px solid rgba(212,175,55,0.20); transition: 0.3s ease; }
+        /* === STORY / COUNTER-BAND === */
+        .story-section {
+            background: linear-gradient(180deg, #fff8ed 0%, #f9f1e6 100%);
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .story-section > .section-title,
+        .story-section > .sub-text {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        .story-counter-strip {
+            width: 100%;
+            margin: 42px 0 0;
+            padding: 0 5%;
+            background: linear-gradient(90deg, #4a2600 0%, #65400b 46%, #4a2600 100%);
+            box-shadow: 0 24px 55px rgba(74, 38, 0, 0.18);
+        }
+        .story-counter-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+        .story-counter-item {
+            min-height: 146px;
+            padding: 28px 30px;
+            display: grid;
+            grid-template-columns: 58px 1fr;
+            align-items: center;
+            gap: 20px;
+            border-right: 1px solid rgba(245, 210, 126, 0.35);
+            color: #fff;
+        }
+        .story-counter-item:last-child { border-right: 0; }
+        .story-counter-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 248, 237, 0.12);
+            border: 1px solid rgba(245, 210, 126, 0.32);
+            font-size: 2rem;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+        }
+
+        .story-counter-icon img {
+            width: 44px;
+            height: 44px;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 3px 8px rgba(0,0,0,0.22));
+        }
+        .story-counter-number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 4vw, 3.45rem);
+            line-height: 0.95;
+            font-weight: 700;
+            color: #f5d27e;
+            letter-spacing: -1px;
+        }
+        .story-counter-number .suffix { font-size: 0.68em; margin-left: 2px; }
+        .story-counter-label {
+            margin-top: 8px;
+            font-size: 0.84rem;
+            line-height: 1.2;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #fff8ed;
+        }
+        .story-counter-text {
+            margin-top: 8px;
+            font-size: 0.94rem;
+            line-height: 1.45;
+            color: rgba(255,248,237,0.86);
+        }
+        .story-timeline {
+            max-width: 1180px;
+            margin: 46px auto 0;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+        .story-item {
+            background: rgba(255,255,255,0.92);
+            padding: 24px 22px;
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212,175,55,0.22);
+            transition: 0.3s ease;
+        }
         .story-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
-        .story-item .year { font-size: 2.5rem; font-weight: 700; color: var(--primary-red); }
-        .story-item h4 { margin: 10px 0; }
+        .story-item .year {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.15rem;
+            line-height: 1;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+        .story-item h4 { margin: 12px 0 8px; color: #2b1b15; }
+        .story-item p { color: #5a4a40; }
 
         /* === LOCATIONS === */
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
@@ -614,6 +712,26 @@
             }
         }
 
+
+        @media (max-width: 1024px) {
+            .story-counter-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .story-counter-item:nth-child(2) { border-right: 0; }
+            .story-counter-item:nth-child(1),
+            .story-counter-item:nth-child(2) { border-bottom: 1px solid rgba(245, 210, 126, 0.35); }
+            .story-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 640px) {
+            .story-counter-strip { padding: 0; }
+            .story-counter-inner { grid-template-columns: 1fr; }
+            .story-counter-item {
+                border-right: 0;
+                border-bottom: 1px solid rgba(245, 210, 126, 0.35);
+                padding: 24px 22px;
+                min-height: auto;
+            }
+            .story-counter-item:last-child { border-bottom: 0; }
+            .story-timeline { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -800,11 +918,52 @@
         </section>
     </section>
 
-    <!-- STORY / ÜBER UNS (AUSFÜHRLICH) -->
+    <!-- STORY / ÜBER UNS MIT ZÄHLERN -->
     <section id="story" class="story-section fade-up">
         <h2 class="section-title">Unsere Geschichte</h2>
         <p class="sub-text">Seit über 25 Jahren bringt die Familie Bianchi italienische Leidenschaft nach Berlin.</p>
-        <div class="story-grid">
+
+
+        <!-- Bildnamen für die 4 Counter-Icons im Ordner images:
+             story-gruendung.png | story-erfahrung.png | story-standorte.png | story-gaeste.png -->
+        <div class="story-counter-strip" aria-label="Cappuccino Geschichte in Zahlen">
+            <div class="story-counter-inner">
+                <div class="story-counter-item">
+                    <div class="story-counter-icon"><img src="images/story-gruendung.png" alt="Gründung"></div>
+                    <div>
+                        <div class="story-counter-number"><span class="counter" data-target="1998">0</span></div>
+                        <div class="story-counter-label">Gegründet</div>
+                        <p class="story-counter-text">Der erste Cappuccino-Standort entsteht in Spandau.</p>
+                    </div>
+                </div>
+                <div class="story-counter-item">
+                    <div class="story-counter-icon"><img src="images/story-erfahrung.png" alt="Erfahrung"></div>
+                    <div>
+                        <div class="story-counter-number"><span class="counter" data-target="25">0</span><span class="suffix">+</span></div>
+                        <div class="story-counter-label">Jahre Erfahrung</div>
+                        <p class="story-counter-text">Italienische Küche, Gastfreundschaft und Familiengefühl.</p>
+                    </div>
+                </div>
+                <div class="story-counter-item">
+                    <div class="story-counter-icon"><img src="images/story-standorte.png" alt="Standorte"></div>
+                    <div>
+                        <div class="story-counter-number"><span class="counter" data-target="2">0</span></div>
+                        <div class="story-counter-label">Standorte</div>
+                        <p class="story-counter-text">Spandau und Gatow – Restaurant, Garten und Eventlocation.</p>
+                    </div>
+                </div>
+                <div class="story-counter-item">
+                    <div class="story-counter-icon"><img src="images/story-gaeste.png" alt="Gäste"></div>
+                    <div>
+                        <div class="story-counter-number"><span class="counter" data-target="150">0</span><span class="suffix">+</span></div>
+                        <div class="story-counter-label">Gäste möglich</div>
+                        <p class="story-counter-text">Platz für Hochzeiten, Geburtstage und Firmenfeiern.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="story-timeline">
             <div class="story-item">
                 <div class="year">1998</div>
                 <h4>Die Geburtsstunde</h4>
@@ -825,10 +984,6 @@
                 <h4>Digital & Zukunft</h4>
                 <p>Neue Website, interaktiver Menü-Planer und noch mehr Herz für unsere Gäste.</p>
             </div>
-        </div>
-        <div style="text-align:center; margin-top:30px; font-style:italic; max-width:600px; margin-left:auto; margin-right:auto; background:white; padding:30px; border-radius:20px; box-shadow:var(--shadow);">
-            <p style="font-size:1.3rem; color:var(--primary-red);">"Unsere Philosophie? Echte italienische Gastfreundschaft. Wir laden dich ein, Teil unserer Familie zu sein."</p>
-            <div style="margin-top:10px; font-weight:700;">– Marco Bianchi, Gründer & Maestro</div>
         </div>
     </section>
 
@@ -1039,6 +1194,40 @@
             });
         }, {threshold: 0.2});
         faders.forEach(f => observer.observe(f));
+
+        // 6. ANIMIERTE ZÄHLER FÜR "UNSERE GESCHICHTE"
+        const counters = document.querySelectorAll('.counter');
+        let countersStarted = false;
+
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target, 10);
+                const duration = target > 500 ? 1400 : 900;
+                const startTime = performance.now();
+
+                function tick(now) {
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const value = Math.floor(progress * target);
+                    counter.textContent = value.toLocaleString('de-DE');
+                    if (progress < 1) requestAnimationFrame(tick);
+                    else counter.textContent = target.toLocaleString('de-DE');
+                }
+                requestAnimationFrame(tick);
+            });
+        }
+
+        const counterStrip = document.querySelector('.story-counter-strip');
+        if (counterStrip) {
+            const counterObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !countersStarted) {
+                        countersStarted = true;
+                        animateCounters();
+                    }
+                });
+            }, {threshold: 0.35});
+            counterObserver.observe(counterStrip);
+        }
     </script>
 </body>
 </html>
