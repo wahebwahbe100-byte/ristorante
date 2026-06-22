@@ -1352,6 +1352,103 @@ header nav ul li a {
     .location-description { font-size: 1.04rem; line-height: 1.76; }
 }
 
+
+/* === EXTRA SECTION BACKGROUNDS – EVENTLOCATION / RESERVIERUNG / MENÜ / CATERING / TEAM === */
+.image-bg-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-image:
+        linear-gradient(135deg, rgba(18,13,11,0.72), rgba(46,25,22,0.52)),
+        var(--section-bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff8ed;
+}
+.image-bg-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 18% 12%, rgba(158,42,43,0.28), transparent 32%),
+        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.52));
+    pointer-events: none;
+}
+.image-bg-section::after {
+    content: "";
+    position: absolute;
+    inset: 22px;
+    z-index: -1;
+    border: 1px solid rgba(255,248,237,0.15);
+    border-radius: 34px;
+    pointer-events: none;
+}
+.image-bg-section .section-title,
+.image-bg-section .sub-text {
+    color: #fff8ed;
+    text-shadow: 0 10px 28px rgba(0,0,0,0.48);
+}
+.image-bg-section .section-title::after {
+    background: linear-gradient(90deg, transparent, #fff8ed, transparent);
+    box-shadow: 0 0 18px rgba(255,248,237,0.28);
+}
+.image-bg-section .reservation-box,
+.image-bg-section .configurator,
+.image-bg-section .catering-box,
+.image-bg-section .flip-card-front {
+    background: rgba(255, 253, 248, 0.92);
+    border: 1px solid rgba(255,248,237,0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.image-bg-section .configurator,
+.image-bg-section .reservation-box,
+.image-bg-section .catering-box {
+    box-shadow: 0 26px 70px rgba(0,0,0,0.24);
+}
+.image-bg-section input,
+.image-bg-section select,
+.image-bg-section textarea {
+    background: rgba(255,255,255,0.92);
+}
+.image-bg-section .price-display {
+    color: var(--primary-red);
+}
+.image-bg-section .flip-card-back {
+    background: linear-gradient(135deg, rgba(158,42,43,0.96), rgba(116,31,35,0.96));
+}
+.image-bg-section .event-text {
+    background: rgba(255, 253, 248, 0.90);
+    color: #2b211d;
+    border: 1px solid rgba(255,248,237,0.28);
+    border-radius: 30px;
+    padding: 34px;
+    box-shadow: 0 26px 70px rgba(0,0,0,0.24);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.image-bg-section .event-text h3 {
+    color: var(--primary-red);
+    font-size: 2rem;
+    margin-bottom: 14px;
+}
+.image-bg-section .event-text p,
+.image-bg-section .event-text li {
+    color: #4b3932;
+}
+.image-bg-section .event-thumb {
+    border-color: rgba(255,248,237,0.38);
+    box-shadow: 0 24px 62px rgba(0,0,0,0.28);
+}
+.image-bg-section .event-features {
+    padding-top: 56px;
+}
+@media (max-width: 640px) {
+    .image-bg-section::after { inset: 12px; border-radius: 24px; }
+}
+
 </style>
 </head>
 <body>
@@ -1380,6 +1477,77 @@ header nav ul li a {
 <style type="text/css">
     .st0{fill:#FFFFFF;}
     .logo-main .st0{fill:#9e2a2b;}
+
+/* === EXTRA SECTION BACKGROUNDS – EVENTLOCATION / RESERVIERUNG / MENÜ / CATERING / TEAM === */
+.image-bg-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-image:
+        linear-gradient(135deg, rgba(18,13,11,0.72), rgba(46,25,22,0.52)),
+        var(--section-bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff8ed;
+}
+.image-bg-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 18% 12%, rgba(158,42,43,0.28), transparent 32%),
+        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.52));
+    pointer-events: none;
+}
+.image-bg-section::after {
+    content: "";
+    position: absolute;
+    inset: 22px;
+    z-index: -1;
+    border: 1px solid rgba(255,248,237,0.15);
+    border-radius: 34px;
+    pointer-events: none;
+}
+.image-bg-section .section-title,
+.image-bg-section .sub-text {
+    color: #fff8ed;
+    text-shadow: 0 10px 28px rgba(0,0,0,0.48);
+}
+.image-bg-section .section-title::after {
+    background: linear-gradient(90deg, transparent, #fff8ed, transparent);
+    box-shadow: 0 0 18px rgba(255,248,237,0.28);
+}
+.image-bg-section .reservation-box,
+.image-bg-section .configurator,
+.image-bg-section .catering-box,
+.image-bg-section .flip-card-front {
+    background: rgba(255, 253, 248, 0.92);
+    border: 1px solid rgba(255,248,237,0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.image-bg-section .configurator,
+.image-bg-section .reservation-box,
+.image-bg-section .catering-box {
+    box-shadow: 0 26px 70px rgba(0,0,0,0.24);
+}
+.image-bg-section input,
+.image-bg-section select,
+.image-bg-section textarea {
+    background: rgba(255,255,255,0.92);
+}
+.image-bg-section .price-display {
+    color: var(--primary-red);
+}
+.image-bg-section .flip-card-back {
+    background: linear-gradient(135deg, rgba(158,42,43,0.96), rgba(116,31,35,0.96));
+}
+@media (max-width: 640px) {
+    .image-bg-section::after { inset: 12px; border-radius: 24px; }
+}
+
 </style>
 <g class="logo-main">
     <path class="st0" d="M43,10.4c0.5,0,1.1,0,1.4,0c1.4,0.2,2.7,0.7,3.7,1.7c1.4,1.5,1.7,3.8,1.1,5.7c-0.8,2.8-2.9,5-5.2,6.7
@@ -1470,7 +1638,7 @@ header nav ul li a {
 
 
     <!-- EVENTLOCATION (GATOW) MIT DETAILS -->
-    <section id="events" class="event-section fade-up">
+    <section id="events" class="event-section fade-up image-bg-section" style="--section-bg-image: url('images/eventlocation-havel-bg.png');">
         <h2 class="section-title">Eventlocation an der Havel</h2>
         <p class="sub-text">Ob Hochzeit, Geburtstag oder Firmenfeier – in Gatow wird jeder Moment unvergesslich.</p>
 
@@ -1662,7 +1830,7 @@ header nav ul li a {
     </section>
 
     <!-- RESERVIERUNG (FUNKTIONAL) -->
-    <section id="reservierung" class="fade-up">
+    <section id="reservierung" class="fade-up image-bg-section" style="--section-bg-image: url('images/reservierung-bg.png');">
         <h2 class="section-title">Tisch reservieren</h2>
         <p class="sub-text">Sichere dir deinen Platz – wir freuen uns auf dich!</p>
         <div class="reservation-box">
@@ -1693,7 +1861,7 @@ header nav ul li a {
     </section>
 
     <!-- MENÜ-KONFIGURATOR (SINNVOLLER PIZZA BAUER) -->
-    <section id="config" class="fade-up" style="background: var(--light-bg);">
+    <section id="config" class="fade-up image-bg-section" style="--section-bg-image: url('images/menu-planer-bg.png');">
         <h2 class="section-title">Menü-Planer für Events & Catering</h2>
         <p class="sub-text">Stelle dein Wunschmenü zusammen – wir kalkulieren den Preis live.</p>
         <div class="configurator">
@@ -1739,7 +1907,7 @@ header nav ul li a {
     </section>
 
     <!-- CATERING (EXTRA) -->
-    <section class="fade-up" style="background:white;">
+    <section id="catering" class="fade-up image-bg-section" style="--section-bg-image: url('images/catering-service-bg.png');">
         <h2 class="section-title">Catering-Service</h2>
         <p class="sub-text">Wir kommen zu dir! Perfekt für Firmenfeiern, Geburtstage oder Hochzeiten.</p>
         <div class="catering-box">
@@ -1754,7 +1922,7 @@ header nav ul li a {
     </section>
 
     <!-- TEAM -->
-    <section id="team" class="team-section fade-up" style="background:var(--light-bg);">
+    <section id="team" class="team-section fade-up image-bg-section" style="--section-bg-image: url('images/la-squadra-bg.png');">
         <h2 class="section-title">La Squadra</h2>
         <p class="sub-text">Das Herz hinter unserem Cappuccino.</p>
         <div class="grid-3">
