@@ -1045,6 +1045,91 @@ header nav ul li a {
     }
 }
 
+
+/* === FINAL DESIGN POLISH + TOP HERO BLUR === */
+.hero {
+    padding-top: 152px;
+    isolation: isolate;
+}
+.hero-top-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 245px;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.54) 0%, rgba(0,0,0,0.28) 44%, rgba(0,0,0,0.00) 100%),
+        radial-gradient(circle at 50% 0%, rgba(158,42,43,0.26), rgba(0,0,0,0.00) 58%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.92) 34%, rgba(0,0,0,0.18) 78%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.92) 34%, rgba(0,0,0,0.18) 78%, transparent 100%);
+}
+.hero-brand {
+    margin-top: 22px;
+}
+.hero-svg-wrap {
+    width: min(690px, 82vw);
+    margin-bottom: 44px;
+}
+.hero-tagline {
+    max-width: 1050px;
+    text-shadow: 0 10px 34px rgba(0,0,0,0.72);
+}
+.hero-subtitle {
+    max-width: 880px;
+    padding: 0 18px;
+}
+.hero-actions .btn-hero {
+    border: 1px solid rgba(255,255,255,0.16);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.hero-actions .btn-hero:nth-child(2) {
+    background: rgba(255,255,255,0.10) !important;
+}
+section:not(.hero):not(.story-section):not(.job-section) {
+    background-image:
+        radial-gradient(circle at 8% 12%, rgba(158,42,43,0.045), transparent 26%),
+        radial-gradient(circle at 90% 22%, rgba(212,175,55,0.055), transparent 28%);
+}
+.location-card,
+.reservation-box,
+.configurator,
+.catering-box,
+.flip-card-front {
+    border: 1px solid rgba(212,175,55,0.26);
+    box-shadow: 0 22px 55px rgba(35, 23, 18, 0.10);
+}
+.location-card:hover,
+.reservation-box:hover,
+.configurator:hover,
+.catering-box:hover {
+    box-shadow: 0 30px 70px rgba(35, 23, 18, 0.14);
+}
+.section-title {
+    color: #241815;
+}
+.sub-text {
+    color: #5d514a;
+}
+.btn-hero,
+.reservation-box .btn {
+    letter-spacing: 0.2px;
+}
+footer {
+    background:
+        radial-gradient(circle at 20% 0%, rgba(158,42,43,0.20), transparent 34%),
+        linear-gradient(135deg, #120d0b 0%, #151515 70%);
+}
+@media (max-width: 768px) {
+    .hero { padding-top: 138px; }
+    .hero-top-blur { height: 215px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .hero-svg-wrap { width: min(620px, 92vw); }
+}
+
 </style>
 </head>
 <body>
@@ -1066,6 +1151,7 @@ header nav ul li a {
 
     <!-- HERO -->
     <section id="home" class="hero">
+        <div class="hero-top-blur" aria-hidden="true"></div>
         <div class="hero-brand" aria-label="Cappuccino Ristorante - Italienische Küche mit Herz & Leidenschaft">
             <div class="hero-svg-wrap">
                 <svg version="1.1" id="Ebene_1" class="hero-exact-svg-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
