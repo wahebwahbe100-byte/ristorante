@@ -310,9 +310,110 @@
         .event-section { background: var(--light-bg); }
         .event-flex { display: flex; gap: 50px; flex-wrap: wrap; align-items: center; }
         .event-text { flex: 1; min-width: 280px; }
-        .event-gallery { flex: 1.2; min-width: 280px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-        .event-gallery .pic { width: 100%; height: 200px; border-radius: 22px; background: linear-gradient(135deg, rgba(158,42,43,0.10), rgba(212,175,55,0.18)); display: flex; align-items: center; justify-content: center; color: var(--dark-red); font-size: 1.15rem; border: 1px solid rgba(212,175,55,0.35); box-shadow: var(--shadow); font-weight: 700; }
-        .event-gallery .pic-small { width: calc(50% - 8px); height: 150px; }
+        .event-gallery {
+            flex: 1.2;
+            min-width: 280px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            align-items: stretch;
+        }
+        .event-thumb {
+            position: relative;
+            min-height: 150px;
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(212,175,55,0.35);
+            box-shadow: var(--shadow);
+            background: linear-gradient(135deg, rgba(158,42,43,0.10), rgba(212,175,55,0.18));
+        }
+        .event-thumb-large {
+            grid-column: 1 / -1;
+            min-height: 235px;
+        }
+        .event-thumb img {
+            width: 100%;
+            height: 100%;
+            min-height: inherit;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.45s ease, filter 0.45s ease;
+        }
+        .event-thumb:hover img {
+            transform: scale(1.06);
+            filter: brightness(0.92);
+        }
+        .event-thumb figcaption {
+            position: absolute;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.58);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.98rem;
+            text-align: center;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.20);
+        }
+
+
+
+        /* === VORTEILE UNTER EVENTLOCATION === */
+        .event-features {
+            background: transparent;
+            padding: 54px 0 0;
+            margin-top: 0;
+            position: relative;
+            z-index: 4;
+        }
+        .event-features-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(212,175,55,0.28);
+            border-radius: 28px;
+            box-shadow: 0 20px 55px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .event-feature-card {
+            min-height: 210px;
+            padding: 30px 28px;
+            display: grid;
+            grid-template-columns: 52px 1fr;
+            gap: 18px;
+            align-items: start;
+            border-right: 1px solid rgba(212,175,55,0.22);
+        }
+        .event-feature-card:last-child { border-right: 0; }
+        .event-feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(158,42,43,0.12), rgba(212,175,55,0.18));
+            color: var(--primary-red);
+            font-size: 1.55rem;
+            box-shadow: inset 0 0 0 1px rgba(212,175,55,0.20);
+        }
+        .event-feature-card h3 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1.08rem;
+            line-height: 1.25;
+            color: #2b1b15;
+            margin-bottom: 10px;
+        }
+        .event-feature-card p {
+            font-size: 0.98rem;
+            line-height: 1.55;
+            color: #4d4038;
+        }
 
         /* === RESERVIERUNG (SMART) === */
         .reservation-box { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 30px; box-shadow: var(--shadow); }
@@ -399,6 +500,120 @@
             .hero-tagline { font-size: 2.1rem; margin-top: 30px; }
             .hero-subtitle { font-size: 1.05rem; max-width: 92vw; margin-top: 18px; }
         }
+
+
+        @media (max-width: 980px) {
+            .event-features-inner { grid-template-columns: repeat(2, 1fr); }
+            .event-feature-card:nth-child(2) { border-right: 0; }
+            .event-feature-card:nth-child(1),
+            .event-feature-card:nth-child(2) { border-bottom: 1px solid rgba(212,175,55,0.22); }
+        }
+        @media (max-width: 640px) {
+            .event-gallery { grid-template-columns: 1fr; }
+            .event-thumb,
+            .event-thumb-large { min-height: 210px; }
+            .event-features { padding: 8px 0 42px; margin-top: 0; }
+            .event-features-inner { grid-template-columns: 1fr; border-radius: 22px; }
+            .event-feature-card {
+                border-right: 0;
+                border-bottom: 1px solid rgba(212,175,55,0.22);
+                min-height: auto;
+                padding: 24px 22px;
+            }
+            .event-feature-card:last-child { border-bottom: 0; }
+            .event-feature-card:nth-child(1),
+            .event-feature-card:nth-child(2) { border-bottom: 1px solid rgba(212,175,55,0.22); }
+        }
+
+
+        /* === EVENT FEATURES – FINAL CLEAN DESIGN === */
+        .event-features {
+            padding: 44px 0 0;
+            margin-top: 10px;
+        }
+        .event-features-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: visible;
+        }
+        .event-feature-card {
+            min-height: 245px;
+            padding: 34px 30px;
+            display: grid;
+            grid-template-columns: 64px 1fr;
+            gap: 22px;
+            align-items: start;
+            background: rgba(255,255,255,0.96);
+            border: 1px solid rgba(212,175,55,0.30) !important;
+            border-radius: 26px;
+            box-shadow: 0 18px 44px rgba(0,0,0,0.075);
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+        }
+        .event-feature-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 24px 58px rgba(0,0,0,0.12);
+            border-color: rgba(212,175,55,0.56) !important;
+        }
+        .event-feature-card:last-child { border-right: 1px solid rgba(212,175,55,0.30) !important; }
+        .event-feature-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            font-size: 1.75rem;
+            background: linear-gradient(135deg, rgba(158,42,43,0.10), rgba(212,175,55,0.22));
+            border: 1px solid rgba(212,175,55,0.26);
+            box-shadow: 0 10px 24px rgba(158,42,43,0.08);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .event-feature-icon img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        .event-feature-card h3 {
+            font-size: 1.18rem;
+            line-height: 1.25;
+            margin-bottom: 14px;
+            color: #241815;
+        }
+        .event-feature-card p {
+            font-size: 1.03rem;
+            line-height: 1.72;
+            color: #5b4a42;
+        }
+        @media (max-width: 980px) {
+            .event-features-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .event-feature-card:nth-child(1),
+            .event-feature-card:nth-child(2),
+            .event-feature-card:nth-child(3) { border-bottom: 1px solid rgba(212,175,55,0.30) !important; }
+        }
+        @media (max-width: 700px) {
+            .event-features { padding: 24px 0 0; }
+            .event-features-inner { grid-template-columns: 1fr; gap: 16px; }
+            .event-feature-card {
+                min-height: auto;
+                grid-template-columns: 56px 1fr;
+                gap: 16px;
+                padding: 24px 20px;
+                border-radius: 22px;
+            }
+            .event-feature-icon {
+                width: 56px;
+                height: 56px;
+                font-size: 1.45rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -515,6 +730,76 @@
         <div class="hero-ornament" aria-hidden="true"><span></span></div>
     </section>
 
+
+    <!-- EVENTLOCATION (GATOW) MIT DETAILS -->
+    <section id="events" class="event-section fade-up">
+        <h2 class="section-title">Eventlocation an der Havel</h2>
+        <p class="sub-text">Ob Hochzeit, Geburtstag oder Firmenfeier – in Gatow wird jeder Moment unvergesslich.</p>
+
+        <div class="event-flex">
+            <div class="event-text">
+                <h3>Garten, Saal & Terrasse</h3>
+                <p>Unser Außenbereich mit direktem Havelblick ist ein Traum für Sommerfeste. Der angrenzende Festsaal bietet Platz für bis zu <strong>150 Personen</strong>. Wir kümmern uns um das Catering, den Service und die Dekoration – du genießt einfach.</p>
+                <ul style="margin: 15px 0;">
+                    <li>✅ Exklusive Nutzung des gesamten Areals</li>
+                    <li>✅ Italienisches Catering nach Wunsch</li>
+                    <li>✅ Premium Weine & Getränke</li>
+                    <li>✅ Individuelle Dekoration möglich</li>
+                </ul>
+                <a href="#reservierung" class="btn-hero" style="padding: 12px 30px; font-size:1rem;">Jetzt Event anfragen</a>
+            </div>
+            <div class="event-gallery">
+                <!-- Bilder im Ordner /images ablegen und Dateinamen bei src bei Bedarf anpassen -->
+                <figure class="event-thumb event-thumb-large">
+                    <img src="images/event-garten-havel.jpg" alt="Garten an der Havel" loading="lazy">
+                    <figcaption>🌿 Garten an der Havel</figcaption>
+                </figure>
+                <figure class="event-thumb">
+                    <img src="images/event-festsaal.jpg" alt="Festsaal" loading="lazy">
+                    <figcaption>🏛️ Festsaal</figcaption>
+                </figure>
+                <figure class="event-thumb">
+                    <img src="images/event-terrasse.jpg" alt="Terrasse" loading="lazy">
+                    <figcaption>🍷 Terrasse</figcaption>
+                </figure>
+                <figure class="event-thumb">
+                    <img src="images/event-catering.jpg" alt="Hochzeits-Catering" loading="lazy">
+                    <figcaption>🍕 Hochzeits-Catering</figcaption>
+                </figure>
+                <figure class="event-thumb">
+                    <img src="images/event-party-musik.jpg" alt="Party und Musik" loading="lazy">
+                    <figcaption>🎉 Party &amp; Musik</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <section class="event-features fade-up" aria-label="Eventlocation Vorteile">
+            <div class="event-features-inner">
+                <article class="event-feature-card">
+                    <div class="event-feature-icon"><img src="images/catering.png" alt="Italienisches Catering" loading="lazy"></div>
+                    <div>
+                        <h3>Italienisches Catering</h3>
+                        <p>Frische italienische Küche nach Wunsch – vom Empfang bis zum Menü passend zu Hochzeit, Geburtstag oder Firmenfeier.</p>
+                    </div>
+                </article>
+                <article class="event-feature-card">
+                    <div class="event-feature-icon"><img src="images/weine.png" alt="Premium Weine und Getränke" loading="lazy"></div>
+                    <div>
+                        <h3>Premium Weine & Getränke</h3>
+                        <p>Ausgewählte Weine, Aperitifs und Getränke sorgen für den passenden Genuss während der gesamten Veranstaltung.</p>
+                    </div>
+                </article>
+                <article class="event-feature-card">
+                    <div class="event-feature-icon"><img src="images/dekoration.png" alt="Individuelle Dekoration" loading="lazy"></div>
+                    <div>
+                        <h3>Individuelle Dekoration</h3>
+                        <p>Die Dekoration kann auf Anlass, Stil und Wünsche abgestimmt werden – elegant, romantisch oder festlich.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </section>
+
     <!-- STORY / ÜBER UNS (AUSFÜHRLICH) -->
     <section id="story" class="story-section fade-up">
         <h2 class="section-title">Unsere Geschichte</h2>
@@ -566,32 +851,6 @@
                 <p>Großer Garten & direktem Blick auf die Havel. Perfekt für Events und Hochzeiten.</p>
                 <div style="margin-top:10px;"><a href="tel:+493036992263" style="font-weight:600;">📞 030 – 36 99 22 63</a></div>
                 <div><a href="mailto:gatow@ristorante-cappuccino.de">✉️ gatow@ristorante-cappuccino.de</a></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EVENTLOCATION (GATOW) MIT DETAILS -->
-    <section id="events" class="event-section fade-up">
-        <h2 class="section-title">Eventlocation an der Havel</h2>
-        <p class="sub-text">Ob Hochzeit, Geburtstag oder Firmenfeier – in Gatow wird jeder Moment unvergesslich.</p>
-        <div class="event-flex">
-            <div class="event-text">
-                <h3>Garten, Saal & Terrasse</h3>
-                <p>Unser Außenbereich mit direktem Havelblick ist ein Traum für Sommerfeste. Der angrenzende Festsaal bietet Platz für bis zu <strong>150 Personen</strong>. Wir kümmern uns um das Catering, den Service und die Dekoration – du genießt einfach.</p>
-                <ul style="margin: 15px 0;">
-                    <li>✅ Exklusive Nutzung des gesamten Areals</li>
-                    <li>✅ Italienisches Catering nach Wunsch</li>
-                    <li>✅ Premium Weine & Getränke</li>
-                    <li>✅ Individuelle Dekoration möglich</li>
-                </ul>
-                <a href="#reservierung" class="btn-hero" style="padding: 12px 30px; font-size:1rem;">Jetzt Event anfragen</a>
-            </div>
-            <div class="event-gallery">
-                <div class="pic">🌿 Garten an der Havel</div>
-                <div class="pic pic-small">🏛️ Festsaal</div>
-                <div class="pic pic-small">🍷 Terrasse</div>
-                <div class="pic pic-small">🍕 Hochzeits-Catering</div>
-                <div class="pic pic-small">🎉 Party & Musik</div>
             </div>
         </div>
     </section>
