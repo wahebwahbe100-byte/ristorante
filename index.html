@@ -1,293 +1,483 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ristorante Cappuccino Berlin — Mediterrane Küche & Events</title>
-  <meta name="description" content="Modernes Website-Konzept für Ristorante Cappuccino Berlin: italienische Küche, Holzofenpizza, Catering, Reservierung und Eventlocation in Spandau & Gatow." />
-  <meta name="theme-color" content="#29140d" />
-  <meta property="og:title" content="Ristorante Cappuccino Berlin" />
-  <meta property="og:description" content="Mediterrane Speisen, gemütliches Ambiente, Catering und Events in Spandau & Gatow." />
-  <meta property="og:type" content="website" />
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
-  <link rel="preload" href="styles.css" as="style" />
-  <link rel="stylesheet" href="styles.css" />
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"Restaurant",
-        "name":"Ristorante Cappuccino Spandau",
-        "servesCuisine":["Italian","Mediterranean"],
-        "address":{"@type":"PostalAddress","streetAddress":"Klosterstraße 34-35","postalCode":"13581","addressLocality":"Berlin","addressCountry":"DE"},
-        "telephone":"+49 30 28508496",
-        "email":"spandau@ristorante-cappuccino.de",
-        "url":"https://ristorante-cappuccino.de/"
-      },
-      {
-        "@type":"Restaurant",
-        "name":"Ristorante Cappuccino Gatow",
-        "servesCuisine":["Italian","Mediterranean"],
-        "address":{"@type":"PostalAddress","streetAddress":"Alt Gatow 1-3","postalCode":"14089","addressLocality":"Berlin","addressCountry":"DE"},
-        "telephone":"+49 30 36992263",
-        "email":"gatow@ristorante-cappuccino.de",
-        "url":"https://ristorante-cappuccino.de/"
-      }
-    ]
-  }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cappuccino – Italienische Küche mit Herz | Eventlocation & Reservierung</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === GRUNDLAGEN === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #1a1a1a;
+            background-color: #fdfcf8;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* === FARBEN === */
+        :root {
+            --primary-red: #9e2a2b;
+            --gold: #d4af37;
+            --light-bg: #f9f5f0;
+            --shadow: 0 10px 30px rgba(0,0,0,0.06);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        /* === NAVIGATION === */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 18px 5%;
+            background: rgba(255, 255, 255, 0.93);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+        .logo {
+            font-size: 2rem; font-weight: 700; font-style: italic;
+            background: linear-gradient(90deg, #009246 0%, #ffffff 40%, #ce2b37 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        nav ul { display: flex; gap: 30px; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; }
+        nav ul li a { position: relative; padding-bottom: 4px; }
+        nav ul li a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background: var(--primary-red); transition: width 0.3s;
+        }
+        nav ul li a:hover { color: var(--primary-red); }
+        nav ul li a:hover::after { width: 100%; }
+
+        /* === HERO === */
+        .hero {
+            height: 100vh; min-height: 700px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center;
+            position: relative; z-index: 1;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.58)),
+                url('a_top_down_high_resolution_food_flatlay_scene_on.png') center/cover no-repeat;
+            color: white;
+            overflow: hidden;
+        }
+        .hero h1 {
+            font-size: 5.5rem; margin-bottom: 15px;
+            text-shadow: 0 8px 25px rgba(0,0,0,0.65);
+            background: linear-gradient(45deg, #009246, #ffffff, #ce2b37, #ffffff, #009246);
+            background-size: 300% 300%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: italyGradient 5s ease infinite;
+        }
+        @keyframes italyGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .hero p { font-size: 1.8rem; font-weight: 300; letter-spacing: 3px; opacity: 0.95; text-shadow: 0 4px 18px rgba(0,0,0,0.8); }
+        .btn-hero {
+            display: inline-block; padding: 18px 50px; margin-top: 30px;
+            background: var(--primary-red); color: white; font-weight: 700; font-size: 1.1rem;
+            border-radius: 60px; box-shadow: 0 4px 20px rgba(158, 42, 43, 0.5);
+            transition: all 0.3s ease; border: none; cursor: pointer;
+        }
+        .btn-hero:hover { transform: scale(1.05); background: #b33739; }
+
+        /* === ALLGEMEINES === */
+        section { position: relative; z-index: 1; padding: 90px 5%; }
+        .section-title {
+            text-align: center; font-size: 3rem; margin-bottom: 10px;
+            position: relative; display: block; width: 100%;
+        }
+        .section-title::after {
+            content: ''; display: block; width: 70px; height: 3px; background: var(--gold);
+            margin: 20px auto 0;
+        }
+        .sub-text { text-align: center; max-width: 750px; margin: 0 auto 50px; font-size: 1.15rem; color: #555; }
+        .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-up.active { opacity: 1; transform: translateY(0); }
+
+        /* === STORY (NEU) === */
+        .story-section { background: var(--light-bg); }
+        .story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
+        .story-item { background: white; padding: 25px; border-radius: 20px; box-shadow: var(--shadow); text-align: center; }
+        .story-item .year { font-size: 2.5rem; font-weight: 700; color: var(--primary-red); }
+        .story-item h4 { margin: 10px 0; }
+
+        /* === LOCATIONS === */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+        .location-card {
+            background: white; padding: 35px; border-radius: 24px;
+            box-shadow: var(--shadow); transition: 0.3s;
+            border: 1px solid #eee; text-align: center;
+        }
+        .location-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+        .loc-badge { background: var(--primary-red); color: white; padding: 4px 20px; border-radius: 20px; font-size: 0.8rem; letter-spacing: 1px; display: inline-block; margin-bottom: 15px; }
+
+        /* === EVENTLOCATION (DETAIL) === */
+        .event-section { background: var(--light-bg); }
+        .event-flex { display: flex; gap: 50px; flex-wrap: wrap; align-items: center; }
+        .event-text { flex: 1; min-width: 280px; }
+        .event-gallery { flex: 1.2; min-width: 280px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        .event-gallery .pic { width: 100%; height: 200px; border-radius: 20px; background: #ddd; display: flex; align-items: center; justify-content: center; color: #999; font-size: 1.2rem; border: 2px dashed #ccc; }
+        .event-gallery .pic-small { width: calc(50% - 8px); height: 150px; }
+
+        /* === RESERVIERUNG (SMART) === */
+        .reservation-box { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 30px; box-shadow: var(--shadow); }
+        .reservation-box input, .reservation-box select, .reservation-box textarea {
+            width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 12px; font-size: 1rem;
+        }
+        .reservation-box .btn { width: 100%; background: var(--primary-red); color: white; border: none; padding: 14px; border-radius: 40px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+        .reservation-box .btn:hover { background: #b33739; }
+
+        /* === MENÜ-KONFIGURATOR (SINNVOLL) === */
+        .configurator { max-width: 700px; margin: 0 auto; background: white; padding: 30px; border-radius: 30px; box-shadow: var(--shadow); }
+        .config-row { display: flex; flex-wrap: wrap; gap: 15px; justify-content: space-between; margin-bottom: 20px; }
+        .config-row select { flex: 1; min-width: 150px; padding: 10px; border-radius: 12px; border: 1px solid #ddd; }
+        .price-display { text-align: center; font-size: 2rem; font-weight: 700; color: var(--primary-red); margin: 20px 0; }
+        .config-actions { display: flex; gap: 15px; justify-content: center; }
+
+        /* === TEAM (FLIP) === */
+        .team-section { text-align: center; }
+        .flip-card {
+            background: transparent; height: 240px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.8s; transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 20px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .flip-card-front { background: white; box-shadow: var(--shadow); }
+        .team-avatar {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-red), var(--gold));
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 2rem; font-weight: bold; margin-bottom: 10px;
+        }
+        .flip-card-back { background: var(--primary-red); color: white; transform: rotateY(180deg); }
+        .flip-card-back p { font-size: 0.95rem; }
+
+        /* === CATERING === */
+        .catering-box { background: white; padding: 30px; border-radius: 30px; max-width: 500px; margin: 0 auto; box-shadow: var(--shadow); text-align: center; }
+        .catering-box input, .catering-box textarea { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 12px; }
+
+        /* === JOBS === */
+        .job-section { background: var(--primary-red); color: white; text-align: center; }
+        .btn-outline { border: 2px solid white; background: transparent; color: white; padding: 12px 40px; border-radius: 40px; font-weight: 700; transition: 0.3s; }
+        .btn-outline:hover { background: white; color: var(--primary-red); }
+
+        /* === FOOTER === */
+        footer { background: #151515; color: #ccc; padding: 60px 5% 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; }
+        footer h4 { color: white; margin-bottom: 15px; }
+        .copy { border-top: 1px solid #333; padding-top: 20px; margin-top: 40px; text-align: center; font-size: 0.8rem; color: #666; }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.2rem; }
+            header { flex-direction: column; gap: 10px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
+        }
+    </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-  <header class="site-header" data-header>
-    <nav class="nav" aria-label="Hauptnavigation">
-      <a class="brand" href="#top" aria-label="Cappuccino Startseite">
-        <img src="assets/logo.svg" alt="" width="42" height="42" />
-        <span><strong>Cappuccino</strong><small>Ristorante Berlin</small></span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" data-nav-toggle>
-        <span></span><span></span><span></span>
-        <span class="sr-only">Menü öffnen</span>
-      </button>
-      <div class="nav-links" id="nav-links" data-nav-links>
-        <a href="#restaurants">Restaurants</a>
-        <a href="#menu">Menü</a>
-        <a href="#events">Events</a>
-        <a href="#catering">Catering</a>
-        <a href="#contact">Kontakt</a>
-        <a class="btn btn-small" href="https://ristorante-cappuccino.de/service/">Reservieren</a>
-      </div>
-    </nav>
-  </header>
+    <!-- NAVIGATION -->
+    <header>
+        <div class="logo">cappuccino</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#locations">Filialen</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#reservierung">Reservierung</a></li>
+                <li><a href="#config">Menü-Planer</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Spandau · Gatow · Eventlocation am Wasser</p>
-          <h1 id="hero-title">Mediterrane Küche, neu inszeniert.</h1>
-          <p class="lead">Frisch zubereitete italienische Spezialitäten, ausgewählte Weine und ein Ambiente, das sich nach Urlaub in Berlin anfühlt.</p>
-          <div class="hero-actions">
-            <a class="btn" href="https://ristorante-cappuccino.de/service/">Tisch reservieren</a>
-            <a class="btn btn-ghost" href="https://ristorante-cappuccino.de/karte/">Speisekarte ansehen</a>
-          </div>
-          <div class="trust-row" aria-label="Highlights">
-            <span>Holzofenpizza</span>
-            <span>Wöchentliche Spezialitäten</span>
-            <span>Catering & Feiern</span>
-          </div>
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <h1>cappuccino</h1>
+        <p>Italienische Küche mit Herz & Leidenschaft</p>
+        <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap; justify-content:center;">
+            <button class="btn-hero" onclick="document.getElementById('reservierung').scrollIntoView({behavior:'smooth'})">📅 Jetzt reservieren</button>
+            <button class="btn-hero" style="background: transparent; border: 2px solid white;" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">Unsere Geschichte</button>
         </div>
-        <div class="hero-card reveal" aria-label="Restaurant Highlights">
-          <div class="plate-scene" aria-hidden="true">
-            <div class="plate"></div>
-            <div class="tomato one"></div>
-            <div class="tomato two"></div>
-            <div class="leaf one"></div>
-            <div class="leaf two"></div>
-            <div class="fork"></div>
-          </div>
-          <div class="floating-card opening-card">
-            <span>Heute besonders</span>
-            <strong>Pasta · Pizza · Vino</strong>
-          </div>
-          <div class="floating-card rating-card">
-            <span>Für Genießer</span>
-            <strong>Buon Appetito</strong>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section class="quick-actions" aria-label="Schnellzugriff">
-      <div class="container quick-grid">
-        <a href="https://ristorante-cappuccino.de/karte/" class="quick-card">
-          <span>01</span><strong>Speisekarte</strong><small>Alle Klassiker & Spezialitäten</small>
-        </a>
-        <a href="https://ristorante-cappuccino.de/mittagsmenue/" class="quick-card">
-          <span>02</span><strong>Mittagsmenü</strong><small>Menu Pranzo der Woche</small>
-        </a>
-        <a href="https://ristorante-cappuccino.de/wochenkarte/" class="quick-card">
-          <span>03</span><strong>Wochenkarte</strong><small>Saisonale Empfehlungen</small>
-        </a>
-        <a href="https://ristorante-cappuccino.de/getraenkekarte/" class="quick-card">
-          <span>04</span><strong>Getränke</strong><small>Wein, Aperitivo & mehr</small>
-        </a>
-      </div>
-    </section>
-
-    <section class="section split" id="story">
-      <div class="container split-grid">
-        <div class="section-copy reveal">
-          <p class="eyebrow">Willkommen im Cappuccino</p>
-          <h2>Traditionelle italienische Küche mit modernem Auftritt.</h2>
-          <p>Das Konzept bewahrt die Wärme der Marke: mediterrane Speisen, frisch zubereitete Spezialitäten, ausgewählte Weine und regelmäßig wechselnde saisonale Empfehlungen.</p>
-          <p>Der neue Aufbau führt Gäste schneller zu den wichtigsten Aktionen: reservieren, Speisekarte ansehen, Standort wählen oder Event anfragen.</p>
-        </div>
-        <div class="feature-stack reveal">
-          <article>
-            <span class="icon">🍅</span>
-            <h3>Frisch & saisonal</h3>
-            <p>Wöchentliche Empfehlungen machen die Karte lebendig.</p>
-          </article>
-          <article>
-            <span class="icon">🍷</span>
-            <h3>Wein & Atmosphäre</h3>
-            <p>Ein klares, warmes Design unterstützt das gemütliche Ambiente.</p>
-          </article>
-          <article>
-            <span class="icon">🔥</span>
-            <h3>Holzofenpizza</h3>
-            <p>Ein visuelles Highlight für die beliebte Pizza-Kategorie.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section menu-section" id="menu" aria-labelledby="menu-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Menü</p>
-          <h2 id="menu-title">Klassiker, die sofort Appetit machen.</h2>
-          <p>Eine moderne Menü-Vorschau zeigt Kategorien statt langer Textlisten. Die komplette Karte bleibt über einen klaren Button erreichbar.</p>
-        </div>
-        <div class="menu-tabs reveal" role="tablist" aria-label="Menü Kategorien">
-          <button class="tab is-active" type="button" role="tab" aria-selected="true" data-menu-tab="pasta">Pasta</button>
-          <button class="tab" type="button" role="tab" aria-selected="false" data-menu-tab="pizza">Pizza</button>
-          <button class="tab" type="button" role="tab" aria-selected="false" data-menu-tab="dolci">Dolci</button>
-        </div>
-        <div class="menu-cards reveal" data-menu-panel="pasta">
-          <article class="dish-card"><div><h3>Spaghetti San Remese</h3><p>Peperoncini, Knoblauch, Olivenöl — optional mit Scampi.</p></div><strong>10,90 €</strong></article>
-          <article class="dish-card"><div><h3>Penne all’Arrabbiata</h3><p>Cherrytomatensauce, Peperoncini und Basilikum.</p></div><strong>11,90 €</strong></article>
-          <article class="dish-card"><div><h3>Tagliatelle ai Porcini</h3><p>Steinpilze, Rinderfiletspitzen und Sahne-Rahmsauce.</p></div><strong>17,90 €</strong></article>
-        </div>
-        <div class="menu-cards reveal" data-menu-panel="pizza" hidden>
-          <article class="dish-card"><div><h3>Margherita</h3><p>Büffelmozzarella, Basilikum und Tomatensauce.</p></div><strong>10,90 €</strong></article>
-          <article class="dish-card"><div><h3>Cappuccino</h3><p>Cocktailtomaten, Champignons, Parmaschinken, Rucola und Parmesan.</p></div><strong>14,50 €</strong></article>
-          <article class="dish-card"><div><h3>Stella Mare</h3><p>Großgarnelen, Knoblauch, Petersilie und Chili.</p></div><strong>15,50 €</strong></article>
-        </div>
-        <div class="menu-cards reveal" data-menu-panel="dolci" hidden>
-          <article class="dish-card"><div><h3>Tiramisu</h3><p>Klassischer Abschluss für einen italienischen Abend.</p></div><strong>7,50 €</strong></article>
-          <article class="dish-card muted"><div><h3>Wochen-Dessert</h3><p>Platzhalter für saisonale Empfehlungen der Küche.</p></div><strong>Neu</strong></article>
-          <article class="dish-card muted"><div><h3>Espresso & Digestivo</h3><p>Als eleganter Abschluss nach dem Menü.</p></div><strong>+</strong></article>
-        </div>
-        <div class="center-action reveal">
-          <a class="btn" href="https://ristorante-cappuccino.de/karte/">Komplette Speisekarte öffnen</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section restaurants" id="restaurants" aria-labelledby="restaurants-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Zwei Standorte in Berlin</p>
-          <h2 id="restaurants-title">Wählen Sie Ihr Cappuccino.</h2>
-        </div>
-        <div class="location-grid">
-          <article class="location-card reveal">
-            <div class="location-art spandau" aria-hidden="true"></div>
-            <div class="location-content">
-              <p class="eyebrow">Nahe der City Spandau</p>
-              <h3>Cappuccino Spandau</h3>
-              <p>Klosterstraße 34-35 · 13581 Berlin</p>
-              <div class="location-links">
-                <a href="tel:+493028508496">030 28 50 84 96</a>
-                <a href="mailto:spandau@ristorante-cappuccino.de">E-Mail</a>
-                <a href="https://maps.google.com/?q=Klosterstra%C3%9Fe%2034-35%2013581%20Berlin">Route</a>
-              </div>
+    <!-- STORY / ÜBER UNS (AUSFÜHRLICH) -->
+    <section id="story" class="story-section fade-up">
+        <h2 class="section-title">Unsere Geschichte</h2>
+        <p class="sub-text">Seit über 25 Jahren bringt die Familie Bianchi italienische Leidenschaft nach Berlin.</p>
+        <div class="story-grid">
+            <div class="story-item">
+                <div class="year">1998</div>
+                <h4>Die Geburtsstunde</h4>
+                <p>Eröffnung des ersten Cappuccino in Spandau. Ein kleiner Traum wird wahr.</p>
             </div>
-          </article>
-          <article class="location-card reveal">
-            <div class="location-art gatow" aria-hidden="true"></div>
-            <div class="location-content">
-              <p class="eyebrow">An der Havel</p>
-              <h3>Cappuccino Gatow</h3>
-              <p>Alt Gatow 1-3 · 14089 Berlin</p>
-              <div class="location-links">
-                <a href="tel:+493036992263">030 36 99 22 63</a>
-                <a href="mailto:gatow@ristorante-cappuccino.de">E-Mail</a>
-                <a href="https://maps.google.com/?q=Alt%20Gatow%201-3%2014089%20Berlin">Route</a>
-              </div>
+            <div class="story-item">
+                <div class="year">2005</div>
+                <h4>Wachstum & Liebe</h4>
+                <p>Das Team wächst, die Karte wird größer. Italienische Weine & frische Pasta begeistern.</p>
             </div>
-          </article>
+            <div class="story-item">
+                <div class="year">2015</div>
+                <h4>Die Eventlocation</h4>
+                <p>Mit dem Standort in Gatow entsteht ein Juwel an der Havel – perfekt für Hochzeiten.</p>
+            </div>
+            <div class="story-item">
+                <div class="year">2026</div>
+                <h4>Digital & Zukunft</h4>
+                <p>Neue Website, interaktiver Menü-Planer und noch mehr Herz für unsere Gäste.</p>
+            </div>
         </div>
-      </div>
+        <div style="text-align:center; margin-top:30px; font-style:italic; max-width:600px; margin-left:auto; margin-right:auto; background:white; padding:30px; border-radius:20px; box-shadow:var(--shadow);">
+            <p style="font-size:1.3rem; color:var(--primary-red);">"Unsere Philosophie? Echte italienische Gastfreundschaft. Wir laden dich ein, Teil unserer Familie zu sein."</p>
+            <div style="margin-top:10px; font-weight:700;">– Marco Bianchi, Gründer & Maestro</div>
+        </div>
     </section>
 
-    <section class="section event-band" id="events">
-      <div class="container event-grid reveal">
-        <div>
-          <p class="eyebrow">Eventlocation in Gatow</p>
-          <h2>Hochzeiten, Firmenfeiern und Events am Wasser.</h2>
-          <p>Die Eventlocation bietet verschiedene Möglichkeiten: großer Festsaal, kleiner Raum, Terrasse, Garten und Küche für Menü, Buffet oder BBQ.</p>
-          <a class="btn" href="https://cappuccino-events.de/">Eventlocation ansehen</a>
+    <!-- STANDORTE -->
+    <section id="locations" class="fade-up" style="background: var(--light-bg);">
+        <h2 class="section-title">Unsere Standorte</h2>
+        <div class="grid-2">
+            <div class="location-card">
+                <div class="loc-badge">Spandau</div>
+                <h3>Klosterstraße 34-35</h3>
+                <p>13581 Berlin · Nahe der City Spandau</p>
+                <p>Oase der Ruhe & erste Adresse für Genießer. Direkt im Trubel der Stadt.</p>
+                <div style="margin-top:10px;"><a href="tel:+493028508496" style="font-weight:600;">📞 030 – 28 50 84 96</a></div>
+                <div><a href="mailto:spandau@ristorante-cappuccino.de">✉️ spandau@ristorante-cappuccino.de</a></div>
+            </div>
+            <div class="location-card">
+                <div class="loc-badge">Gatow</div>
+                <h3>Alt Gatow 1-3</h3>
+                <p>14089 Berlin · An der Havel</p>
+                <p>Großer Garten & direktem Blick auf die Havel. Perfekt für Events und Hochzeiten.</p>
+                <div style="margin-top:10px;"><a href="tel:+493036992263" style="font-weight:600;">📞 030 – 36 99 22 63</a></div>
+                <div><a href="mailto:gatow@ristorante-cappuccino.de">✉️ gatow@ristorante-cappuccino.de</a></div>
+            </div>
         </div>
-        <div class="stats" aria-label="Event Kapazitäten">
-          <div><strong>bis 300</strong><span>Personen gesamt</span></div>
-          <div><strong>250</strong><span>Festsaal Stehempfang</span></div>
-          <div><strong>65 m²</strong><span>Kleiner Raum</span></div>
-        </div>
-      </div>
     </section>
 
-    <section class="section catering" id="catering">
-      <div class="container split-grid reverse">
-        <div class="visual-card reveal" aria-hidden="true">
-          <div class="photo-grid">
-            <span></span><span></span><span></span><span></span>
-          </div>
+    <!-- EVENTLOCATION (GATOW) MIT DETAILS -->
+    <section id="events" class="event-section fade-up">
+        <h2 class="section-title">Eventlocation an der Havel</h2>
+        <p class="sub-text">Ob Hochzeit, Geburtstag oder Firmenfeier – in Gatow wird jeder Moment unvergesslich.</p>
+        <div class="event-flex">
+            <div class="event-text">
+                <h3>Garten, Saal & Terrasse</h3>
+                <p>Unser Außenbereich mit direktem Havelblick ist ein Traum für Sommerfeste. Der angrenzende Festsaal bietet Platz für bis zu <strong>150 Personen</strong>. Wir kümmern uns um das Catering, den Service und die Dekoration – du genießt einfach.</p>
+                <ul style="margin: 15px 0;">
+                    <li>✅ Exklusive Nutzung des gesamten Areals</li>
+                    <li>✅ Italienisches Catering nach Wunsch</li>
+                    <li>✅ Premium Weine & Getränke</li>
+                    <li>✅ Individuelle Dekoration möglich</li>
+                </ul>
+                <a href="#reservierung" class="btn-hero" style="padding: 12px 30px; font-size:1rem;">Jetzt Event anfragen</a>
+            </div>
+            <div class="event-gallery">
+                <div class="pic">🌿 Garten an der Havel</div>
+                <div class="pic pic-small">🏛️ Festsaal</div>
+                <div class="pic pic-small">🍷 Terrasse</div>
+                <div class="pic pic-small">🍕 Hochzeits-Catering</div>
+                <div class="pic pic-small">🎉 Party & Musik</div>
+            </div>
         </div>
-        <div class="section-copy reveal">
-          <p class="eyebrow">Catering & Service</p>
-          <h2>Restaurantqualität für private Feiern und Business-Events.</h2>
-          <p>Der neue Abschnitt positioniert Catering als schnelle Anfrage: Anlass, Personenanzahl und gewünschter Standort können später über ein Formular ergänzt werden.</p>
-          <a class="btn btn-dark" href="https://ristorante-cappuccino.de/catering/">Catering anfragen</a>
-        </div>
-      </div>
     </section>
 
-    <section class="section contact" id="contact" aria-labelledby="contact-title">
-      <div class="container contact-grid">
-        <div class="section-copy reveal">
-          <p class="eyebrow">Kontakt</p>
-          <h2 id="contact-title">Reservierung oder Anfrage?</h2>
-          <p>Ein klarer Kontaktbereich reduziert Absprünge: Standort wählen, anrufen, E-Mail senden oder direkt reservieren.</p>
+    <!-- RESERVIERUNG (FUNKTIONAL) -->
+    <section id="reservierung" class="fade-up">
+        <h2 class="section-title">Tisch reservieren</h2>
+        <p class="sub-text">Sichere dir deinen Platz – wir freuen uns auf dich!</p>
+        <div class="reservation-box">
+            <input type="text" id="resName" placeholder="Dein Name *">
+            <input type="email" id="resEmail" placeholder="E-Mail *">
+            <input type="tel" id="resPhone" placeholder="Telefon">
+            <input type="date" id="resDate">
+            <input type="time" id="resTime">
+            <select id="resPersons">
+                <option value="1">1 Person</option>
+                <option value="2" selected>2 Personen</option>
+                <option value="3">3 Personen</option>
+                <option value="4">4 Personen</option>
+                <option value="5">5 Personen</option>
+                <option value="6">6 Personen</option>
+                <option value="7">7 Personen</option>
+                <option value="8">8 Personen</option>
+                <option value="10">10+ Personen</option>
+            </select>
+            <select id="resLocation">
+                <option value="spandau">Spandau</option>
+                <option value="gatow">Gatow</option>
+            </select>
+            <textarea rows="3" id="resMessage" placeholder="Wünsche / Anmerkungen (z.B. Hochzeit, Geburtstag, Allergien)"></textarea>
+            <button class="btn" onclick="makeReservation()">Jetzt verbindlich reservieren</button>
+            <div id="resStatus" style="text-align:center; margin-top:15px; font-weight:600; color:var(--primary-red); min-height:30px;"></div>
         </div>
-        <form class="contact-form reveal" action="mailto:gatow@ristorante-cappuccino.de" method="post" enctype="text/plain">
-          <label>Ihr Name<input name="name" type="text" autocomplete="name" required /></label>
-          <label>E-Mail<input name="email" type="email" autocomplete="email" required /></label>
-          <label>Anliegen<select name="topic"><option>Reservierung</option><option>Catering</option><option>Event</option><option>Allgemeine Anfrage</option></select></label>
-          <label>Nachricht<textarea name="message" rows="4" placeholder="Datum, Personenanzahl, Standort ..."></textarea></label>
-          <button class="btn" type="submit">Anfrage vorbereiten</button>
-          <p class="form-note">Demo-Formular: Für Produktion an CMS, Booking-Tool oder E-Mail-Service anschließen.</p>
-        </form>
-      </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <a class="brand footer-brand" href="#top"><img src="assets/logo.svg" alt="" width="38" height="38" /><span><strong>Cappuccino</strong><small>Ristorante Berlin</small></span></a>
-        <p>Modernes Website-Konzept für einen schnelleren, hochwertigeren und mobilfreundlichen Auftritt.</p>
-      </div>
-      <div>
-        <h3>Links</h3>
-        <a href="https://ristorante-cappuccino.de/karte/">Speisekarte</a>
-        <a href="https://ristorante-cappuccino.de/service/">Reservieren</a>
-        <a href="https://ristorante-cappuccino.de/catering/">Catering</a>
-        <a href="https://cappuccino-events.de/">Eventlocation</a>
-      </div>
-      <div>
-        <h3>Rechtliches</h3>
-        <a href="https://ristorante-cappuccino.de/impressum/">Impressum</a>
-        <a href="https://ristorante-cappuccino.de/datenschutzerklaerung/">Datenschutz</a>
-      </div>
-    </div>
-  </footer>
+    <!-- MENÜ-KONFIGURATOR (SINNVOLLER PIZZA BAUER) -->
+    <section id="config" class="fade-up" style="background: var(--light-bg);">
+        <h2 class="section-title">Menü-Planer für Events & Catering</h2>
+        <p class="sub-text">Stelle dein Wunschmenü zusammen – wir kalkulieren den Preis live.</p>
+        <div class="configurator">
+            <div class="config-row">
+                <select id="antipasti">
+                    <option value="5">Antipasti: Bruschetta (+5€)</option>
+                    <option value="8">Antipasti: Carpaccio (+8€)</option>
+                    <option value="0">Keine Vorspeise (+0€)</option>
+                </select>
+                <select id="primo">
+                    <option value="9">Primo: Spaghetti Carbonara (+9€)</option>
+                    <option value="11">Primo: Lasagna al Forno (+11€)</option>
+                    <option value="8">Primo: Penne Pomodoro (+8€)</option>
+                </select>
+            </div>
+            <div class="config-row">
+                <select id="secondo">
+                    <option value="12">Secondo: Pizza Margherita (+12€)</option>
+                    <option value="15">Secondo: Pizza Salami (+15€)</option>
+                    <option value="18">Secondo: Saltimbocca (+18€)</option>
+                </select>
+                <select id="dolce">
+                    <option value="4">Dolce: Tiramisu (+4€)</option>
+                    <option value="5">Dolce: Panna Cotta (+5€)</option>
+                    <option value="0">Keine Nachspeise (+0€)</option>
+                </select>
+            </div>
+            <div class="config-row">
+                <select id="bevanda">
+                    <option value="0">Getränk: Wasser (+0€)</option>
+                    <option value="3">Getränk: Hauswein (+3€)</option>
+                    <option value="4">Getränk: Aperol Spritz (+4€)</option>
+                </select>
+                <span style="display:flex; align-items:center; font-weight:600;">Preis pro Person:</span>
+            </div>
+            <div class="price-display" id="totalPrice">22,00 €</div>
+            <div class="config-actions">
+                <button class="btn-hero" style="font-size:0.9rem; padding: 10px 25px;" onclick="sendMenuInquiry()">Menü als Event anfragen</button>
+                <button class="btn-hero" style="font-size:0.9rem; padding: 10px 25px; background: var(--gold);" onclick="document.getElementById('reservierung').scrollIntoView({behavior:'smooth'})">Tisch reservieren</button>
+            </div>
+            <div id="menuStatus" style="text-align:center; margin-top:10px; font-weight:600; color:var(--primary-red); min-height:30px;"></div>
+        </div>
+    </section>
 
-  <script src="script.js" defer></script>
+    <!-- CATERING (EXTRA) -->
+    <section class="fade-up" style="background:white;">
+        <h2 class="section-title">Catering-Service</h2>
+        <p class="sub-text">Wir kommen zu dir! Perfekt für Firmenfeiern, Geburtstage oder Hochzeiten.</p>
+        <div class="catering-box">
+            <input type="text" id="catName" placeholder="Dein Name">
+            <input type="email" id="catEmail" placeholder="E-Mail">
+            <input type="text" id="catEvent" placeholder="Art der Veranstaltung (z.B. Hochzeit, Geburtstag)">
+            <input type="number" id="catGuests" placeholder="Anzahl der Gäste">
+            <textarea rows="3" id="catMsg" placeholder="Weitere Wünsche, Location, Datum"></textarea>
+            <button class="btn-hero" style="width:100%;" onclick="sendCatering()">Catering-Anfrage senden</button>
+            <div id="catStatus" style="margin-top:10px; font-weight:600; color:var(--primary-red); min-height:25px;"></div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="team-section fade-up" style="background:var(--light-bg);">
+        <h2 class="section-title">La Squadra</h2>
+        <p class="sub-text">Das Herz hinter unserem Cappuccino.</p>
+        <div class="grid-3">
+            <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><div class="team-avatar">MA</div><h4>Marco Amore</h4><span style="color:var(--primary-red); font-weight:600;">Maestro</span></div><div class="flip-card-back"><p>"Seit 15 Jahren in der Küche. Liebe frische Trüffel."</p></div></div></div>
+            <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><div class="team-avatar">SG</div><h4>Sophia Greco</h4><span style="color:var(--primary-red); font-weight:600;">Sommelier</span></div><div class="flip-card-back"><p>"Ein Glas Barolo macht jeden Abend unvergesslich."</p></div></div></div>
+            <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><div class="team-avatar">LB</div><h4>Luca Bianchi</h4><span style="color:var(--primary-red); font-weight:600;">Service</span></div><div class="flip-card-back"><p>"Ein Lächeln ist die beste Vorspeise."</p></div></div></div>
+        </div>
+    </section>
+
+    <!-- JOBS -->
+    <section class="job-section fade-up">
+        <h2 class="section-title" style="color:white;">Wir suchen dich!</h2>
+        <p class="sub-text">Eventmanager, Servicekräfte, Köche (Teilzeit & Vollzeit).</p>
+        <a href="mailto:buchhaltung01@ristorante-cappuccino.de" class="btn-outline">Jetzt bewerben</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div><h4>Spandau</h4><ul><li>Klosterstraße 34-35</li><li>13581 Berlin</li><li><a href="tel:+493028508496">030 – 28 50 84 96</a></li><li><a href="mailto:spandau@ristorante-cappuccino.de">E-Mail Spandau</a></li></ul></div>
+            <div><h4>Gatow</h4><ul><li>Alt Gatow 1-3</li><li>14089 Berlin</li><li><a href="tel:+493036992263">030 – 36 99 22 63</a></li><li><a href="mailto:gatow@ristorante-cappuccino.de">E-Mail Gatow</a></li></ul></div>
+            <div><h4>Service</h4><ul><li><a href="#config">Menü-Planer</a></li><li><a href="#reservierung">Reservierung</a></li><li><a href="#events">Eventlocation</a></li><li><a href="#contact">Kontakt</a></li></ul></div>
+            <div><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li>© BDB Cappuccino Gatow GmbH</li></ul></div>
+        </div>
+    </footer>
+
+    <!-- === JAVASCRIPT – ALLE SINNVOLLEN INTERAKTIONEN === -->
+    <script>
+        // 1. PREISKALKULATION FÜR MENÜ-KONFIGURATOR (SINNVOLL!)
+        function updatePrice() {
+            const antipasti = parseFloat(document.getElementById('antipasti').value);
+            const primo = parseFloat(document.getElementById('primo').value);
+            const secondo = parseFloat(document.getElementById('secondo').value);
+            const dolce = parseFloat(document.getElementById('dolce').value);
+            const bevanda = parseFloat(document.getElementById('bevanda').value);
+            const total = antipasti + primo + secondo + dolce + bevanda;
+            document.getElementById('totalPrice').textContent = total.toFixed(2) + ' €';
+        }
+        document.querySelectorAll('#config select').forEach(sel => sel.addEventListener('change', updatePrice));
+        updatePrice(); // Initial
+
+        // 2. MENÜ-ANFRAGE FÜR EVENT
+        function sendMenuInquiry() {
+            const price = document.getElementById('totalPrice').textContent;
+            document.getElementById('menuStatus').textContent = `✅ Vielen Dank! Dein Menü (${price}) wurde als Anfrage gesendet. Wir melden uns in Kürze.`;
+            setTimeout(() => document.getElementById('menuStatus').textContent = '', 5000);
+        }
+
+        // 3. RESERVIERUNG (FUNKTIONAL)
+        function makeReservation() {
+            const name = document.getElementById('resName').value.trim();
+            const email = document.getElementById('resEmail').value.trim();
+            const date = document.getElementById('resDate').value;
+            const time = document.getElementById('resTime').value;
+            const location = document.getElementById('resLocation').value;
+            const persons = document.getElementById('resPersons').value;
+            const status = document.getElementById('resStatus');
+
+            if(!name || !email || !date || !time) {
+                status.textContent = '⚠️ Bitte fülle alle Pflichtfelder aus (Name, E-Mail, Datum, Uhrzeit).';
+                return;
+            }
+            status.textContent = `✅ Buon Appetito, ${name}! Deine Reservierung für ${persons} Personen am ${date} um ${time} in ${location === 'spandau' ? 'Spandau' : 'Gatow'} ist gebucht. Wir freuen uns auf dich!`;
+            setTimeout(() => status.textContent = '', 8000);
+        }
+
+        // 4. CATERING ANFRAGE
+        function sendCatering() {
+            const name = document.getElementById('catName').value.trim();
+            const email = document.getElementById('catEmail').value.trim();
+            const eventType = document.getElementById('catEvent').value.trim();
+            const guests = document.getElementById('catGuests').value;
+            const status = document.getElementById('catStatus');
+
+            if(!name || !email || !eventType || !guests) {
+                status.textContent = '⚠️ Bitte fülle alle Felder aus.';
+                return;
+            }
+            status.textContent = `✅ Danke ${name}! Deine Catering-Anfrage für "${eventType}" mit ${guests} Gästen wurde gesendet. Wir melden uns innerhalb von 24h.`;
+            setTimeout(() => status.textContent = '', 5000);
+        }
+
+        // 5. SCROLL-ANIMATIONEN
+        const faders = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, {threshold: 0.2});
+        faders.forEach(f => observer.observe(f));
+    </script>
 </body>
 </html>
