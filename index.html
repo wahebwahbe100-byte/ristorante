@@ -47,6 +47,14 @@
             text-shadow: 0 3px 18px rgba(0,0,0,0.45);
         }
         .logo::first-letter { color: var(--primary-red); }
+        .logo img {
+            display: block;
+            height: 58px;
+            width: auto;
+            max-width: 220px;
+            object-fit: contain;
+            filter: drop-shadow(0 3px 18px rgba(0,0,0,0.45));
+        }
         nav ul { display: flex; gap: 30px; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; color: #fff; }
         nav ul li a { position: relative; padding-bottom: 4px; text-shadow: 0 2px 12px rgba(0,0,0,0.55); }
         nav ul li a::after {
@@ -75,6 +83,13 @@
             color: #fff;
             text-align: center;
             text-shadow: 0 4px 22px rgba(0,0,0,0.65);
+        }
+        .hero-logo-img {
+            width: min(520px, 78vw);
+            height: auto;
+            display: block;
+            margin: 0 auto 18px;
+            filter: drop-shadow(0 6px 22px rgba(0,0,0,0.55));
         }
         .hero-logo-word {
             font-family: 'Lobster', 'Playfair Display', serif;
@@ -219,6 +234,8 @@
 
         /* === RESPONSIVE === */
         @media (max-width: 768px) {
+            .logo img { height: 48px; max-width: 180px; }
+            .hero-logo-img { width: min(360px, 82vw); }
             .hero-logo-word { font-size: 4.4rem; letter-spacing: 1px; }
             .hero-ristorante { font-size: 1rem; letter-spacing: 9px; padding-left: 9px; margin-top: 14px; }
             .hero-tagline { font-size: 2.1rem; margin-top: 30px; }
@@ -231,7 +248,7 @@
 
     <!-- NAVIGATION -->
     <header>
-        <div class="logo">cappuccino</div>
+        <div class="logo"><img src="images/logo.png" alt="Cappuccino Logo"></div>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -247,8 +264,7 @@
     <!-- HERO -->
     <section id="home" class="hero">
         <div class="hero-brand" aria-label="Italienische Küche mit Herz & Leidenschaft">
-            <div class="hero-logo-word">&nbsp;</div>
-            <div class="hero-ristorante">&nbsp;</div>
+            <img class="hero-logo-img" src="images/logo.png" alt="Cappuccino Logo">
             <div class="hero-tagline">Italienische Küche<br>mit Herz &amp; Leidenschaft</div>
             <div class="hero-underline"></div>
         </div>
