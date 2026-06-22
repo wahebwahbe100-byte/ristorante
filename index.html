@@ -34,8 +34,8 @@
         /* === NAVIGATION === */
         header {
             position: fixed; top: 0; width: 100%; padding: 18px 5%;
-            background: linear-gradient(180deg, rgba(20,12,8,0.82), rgba(20,12,8,0.34));
-            backdrop-filter: saturate(130%);
+            background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.28));
+            backdrop-filter: blur(10px);
             z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -62,18 +62,9 @@
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center;
             position: relative; z-index: 1;
-            background:
-                linear-gradient(90deg, rgba(0,0,0,0.38), rgba(0,0,0,0.14) 45%, rgba(0,0,0,0.34)),
-                url('images/hero.png') center/cover no-repeat;
-            background-attachment: fixed;
-            isolation: isolate;
+            background: url('images/hero.png') center/cover no-repeat;
             color: white;
             overflow: hidden;
-        }
-        .hero::after {
-            content: ''; position: absolute; inset: 0; z-index: -1;
-            background: radial-gradient(circle at center, transparent 0 42%, rgba(0,0,0,0.18) 100%);
-            pointer-events: none;
         }
         .hero-brand {
             display: flex;
@@ -83,18 +74,18 @@
             margin-top: 70px;
             color: #fff;
             text-align: center;
-            text-shadow: 0 4px 18px rgba(0,0,0,0.68);
+            text-shadow: 0 4px 22px rgba(0,0,0,0.65);
         }
         .hero-logo-word {
             font-family: 'Lobster', 'Playfair Display', serif;
             font-size: clamp(4.8rem, 10vw, 8.8rem);
             line-height: 0.82;
-            color: #fff;
+            color: #ad2834;
             letter-spacing: 3px;
             font-weight: 400;
             text-transform: lowercase;
             transform: skew(-4deg);
-            text-shadow: 0 6px 18px rgba(0,0,0,0.55), 0 0 1px #fff;
+            text-shadow: 0 6px 20px rgba(0,0,0,0.48);
         }
         .hero-ristorante {
             font-family: 'Source Sans Pro', sans-serif;
@@ -226,48 +217,12 @@
         footer h4 { color: white; margin-bottom: 15px; }
         .copy { border-top: 1px solid #333; padding-top: 20px; margin-top: 40px; text-align: center; font-size: 0.8rem; color: #666; }
 
-
-
-        /* === MODERNER FEINSCHLIFF === */
-        .hero-brand {
-            padding: 34px 42px;
-            border: 1px solid rgba(255,255,255,0.22);
-            border-radius: 34px;
-            background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.08));
-            box-shadow: 0 30px 80px rgba(0,0,0,0.24);
-        }
-        .hero-tagline strong { color: var(--gold); }
-        .location-card, .story-item, .reservation-box, .configurator, .catering-box {
-            border: 1px solid rgba(158,42,43,0.08);
-        }
-        .event-gallery .pic {
-            border: 0;
-            color: #fff;
-            font-weight: 700;
-            text-shadow: 0 2px 14px rgba(0,0,0,0.5);
-            background: linear-gradient(135deg, rgba(158,42,43,0.82), rgba(212,175,55,0.62)), url('images/hero.png') center/cover no-repeat;
-            box-shadow: var(--shadow);
-        }
-        .event-gallery .pic:nth-child(2) { background-position: 40% 45%; }
-        .event-gallery .pic:nth-child(3) { background-position: 55% 60%; }
-        .event-gallery .pic:nth-child(4) { background-position: 50% 35%; }
-        .event-gallery .pic:nth-child(5) { background-position: 65% 50%; }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-red) !important;
-            box-shadow: 0 0 0 4px rgba(158,42,43,0.12);
-        }
-        .btn-hero, .reservation-box .btn, .btn-outline { letter-spacing: 0.2px; }
-        html { scroll-behavior: smooth; }
-
         /* === RESPONSIVE === */
         @media (max-width: 768px) {
             .hero-logo-word { font-size: 4.4rem; letter-spacing: 1px; }
             .hero-ristorante { font-size: 1rem; letter-spacing: 9px; padding-left: 9px; margin-top: 14px; }
             .hero-tagline { font-size: 2.1rem; margin-top: 30px; }
-            .hero-brand { padding: 28px 18px; width: min(92vw, 560px); }
-            header { position: absolute; flex-direction: column; gap: 10px; padding: 14px 4%; }
-            .hero { min-height: 760px; background-attachment: scroll; }
+            header { flex-direction: column; gap: 10px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
         }
     </style>
@@ -292,8 +247,8 @@
     <!-- HERO -->
     <section id="home" class="hero">
         <div class="hero-brand" aria-label="Italienische Küche mit Herz & Leidenschaft">
-            <div class="hero-logo-word">cappuccino</div>
-            <div class="hero-ristorante">ristorante</div>
+            <div class="hero-logo-word">&nbsp;</div>
+            <div class="hero-ristorante">&nbsp;</div>
             <div class="hero-tagline">Italienische Küche<br>mit Herz &amp; Leidenschaft</div>
             <div class="hero-underline"></div>
         </div>
@@ -410,7 +365,7 @@
                 <option value="gatow">Gatow</option>
             </select>
             <textarea rows="3" id="resMessage" placeholder="Wünsche / Anmerkungen (z.B. Hochzeit, Geburtstag, Allergien)"></textarea>
-            <button class="btn" onclick="makeReservation()">Reservierung anfragen</button>
+            <button class="btn" onclick="makeReservation()">Jetzt verbindlich reservieren</button>
             <div id="resStatus" style="text-align:center; margin-top:15px; font-weight:600; color:var(--primary-red); min-height:30px;"></div>
         </div>
     </section>
@@ -540,7 +495,7 @@
                 status.textContent = '⚠️ Bitte fülle alle Pflichtfelder aus (Name, E-Mail, Datum, Uhrzeit).';
                 return;
             }
-            status.textContent = `✅ Buon Appetito, ${name}! Deine Reservierung für ${persons} Personen am ${date} um ${time} in ${location === 'spandau' ? 'Spandau' : 'Gatow'} wurde angefragt. Wir freuen uns auf dich!`;
+            status.textContent = `✅ Buon Appetito, ${name}! Deine Reservierung für ${persons} Personen am ${date} um ${time} in ${location === 'spandau' ? 'Spandau' : 'Gatow'} ist gebucht. Wir freuen uns auf dich!`;
             setTimeout(() => status.textContent = '', 8000);
         }
 
