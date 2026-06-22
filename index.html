@@ -946,6 +946,45 @@
     color: #e45768;
 }
 
+
+/* === HEADER IN HERO ONLY - NO RECTANGLE/BAR === */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Keep only the logo and menu links visible over the hero image */
+header .logo,
+header nav,
+header nav ul {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Better readability without adding a visible bar */
+header nav ul li a,
+header .logo img {
+    text-shadow: 0 3px 14px rgba(0,0,0,0.65);
+}
+
+@media (max-width: 768px) {
+    header {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+    }
+}
+
 </style>
 </head>
 <body>
