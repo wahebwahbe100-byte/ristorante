@@ -34,24 +34,26 @@
         /* === NAVIGATION === */
         header {
             position: fixed; top: 0; width: 100%; padding: 18px 5%;
-            background: rgba(255, 255, 255, 0.93);
-            backdrop-filter: blur(12px);
+            background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.28));
+            backdrop-filter: blur(10px);
             z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         .logo {
             font-size: 2rem; font-weight: 700; font-style: italic;
-            background: linear-gradient(90deg, #009246 0%, #ffffff 40%, #ce2b37 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            color: #fff;
+            letter-spacing: 0.5px;
+            text-shadow: 0 3px 18px rgba(0,0,0,0.45);
         }
-        nav ul { display: flex; gap: 30px; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; }
-        nav ul li a { position: relative; padding-bottom: 4px; }
+        .logo::first-letter { color: var(--primary-red); }
+        nav ul { display: flex; gap: 30px; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; color: #fff; }
+        nav ul li a { position: relative; padding-bottom: 4px; text-shadow: 0 2px 12px rgba(0,0,0,0.55); }
         nav ul li a::after {
             content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
-            background: var(--primary-red); transition: width 0.3s;
+            background: var(--gold); transition: width 0.3s;
         }
-        nav ul li a:hover { color: var(--primary-red); }
+        nav ul li a:hover { color: var(--gold); }
         nav ul li a:hover::after { width: 100%; }
 
         /* === HERO === */
