@@ -947,20 +947,41 @@
 }
 
 
-/* === HEADER IN HERO ONLY - NO RECTANGLE/BAR === */
+/* === HEADER: transparent on hero, bar returns after scroll === */
 header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 78px;
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     border-bottom: 0 !important;
     box-shadow: none !important;
+    transition: background 0.32s ease, backdrop-filter 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease;
 }
 
-/* Keep only the logo and menu links visible over the hero image */
+/* When the visitor scrolls a little, restore the full navigation bar */
+header.header-scrolled {
+    background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.28)) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.14) !important;
+}
+
+/* Bigger logo, still without adding a rectangle on the hero */
+header .logo {
+    width: 220px;
+    height: 78px;
+}
+header .logo img {
+    height: 98px;
+    max-width: 240px;
+    text-shadow: 0 3px 14px rgba(0,0,0,0.65);
+}
+
 header .logo,
 header nav,
 header nav ul {
@@ -970,18 +991,34 @@ header nav ul {
 }
 
 /* Better readability without adding a visible bar */
-header nav ul li a,
-header .logo img {
+header nav ul li a {
     text-shadow: 0 3px 14px rgba(0,0,0,0.65);
 }
 
 @media (max-width: 768px) {
     header {
+        height: 82px;
         background: transparent !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
         border-bottom: 0 !important;
         box-shadow: none !important;
+    }
+    header.header-scrolled {
+        background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.28)) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.14) !important;
+    }
+    header .logo {
+        width: 170px;
+        flex: 0 0 170px;
+        height: 82px;
+    }
+    header .logo img {
+        height: 84px;
+        max-width: 170px;
     }
 }
 
@@ -1438,6 +1475,15 @@ header .logo img {
             status.textContent = `✅ Danke ${name}! Deine Catering-Anfrage für "${eventType}" mit ${guests} Gästen wurde gesendet. Wir melden uns innerhalb von 24h.`;
             setTimeout(() => status.textContent = '', 5000);
         }
+
+        // HEADER: show transparent over hero, restore bar after scrolling a little
+        const siteHeader = document.querySelector('header');
+        function updateHeaderBar() {
+            if (!siteHeader) return;
+            siteHeader.classList.toggle('header-scrolled', window.scrollY > 60);
+        }
+        updateHeaderBar();
+        window.addEventListener('scroll', updateHeaderBar, { passive: true });
 
         // 5. SCROLL-ANIMATIONEN
         const faders = document.querySelectorAll('.fade-up');
