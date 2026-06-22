@@ -1459,8 +1459,8 @@ header nav ul li a {
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#story">Story</a></li>
                 <li><a href="#locations">Filialen</a></li>
+                <li><a href="#story">Story</a></li>
                 <li><a href="#events">Events</a></li>
                 <li><a href="#reservierung">Reservierung</a></li>
                 <li><a href="#config">Menü-Planer</a></li>
@@ -1636,77 +1636,64 @@ header nav ul li a {
         <div class="hero-ornament" aria-hidden="true"><span></span></div>
     </section>
 
-
-    <!-- EVENTLOCATION (GATOW) MIT DETAILS -->
-    <section id="events" class="event-section fade-up image-bg-section" style="--section-bg-image: url('images/eventlocation-havel-bg.png');">
-        <h2 class="section-title">Eventlocation an der Havel</h2>
-        <p class="sub-text">Ob Hochzeit, Geburtstag oder Firmenfeier – in Gatow wird jeder Moment unvergesslich.</p>
-
-        <div class="event-flex">
-            <div class="event-text">
-                <h3>Garten, Saal & Terrasse</h3>
-                <p>Unser Außenbereich mit direktem Havelblick ist ein Traum für Sommerfeste. Der angrenzende Festsaal bietet Platz für bis zu <strong>150 Personen</strong>. Wir kümmern uns um das Catering, den Service und die Dekoration – du genießt einfach.</p>
-                <ul style="margin: 15px 0;">
-                    <li>✅ Exklusive Nutzung des gesamten Areals</li>
-                    <li>✅ Italienisches Catering nach Wunsch</li>
-                    <li>✅ Premium Weine & Getränke</li>
-                    <li>✅ Individuelle Dekoration möglich</li>
-                </ul>
-                <a href="#reservierung" class="btn-hero" style="padding: 12px 30px; font-size:1rem;">Jetzt Event anfragen</a>
-            </div>
-            <div class="event-gallery">
-                <!-- Bilder im Ordner /images ablegen und Dateinamen bei src bei Bedarf anpassen -->
-                <figure class="event-thumb event-thumb-large">
-                    <img src="images/event-garten-havel.jpg" alt="Garten an der Havel" loading="lazy">
-                    <figcaption>🌿 Garten an der Havel</figcaption>
-                </figure>
-                <figure class="event-thumb">
-                    <img src="images/event-festsaal.jpg" alt="Festsaal" loading="lazy">
-                    <figcaption>🏛️ Festsaal</figcaption>
-                </figure>
-                <figure class="event-thumb">
-                    <img src="images/event-terrasse.jpg" alt="Terrasse" loading="lazy">
-                    <figcaption>🍷 Terrasse</figcaption>
-                </figure>
-                <figure class="event-thumb">
-                    <img src="images/event-catering.jpg" alt="Hochzeits-Catering" loading="lazy">
-                    <figcaption>🍕 Hochzeits-Catering</figcaption>
-                </figure>
-                <figure class="event-thumb">
-                    <img src="images/event-party-musik.jpg" alt="Party und Musik" loading="lazy">
-                    <figcaption>🎉 Party &amp; Musik</figcaption>
-                </figure>
-            </div>
+    <section id="locations" class="locations-showcase fade-up">
+        <div class="locations-intro">
+            <h2 class="section-title">Unsere Standorte</h2>
+            <p class="sub-text">Zwei Adressen, ein Gefühl: italienische Küche, herzlicher Service und besondere Momente in Berlin.</p>
         </div>
 
-        <section class="event-features fade-up" aria-label="Eventlocation Vorteile">
-            <div class="event-features-inner">
-                <article class="event-feature-card">
-                    <div class="event-feature-icon"><img src="images/catering.png" alt="Italienisches Catering" loading="lazy"></div>
-                    <div>
-                        <h3>Italienisches Catering</h3>
-                        <p>Frische italienische Küche nach Wunsch – vom Empfang bis zum Menü passend zu Hochzeit, Geburtstag oder Firmenfeier.</p>
+        <div class="location-band" style="--location-bg-image: url('images/standort-spandau.png');">
+            <article class="location-editorial-row">
+                <div class="location-cover" aria-label="Cappuccino Spandau Bildkarte">
+                    <div class="location-handnote">Mitten in Spandau genießen <span>♡</span></div>
+                    <figure class="location-polaroid">
+                        <img src="images/standort-spandau.jpg" alt="Cappuccino Spandau Restaurant" loading="lazy" onerror="this.onerror=null;this.src='images/event-festsaal.jpg';">
+                        <div class="location-badge-round"><small>Standort</small><strong>Spandau</strong></div>
+                    </figure>
+                </div>
+                <div class="location-copy">
+                    <div class="location-kicker">Restaurant · Berlin Spandau</div>
+                    <h3 class="location-script"><em>Cappuccino</em>Spandau</h3>
+                    <p class="location-address">Klosterstraße 34–35 · 13581 Berlin<br>Nahe der City Spandau</p>
+                    <div class="location-divider" aria-hidden="true"></div>
+                    <p class="location-description">In Spandau erwartet Sie ein gemütlicher Ort für echte italienische Genussmomente: frische Pasta, aromatische Klassiker, ausgewählte Weine und herzlicher Service. Perfekt für eine kurze Auszeit, ein entspanntes Abendessen oder schöne Stunden mit Familie und Freunden.</p>
+                    <div class="location-actions">
+                        <a class="location-btn" href="tel:+493028508496">…nach Spandau</a>
+                        <a class="location-contact-link" href="mailto:spandau@ristorante-cappuccino.de">spandau@ristorante-cappuccino.de</a>
                     </div>
-                </article>
-                <article class="event-feature-card">
-                    <div class="event-feature-icon"><img src="images/weine.png" alt="Premium Weine und Getränke" loading="lazy"></div>
-                    <div>
-                        <h3>Premium Weine & Getränke</h3>
-                        <p>Ausgewählte Weine, Aperitifs und Getränke sorgen für den passenden Genuss während der gesamten Veranstaltung.</p>
+                </div>
+            </article>
+        </div>
+
+        <div class="location-band location-band-alt" style="--location-bg-image: url('images/standort-gatow.png');">
+            <article class="location-editorial-row reverse">
+                <div class="location-copy">
+                    <div class="location-kicker">Restaurant · Garten · Eventlocation</div>
+                    <h3 class="location-script"><em>Cappuccino</em>Gatow</h3>
+                    <p class="location-address">Alt Gatow 1–3 · 14089 Berlin<br>An der Havel</p>
+                    <div class="location-divider" aria-hidden="true"></div>
+                    <p class="location-description">Cappuccino Gatow ist unsere Adresse für besondere Anlässe. Der große Garten, die Nähe zur Havel und der angrenzende Festsaal schaffen den passenden Rahmen für Hochzeiten, Geburtstage, Firmenfeiern und genussvolle Abende in stilvoller Atmosphäre.</p>
+                    <div class="location-actions">
+                        <a class="location-btn" href="tel:+493036992263">…nach Gatow</a>
+                        <a class="location-contact-link" href="mailto:gatow@ristorante-cappuccino.de">gatow@ristorante-cappuccino.de</a>
                     </div>
-                </article>
-                <article class="event-feature-card">
-                    <div class="event-feature-icon"><img src="images/dekoration.png" alt="Individuelle Dekoration" loading="lazy"></div>
-                    <div>
-                        <h3>Individuelle Dekoration</h3>
-                        <p>Die Dekoration kann auf Anlass, Stil und Wünsche abgestimmt werden – elegant, romantisch oder festlich.</p>
-                    </div>
-                </article>
-            </div>
-        </section>
+                </div>
+                <div class="location-cover" aria-label="Cappuccino Gatow Bildkarte">
+                    <div class="location-handnote">Feiern an der Havel <span>♡</span></div>
+                    <figure class="location-polaroid">
+                        <img src="images/standort-gatow.jpg" alt="Cappuccino Gatow Restaurant und Eventlocation" loading="lazy" onerror="this.onerror=null;this.src='images/event-garten-havel.jpg';">
+                        <div class="location-badge-round"><small>Standort</small><strong>Gatow</strong></div>
+                    </figure>
+                </div>
+            </article>
+        </div>
     </section>
 
-    <!-- STORY / ÜBER UNS MIT ZÄHLERN -->
+    <!-- RESERVIERUNG (FUNKTIONAL) -->
+
+
+
+    <!-- EVENTLOCATION (GATOW) MIT DETAILS -->
     <section id="story" class="story-section fade-up">
         <h2 class="section-title">Unsere <span class="red-title-word">Geschichte</span></h2>
         <p class="sub-text">Seit über 25 Jahren bringt die Familie Bianchi italienische Leidenschaft nach Berlin.</p>
@@ -1776,60 +1763,75 @@ header nav ul li a {
     </section>
 
     <!-- STANDORTE -->
-    <section id="locations" class="locations-showcase fade-up">
-        <div class="locations-intro">
-            <h2 class="section-title">Unsere Standorte</h2>
-            <p class="sub-text">Zwei Adressen, ein Gefühl: italienische Küche, herzlicher Service und besondere Momente in Berlin.</p>
+    <section id="events" class="event-section fade-up image-bg-section" style="--section-bg-image: url('images/eventlocation-havel-bg.png');">
+        <h2 class="section-title">Eventlocation an der Havel</h2>
+        <p class="sub-text">Ob Hochzeit, Geburtstag oder Firmenfeier – in Gatow wird jeder Moment unvergesslich.</p>
+
+        <div class="event-flex">
+            <div class="event-text">
+                <h3>Garten, Saal & Terrasse</h3>
+                <p>Unser Außenbereich mit direktem Havelblick ist ein Traum für Sommerfeste. Der angrenzende Festsaal bietet Platz für bis zu <strong>150 Personen</strong>. Wir kümmern uns um das Catering, den Service und die Dekoration – du genießt einfach.</p>
+                <ul style="margin: 15px 0;">
+                    <li>✅ Exklusive Nutzung des gesamten Areals</li>
+                    <li>✅ Italienisches Catering nach Wunsch</li>
+                    <li>✅ Premium Weine & Getränke</li>
+                    <li>✅ Individuelle Dekoration möglich</li>
+                </ul>
+                <a href="#reservierung" class="btn-hero" style="padding: 12px 30px; font-size:1rem;">Jetzt Event anfragen</a>
+            </div>
+            <div class="event-gallery">
+                <!-- Bilder im Ordner /images ablegen und Dateinamen bei src bei Bedarf anpassen -->
+                <figure class="event-thumb event-thumb-large">
+                    <img src="images/event-garten-havel.jpg" alt="Garten an der Havel" loading="lazy">
+                    <figcaption>🌿 Garten an der Havel</figcaption>
+                </figure>
+                <figure class="event-thumb">
+                    <img src="images/event-festsaal.jpg" alt="Festsaal" loading="lazy">
+                    <figcaption>🏛️ Festsaal</figcaption>
+                </figure>
+                <figure class="event-thumb">
+                    <img src="images/event-terrasse.jpg" alt="Terrasse" loading="lazy">
+                    <figcaption>🍷 Terrasse</figcaption>
+                </figure>
+                <figure class="event-thumb">
+                    <img src="images/event-catering.jpg" alt="Hochzeits-Catering" loading="lazy">
+                    <figcaption>🍕 Hochzeits-Catering</figcaption>
+                </figure>
+                <figure class="event-thumb">
+                    <img src="images/event-party-musik.jpg" alt="Party und Musik" loading="lazy">
+                    <figcaption>🎉 Party &amp; Musik</figcaption>
+                </figure>
+            </div>
         </div>
 
-        <div class="location-band" style="--location-bg-image: url('images/standort-spandau.png');">
-            <article class="location-editorial-row">
-                <div class="location-cover" aria-label="Cappuccino Spandau Bildkarte">
-                    <div class="location-handnote">Mitten in Spandau genießen <span>♡</span></div>
-                    <figure class="location-polaroid">
-                        <img src="images/standort-spandau.jpg" alt="Cappuccino Spandau Restaurant" loading="lazy" onerror="this.onerror=null;this.src='images/event-festsaal.jpg';">
-                        <div class="location-badge-round"><small>Standort</small><strong>Spandau</strong></div>
-                    </figure>
-                </div>
-                <div class="location-copy">
-                    <div class="location-kicker">Restaurant · Berlin Spandau</div>
-                    <h3 class="location-script"><em>Cappuccino</em>Spandau</h3>
-                    <p class="location-address">Klosterstraße 34–35 · 13581 Berlin<br>Nahe der City Spandau</p>
-                    <div class="location-divider" aria-hidden="true"></div>
-                    <p class="location-description">In Spandau erwartet Sie ein gemütlicher Ort für echte italienische Genussmomente: frische Pasta, aromatische Klassiker, ausgewählte Weine und herzlicher Service. Perfekt für eine kurze Auszeit, ein entspanntes Abendessen oder schöne Stunden mit Familie und Freunden.</p>
-                    <div class="location-actions">
-                        <a class="location-btn" href="tel:+493028508496">…nach Spandau</a>
-                        <a class="location-contact-link" href="mailto:spandau@ristorante-cappuccino.de">spandau@ristorante-cappuccino.de</a>
+        <section class="event-features fade-up" aria-label="Eventlocation Vorteile">
+            <div class="event-features-inner">
+                <article class="event-feature-card">
+                    <div class="event-feature-icon"><img src="images/catering.png" alt="Italienisches Catering" loading="lazy"></div>
+                    <div>
+                        <h3>Italienisches Catering</h3>
+                        <p>Frische italienische Küche nach Wunsch – vom Empfang bis zum Menü passend zu Hochzeit, Geburtstag oder Firmenfeier.</p>
                     </div>
-                </div>
-            </article>
-        </div>
-
-        <div class="location-band location-band-alt" style="--location-bg-image: url('images/standort-gatow.png');">
-            <article class="location-editorial-row reverse">
-                <div class="location-copy">
-                    <div class="location-kicker">Restaurant · Garten · Eventlocation</div>
-                    <h3 class="location-script"><em>Cappuccino</em>Gatow</h3>
-                    <p class="location-address">Alt Gatow 1–3 · 14089 Berlin<br>An der Havel</p>
-                    <div class="location-divider" aria-hidden="true"></div>
-                    <p class="location-description">Cappuccino Gatow ist unsere Adresse für besondere Anlässe. Der große Garten, die Nähe zur Havel und der angrenzende Festsaal schaffen den passenden Rahmen für Hochzeiten, Geburtstage, Firmenfeiern und genussvolle Abende in stilvoller Atmosphäre.</p>
-                    <div class="location-actions">
-                        <a class="location-btn" href="tel:+493036992263">…nach Gatow</a>
-                        <a class="location-contact-link" href="mailto:gatow@ristorante-cappuccino.de">gatow@ristorante-cappuccino.de</a>
+                </article>
+                <article class="event-feature-card">
+                    <div class="event-feature-icon"><img src="images/weine.png" alt="Premium Weine und Getränke" loading="lazy"></div>
+                    <div>
+                        <h3>Premium Weine & Getränke</h3>
+                        <p>Ausgewählte Weine, Aperitifs und Getränke sorgen für den passenden Genuss während der gesamten Veranstaltung.</p>
                     </div>
-                </div>
-                <div class="location-cover" aria-label="Cappuccino Gatow Bildkarte">
-                    <div class="location-handnote">Feiern an der Havel <span>♡</span></div>
-                    <figure class="location-polaroid">
-                        <img src="images/standort-gatow.jpg" alt="Cappuccino Gatow Restaurant und Eventlocation" loading="lazy" onerror="this.onerror=null;this.src='images/event-garten-havel.jpg';">
-                        <div class="location-badge-round"><small>Standort</small><strong>Gatow</strong></div>
-                    </figure>
-                </div>
-            </article>
-        </div>
+                </article>
+                <article class="event-feature-card">
+                    <div class="event-feature-icon"><img src="images/dekoration.png" alt="Individuelle Dekoration" loading="lazy"></div>
+                    <div>
+                        <h3>Individuelle Dekoration</h3>
+                        <p>Die Dekoration kann auf Anlass, Stil und Wünsche abgestimmt werden – elegant, romantisch oder festlich.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
     </section>
 
-    <!-- RESERVIERUNG (FUNKTIONAL) -->
+    <!-- STORY / ÜBER UNS MIT ZÄHLERN -->
     <section id="reservierung" class="fade-up image-bg-section" style="--section-bg-image: url('images/reservierung-bg.png');">
         <h2 class="section-title">Tisch reservieren</h2>
         <p class="sub-text">Sichere dir deinen Platz – wir freuen uns auf dich!</p>
