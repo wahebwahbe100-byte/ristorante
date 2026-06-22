@@ -6,7 +6,7 @@
     <title>Cappuccino – Italienische Küche mit Herz | Eventlocation & Reservierung</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* === GRUNDLAGEN === */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -68,15 +68,55 @@
             color: white;
             overflow: hidden;
         }
-        .hero h1 {
-            font-size: 5.5rem; margin-bottom: 15px;
-            background: linear-gradient(45deg, #009246, #ffffff, #ce2b37, #ffffff, #009246);
-            background-size: 300% 300%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: italyGradient 5s ease infinite;
+        .hero-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 70px;
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 4px 22px rgba(0,0,0,0.65);
         }
-        @keyframes italyGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .hero p { font-size: 1.8rem; font-weight: 300; letter-spacing: 3px; opacity: 0.9; }
+        .hero-logo-word {
+            font-family: 'Lobster', 'Playfair Display', serif;
+            font-size: clamp(4.8rem, 10vw, 8.8rem);
+            line-height: 0.82;
+            color: #ad2834;
+            letter-spacing: 3px;
+            font-weight: 400;
+            text-transform: lowercase;
+            transform: skew(-4deg);
+            text-shadow: 0 6px 20px rgba(0,0,0,0.48);
+        }
+        .hero-ristorante {
+            font-family: 'Source Sans Pro', sans-serif;
+            margin-top: 18px;
+            font-size: clamp(1.05rem, 2.2vw, 2rem);
+            line-height: 1;
+            letter-spacing: 18px;
+            color: rgba(255,255,255,0.92);
+            font-weight: 300;
+            text-transform: uppercase;
+            padding-left: 18px;
+        }
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            margin-top: 42px;
+            font-size: clamp(2.2rem, 4.3vw, 4.1rem);
+            line-height: 1.18;
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.96);
+        }
+        .hero-underline {
+            width: min(520px, 72vw);
+            height: 3px;
+            margin-top: 24px;
+            background: linear-gradient(90deg, transparent, rgba(158,42,43,0.95), transparent);
+            box-shadow: 0 0 14px rgba(158,42,43,0.45);
+        }
         .btn-hero {
             display: inline-block; padding: 18px 50px; margin-top: 30px;
             background: var(--primary-red); color: white; font-weight: 700; font-size: 1.1rem;
@@ -181,7 +221,9 @@
 
         /* === RESPONSIVE === */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3.2rem; }
+            .hero-logo-word { font-size: 4.4rem; letter-spacing: 1px; }
+            .hero-ristorante { font-size: 1rem; letter-spacing: 9px; padding-left: 9px; margin-top: 14px; }
+            .hero-tagline { font-size: 2.1rem; margin-top: 30px; }
             header { flex-direction: column; gap: 10px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
         }
@@ -206,11 +248,15 @@
 
     <!-- HERO -->
     <section id="home" class="hero">
-        <h1>cappuccino</h1>
-        <p>Italienische Küche mit Herz & Leidenschaft</p>
-        <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap; justify-content:center;">
+        <div class="hero-brand" aria-label="Cappuccino Ristorante – Italienische Küche mit Herz & Leidenschaft">
+            <div class="hero-logo-word">cappuccino</div>
+            <div class="hero-ristorante">RISTORANTE</div>
+            <div class="hero-tagline">Italienische Küche<br>mit Herz &amp; Leidenschaft</div>
+            <div class="hero-underline"></div>
+        </div>
+        <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap; justify-content:center; position:relative; z-index:2;">
             <button class="btn-hero" onclick="document.getElementById('reservierung').scrollIntoView({behavior:'smooth'})">📅 Jetzt reservieren</button>
-            <button class="btn-hero" style="background: transparent; border: 2px solid white;" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">Unsere Geschichte</button>
+            <button class="btn-hero" style="background: transparent; border: 2px solid white; box-shadow:none;" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">Unsere Geschichte</button>
         </div>
     </section>
 
