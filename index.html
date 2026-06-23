@@ -1533,6 +1533,62 @@ header nav ul li a {
     }
 }
 
+
+
+/* === FIX: EVENTLOCATION HAVEL – 5ER BILDER-GRID RICHTIGES FORMAT ===
+   Lösung für das Problem beim Hinzufügen von Bildern:
+   - 1 großes Bild oben (16:9)
+   - 4 Bilder darunter (4:3)
+   - keine Verzerrung, alle Bilder sauber gleich groß zugeschnitten
+*/
+#events .event-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+}
+
+#events .event-thumb {
+    position: relative;
+    min-height: 0 !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+#events .event-thumb.event-thumb-large {
+    grid-column: 1 / -1;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9;
+}
+
+#events .event-thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+#events .event-thumb figcaption {
+    z-index: 2;
+}
+
+@media (max-width: 640px) {
+    #events .event-gallery {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    #events .event-thumb,
+    #events .event-thumb.event-thumb-large {
+        aspect-ratio: 4 / 3;
+        min-height: 0 !important;
+    }
+}
 </style>
 </head>
 <body>
