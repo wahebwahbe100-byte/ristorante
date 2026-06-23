@@ -2660,64 +2660,198 @@ header nav ul li a {
 }
 </style>
 
+
+<style>
+/* === EVENTLOCATION HAVEL – FINAL SMOOTH 4x3 GALLERY FIX === */
+#events .event-gallery {
+    width: min(1480px, 100%);
+    margin: 0 auto;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: clamp(22px, 2.7vw, 44px) !important;
+    align-items: stretch;
+}
+
+#events .event-thumb.havel-card-gallery {
+    min-height: clamp(470px, 56vh, 680px) !important;
+    aspect-ratio: 3 / 4 !important;
+    border-radius: 0 0 46% 46% / 0 0 18% 18% !important;
+    overflow: hidden;
+    background: #1f1714;
+    box-shadow: 0 28px 70px rgba(0,0,0,0.30);
+}
+
+#events .event-thumb.havel-card-gallery .havel-slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0 !important;
+    z-index: 0;
+    transform: scale(1.045) translate3d(0, 0, 0);
+    filter: saturate(1) brightness(0.96);
+    transition:
+        opacity 1.45s cubic-bezier(.22,.61,.36,1),
+        transform 2.4s cubic-bezier(.22,.61,.36,1),
+        filter 1.45s cubic-bezier(.22,.61,.36,1) !important;
+    animation: none !important;
+    will-change: opacity, transform, filter;
+}
+
+#events .event-thumb.havel-card-gallery .havel-slide.is-active {
+    opacity: 1 !important;
+    z-index: 2;
+    transform: scale(1.075) translate3d(0.6%, -0.4%, 0);
+    filter: saturate(1.04) brightness(1);
+}
+
+#events .event-thumb.havel-card-gallery .havel-slide.is-next {
+    opacity: 1 !important;
+    z-index: 3;
+    transform: scale(1.045) translate3d(0, 0, 0);
+    filter: saturate(1.06) brightness(1.03);
+}
+
+#events .event-thumb.havel-card-gallery .havel-slide.is-leaving {
+    opacity: 0 !important;
+    z-index: 1;
+    transform: scale(1.11) translate3d(-0.8%, -0.8%, 0);
+    filter: saturate(1.02) brightness(1.02);
+}
+
+/* إلغاء تأثير التعتيم القديم أثناء التبديل حتى لا تختفي كل الصور فجأة */
+#events .event-thumb.havel-card-gallery.havel-image-changing img {
+    filter: inherit;
+}
+
+#events .event-thumb.havel-card-gallery::before {
+    z-index: 5;
+    opacity: 0;
+    animation: none !important;
+    transition: opacity .25s ease;
+}
+
+#events .event-thumb.havel-card-gallery.havel-image-changing::before {
+    animation: havelSmoothLightSweep 1.75s cubic-bezier(.22,.61,.36,1) 1 !important;
+}
+
+#events .event-thumb.havel-card-gallery figcaption {
+    z-index: 8 !important;
+    bottom: 22px;
+    left: 22px;
+    right: 22px;
+}
+
+@keyframes havelSmoothLightSweep {
+    0% { transform: translateX(-145%) skewX(-10deg); opacity: 0; }
+    18% { opacity: .34; }
+    48% { opacity: .85; }
+    82% { opacity: .28; }
+    100% { transform: translateX(145%) skewX(-10deg); opacity: 0; }
+}
+
+@media (max-width: 1180px) {
+    #events .event-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        width: min(900px, 100%);
+    }
+    #events .event-thumb.havel-card-gallery {
+        min-height: clamp(420px, 52vh, 610px) !important;
+    }
+}
+
+@media (max-width: 700px) {
+    #events .event-gallery {
+        grid-template-columns: 1fr !important;
+        width: min(430px, 100%);
+        gap: 24px !important;
+    }
+    #events .event-thumb.havel-card-gallery {
+        min-height: 0 !important;
+        aspect-ratio: 3 / 4 !important;
+    }
+}
+</style>
+
 <script>
 (function () {
+    function getSlides(card) {
+        return Array.prototype.slice.call(card.querySelectorAll('.havel-slide'));
+    }
+
     function prepareHavelCardGalleries() {
         var cards = Array.prototype.slice.call(document.querySelectorAll('#events .havel-card-gallery'));
-        if (!cards.length) return;
-
         cards.forEach(function (card) {
-            var slides = Array.prototype.slice.call(card.querySelectorAll('.havel-slide'));
+            var slides = getSlides(card);
+            card.dataset.currentSlide = '0';
+            card.dataset.isChanging = '0';
 
-            // Falls ein zusätzliches Bild noch nicht im Ordner liegt, wird es automatisch ausgeblendet.
-            slides.forEach(function (img) {
+            slides.forEach(function (img, imgIndex) {
+                img.classList.remove('is-next', 'is-leaving');
+                if (imgIndex === 0) img.classList.add('is-active');
+                else img.classList.remove('is-active');
+
                 img.addEventListener('error', function () {
                     img.remove();
-                    var remaining = card.querySelectorAll('.havel-slide');
-                    if (remaining.length && !card.querySelector('.havel-slide.is-active')) {
-                        remaining[0].classList.add('is-active');
-                    }
+                    var remaining = getSlides(card);
+                    remaining.forEach(function (slide, index) {
+                        slide.classList.toggle('is-active', index === 0);
+                        slide.classList.remove('is-next', 'is-leaving');
+                    });
+                    card.dataset.currentSlide = '0';
                 });
             });
         });
+        return cards;
     }
 
     function rotateOneHavelCard(card) {
-        var slides = Array.prototype.slice.call(card.querySelectorAll('.havel-slide'));
+        if (card.dataset.isChanging === '1') return;
+
+        var slides = getSlides(card);
         if (slides.length < 2) return;
 
-        var active = card.querySelector('.havel-slide.is-active') || slides[0];
-        var currentIndex = slides.indexOf(active);
-        var next = slides[(currentIndex + 1) % slides.length];
+        var currentIndex = parseInt(card.dataset.currentSlide || '0', 10);
+        if (!slides[currentIndex]) currentIndex = 0;
 
+        var active = slides[currentIndex];
+        var nextIndex = (currentIndex + 1) % slides.length;
+        var next = slides[nextIndex];
+
+        card.dataset.isChanging = '1';
         card.classList.add('havel-image-changing');
+        active.classList.add('is-leaving');
         next.classList.add('is-next');
 
-        setTimeout(function () {
-            active.classList.remove('is-active');
+        window.setTimeout(function () {
+            active.classList.remove('is-active', 'is-leaving');
             next.classList.remove('is-next');
             next.classList.add('is-active');
-        }, 520);
+            card.dataset.currentSlide = String(nextIndex);
+        }, 820);
 
-        setTimeout(function () {
+        window.setTimeout(function () {
             card.classList.remove('havel-image-changing');
-        }, 1050);
+            card.dataset.isChanging = '0';
+        }, 1750);
     }
 
     window.addEventListener('load', function () {
-        prepareHavelCardGalleries();
-
+        var cards = prepareHavelCardGalleries();
         var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion) return;
 
-        var cards = Array.prototype.slice.call(document.querySelectorAll('#events .havel-card-gallery'));
         cards.forEach(function (card, index) {
-            var startDelay = 2600 + (index * 850);
-            var interval = 7200;
+            var startDelay = 1800 + (index * 1150);
+            var interval = 8600 + (index * 650);
 
-            setTimeout(function () {
+            window.setTimeout(function () {
                 rotateOneHavelCard(card);
-                setInterval(function () {
+                window.setInterval(function () {
                     rotateOneHavelCard(card);
                 }, interval);
             }, startDelay);
