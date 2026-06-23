@@ -1980,6 +1980,687 @@ header nav ul li a {
 }
 </style>
 
+
+<style>
+/* === RESERVIERUNG – PREMIUM CARD DESIGN === */
+#reservierung.reservation-section {
+    padding: clamp(82px, 9vw, 132px) 5%;
+    background-image:
+        radial-gradient(circle at 14% 18%, rgba(228,87,104,0.30), transparent 30%),
+        linear-gradient(135deg, rgba(18,13,11,0.78), rgba(46,25,22,0.58)),
+        var(--section-bg-image);
+}
+#reservierung.reservation-section::before {
+    background:
+        radial-gradient(circle at 82% 18%, rgba(255,248,237,0.16), transparent 28%),
+        radial-gradient(circle at 20% 85%, rgba(158,42,43,0.30), transparent 34%),
+        linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.56));
+}
+.reservation-shell {
+    position: relative;
+    z-index: 2;
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.92fr) minmax(320px, 1.08fr);
+    gap: clamp(34px, 6vw, 78px);
+    align-items: center;
+}
+.reservation-copy {
+    color: #fff8ed;
+    text-shadow: 0 12px 34px rgba(0,0,0,0.38);
+}
+.reservation-kicker {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 18px;
+    margin-bottom: 22px;
+    border: 1px solid rgba(255,248,237,0.24);
+    border-radius: 999px;
+    background: rgba(255,248,237,0.08);
+    color: #fff8ed;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 2.6px;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+}
+.reservation-title {
+    margin: 0;
+    font-size: clamp(3.35rem, 7vw, 6.35rem);
+    line-height: 0.94;
+    letter-spacing: -1.8px;
+    color: #ffffff;
+}
+.reservation-title span {
+    display: block;
+    color: #e45768;
+    font-style: italic;
+    text-shadow: 0 0 28px rgba(228,87,104,0.22), 0 12px 34px rgba(0,0,0,0.34);
+}
+.reservation-lead {
+    margin: 26px 0 0;
+    max-width: 620px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.35rem, 2.1vw, 2rem);
+    line-height: 1.24;
+    font-weight: 700;
+    color: #fff8ed;
+}
+.reservation-text {
+    margin: 20px 0 0;
+    max-width: 640px;
+    font-size: clamp(1.02rem, 1.25vw, 1.18rem);
+    line-height: 1.78;
+    color: rgba(255,248,237,0.82);
+}
+.reservation-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 34px;
+    max-width: 640px;
+}
+.reservation-highlight {
+    min-height: 116px;
+    padding: 18px 16px;
+    border: 1px solid rgba(255,248,237,0.17);
+    border-radius: 22px;
+    background: rgba(255,248,237,0.085);
+    box-shadow: 0 18px 38px rgba(0,0,0,0.18);
+    backdrop-filter: blur(10px);
+}
+.reservation-highlight strong {
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    line-height: 1;
+    color: #ffffff;
+}
+.reservation-highlight span {
+    display: block;
+    font-size: 0.92rem;
+    line-height: 1.28;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    color: rgba(255,248,237,0.78);
+}
+.reservation-card {
+    position: relative;
+    padding: clamp(24px, 3vw, 38px);
+    border-radius: 34px;
+    background:
+        linear-gradient(180deg, rgba(255,253,248,0.98), rgba(255,248,237,0.94));
+    border: 1px solid rgba(255,248,237,0.46);
+    box-shadow: 0 34px 85px rgba(0,0,0,0.34);
+    color: #241815;
+    overflow: hidden;
+}
+.reservation-card::before {
+    content: "";
+    position: absolute;
+    top: -90px;
+    right: -90px;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(228,87,104,0.18), transparent 68%);
+    pointer-events: none;
+}
+.reservation-card-header {
+    position: relative;
+    margin-bottom: 22px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(158,42,43,0.12);
+}
+.reservation-card-header span {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--primary-red);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.reservation-card-header h3 {
+    margin: 0;
+    font-size: clamp(1.75rem, 2.3vw, 2.35rem);
+    line-height: 1.05;
+    color: #241815;
+}
+.reservation-card-header p {
+    margin-top: 10px;
+    color: #6b5b51;
+    font-size: 1rem;
+    line-height: 1.55;
+}
+.reservation-form-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+.reservation-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.reservation-field-wide {
+    grid-column: 1 / -1;
+}
+.reservation-field label {
+    padding-left: 4px;
+    font-size: 0.82rem;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: 0.6px;
+    color: #4b3932;
+}
+#reservierung .reservation-card input,
+#reservierung .reservation-card select,
+#reservierung .reservation-card textarea {
+    width: 100%;
+    min-height: 52px;
+    margin: 0;
+    padding: 14px 15px;
+    border: 1px solid rgba(158,42,43,0.14);
+    border-radius: 17px;
+    background: rgba(255,255,255,0.92);
+    color: #241815;
+    font-size: 1rem;
+    font-family: 'Source Sans Pro', sans-serif;
+    outline: none;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+#reservierung .reservation-card textarea {
+    min-height: 112px;
+    resize: vertical;
+}
+#reservierung .reservation-card input:focus,
+#reservierung .reservation-card select:focus,
+#reservierung .reservation-card textarea:focus {
+    border-color: rgba(158,42,43,0.55);
+    box-shadow: 0 0 0 4px rgba(158,42,43,0.10);
+    transform: translateY(-1px);
+}
+#reservierung .reservation-submit {
+    width: 100%;
+    min-height: 58px;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #b33739, #741f23);
+    color: #fff;
+    font-size: 1.08rem;
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    box-shadow: 0 18px 34px rgba(158,42,43,0.30);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+#reservierung .reservation-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 24px 44px rgba(158,42,43,0.38);
+    filter: brightness(1.04);
+}
+.reservation-note {
+    margin: 14px 0 0;
+    text-align: center;
+    color: #78675d;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+.reservation-status {
+    min-height: 30px;
+    margin-top: 14px;
+    text-align: center;
+    color: var(--primary-red);
+    font-weight: 800;
+    line-height: 1.45;
+}
+@media (max-width: 980px) {
+    .reservation-shell {
+        grid-template-columns: 1fr;
+    }
+    .reservation-copy {
+        text-align: center;
+    }
+    .reservation-lead,
+    .reservation-text,
+    .reservation-highlights {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (max-width: 640px) {
+    #reservierung.reservation-section {
+        padding: 70px 5%;
+    }
+    .reservation-title {
+        font-size: clamp(3rem, 15vw, 4.25rem);
+    }
+    .reservation-highlights {
+        grid-template-columns: 1fr;
+    }
+    .reservation-highlight {
+        min-height: auto;
+    }
+    .reservation-card {
+        border-radius: 26px;
+    }
+    .reservation-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+
+
+<style>
+/* === RESERVIERUNG – STANDORT ZUERST, DETAILS DANACH === */
+#reservierung .reservation-location-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+}
+#reservierung .reservation-location-option {
+    position: relative;
+    min-height: 0;
+    padding: 0;
+    border: 1px solid rgba(158,42,43,0.16);
+    border-radius: 24px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,248,237,0.86));
+    color: #241815;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 16px 34px rgba(68,44,33,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    overflow: hidden;
+}
+#reservierung .reservation-location-photo {
+    position: relative;
+    width: 100%;
+    height: clamp(145px, 18vw, 205px);
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(158,42,43,0.10), rgba(212,175,55,0.16));
+}
+#reservierung .reservation-location-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.34));
+    opacity: 0.32;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+#reservierung .reservation-location-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.45s ease, filter 0.45s ease;
+}
+#reservierung .reservation-location-option:hover .reservation-location-photo img,
+#reservierung .reservation-location-option.active .reservation-location-photo img {
+    transform: scale(1.06);
+    filter: brightness(0.92);
+}
+#reservierung .reservation-location-option:hover .reservation-location-photo::after,
+#reservierung .reservation-location-option.active .reservation-location-photo::after {
+    opacity: 0.48;
+}
+#reservierung .reservation-location-content {
+    position: relative;
+    z-index: 2;
+    padding: 22px 24px 26px;
+    background:
+        radial-gradient(circle at 92% 24%, rgba(228,87,104,0.13), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,248,237,0.92));
+}
+#reservierung .reservation-location-option.active .reservation-location-content {
+    background: transparent;
+}
+#reservierung .reservation-location-option::after {
+    content: "";
+    position: absolute;
+    right: -34px;
+    bottom: -42px;
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(228,87,104,0.18), transparent 68%);
+    pointer-events: none;
+    z-index: 1;
+}
+#reservierung .reservation-location-option:hover,
+#reservierung .reservation-location-option.active {
+    transform: translateY(-4px);
+    border-color: rgba(158,42,43,0.50);
+    box-shadow: 0 22px 44px rgba(158,42,43,0.18);
+}
+#reservierung .reservation-location-option.active {
+    background: linear-gradient(135deg, #b33739, #741f23);
+    color: #fff8ed;
+}
+#reservierung .reservation-location-option span {
+    display: inline-flex;
+    min-height: 28px;
+    align-items: center;
+    padding: 0 12px;
+    margin-bottom: 16px;
+    border-radius: 999px;
+    background: rgba(158,42,43,0.10);
+    color: var(--primary-red);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+}
+#reservierung .reservation-location-option.active span {
+    background: rgba(255,248,237,0.16);
+    color: #fff8ed;
+}
+#reservierung .reservation-location-option strong {
+    position: relative;
+    z-index: 1;
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.45rem);
+    line-height: 1;
+}
+#reservierung .reservation-location-option small {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 10px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #6b5b51;
+}
+#reservierung .reservation-location-option.active small {
+    color: rgba(255,248,237,0.78);
+}
+#reservierung .reservation-location-hint {
+    margin: 16px 0 0;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(158,42,43,0.07);
+    color: #6b5b51;
+    font-size: 0.98rem;
+    line-height: 1.5;
+}
+#reservierung .reservation-view {
+    animation: reservationReveal 0.42s ease both;
+}
+#reservierung .reservation-view.is-hidden {
+    display: none !important;
+}
+#reservierung .reservation-location-page {
+    min-height: 360px;
+}
+#reservierung .reservation-details {
+    margin-top: 0;
+    animation: reservationReveal 0.42s ease both;
+}
+#reservierung .reservation-details.is-hidden {
+    display: none;
+}
+#reservierung .reservation-card.is-details-mode {
+    padding-top: 26px;
+}
+#reservierung .reservation-back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 18px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(158,42,43,0.20);
+    border-radius: 999px;
+    background: rgba(255,248,237,0.92);
+    color: var(--primary-red);
+    font-weight: 900;
+    font-size: 0.96rem;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(68,44,33,0.08);
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+#reservierung .reservation-back-button:hover {
+    transform: translateX(-3px);
+    background: var(--primary-red);
+    color: #fff;
+    box-shadow: 0 14px 28px rgba(158,42,43,0.18);
+}
+#reservierung .reservation-selected-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding: 16px 18px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(158,42,43,0.10), rgba(212,175,55,0.10));
+    border: 1px solid rgba(158,42,43,0.12);
+}
+#reservierung .reservation-selected-row span {
+    display: block;
+    margin-bottom: 4px;
+    color: #78675d;
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+#reservierung .reservation-selected-row strong {
+    display: block;
+    color: var(--primary-red);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.55rem;
+    line-height: 1;
+}
+#reservierung .reservation-change-location {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 1px solid rgba(158,42,43,0.22);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.78);
+    color: var(--primary-red);
+    font-weight: 900;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+#reservierung .reservation-change-location:hover {
+    background: var(--primary-red);
+    color: #fff;
+    transform: translateY(-1px);
+}
+#reservierung .reservation-details-header {
+    margin-top: 4px;
+}
+
+#reservierung .reservation-menu-planner {
+    position: relative;
+    margin: 0 0 24px;
+    padding: clamp(20px, 2.6vw, 30px);
+    border: 1px solid rgba(158,42,43,0.14);
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at 88% 12%, rgba(228,87,104,0.15), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,248,237,0.78));
+    box-shadow: 0 18px 42px rgba(68,44,33,0.08);
+    overflow: hidden;
+}
+#reservierung .reservation-menu-planner::before {
+    content: "";
+    position: absolute;
+    left: -70px;
+    bottom: -90px;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(158,42,43,0.12), transparent 68%);
+    pointer-events: none;
+}
+#reservierung .reservation-menu-heading {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 18px;
+}
+#reservierung .reservation-menu-heading span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 12px;
+    margin-bottom: 10px;
+    border-radius: 999px;
+    background: rgba(158,42,43,0.10);
+    color: var(--primary-red);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+}
+#reservierung .reservation-menu-heading h3 {
+    margin: 0;
+    color: #241815;
+    font-size: clamp(1.55rem, 2.2vw, 2.18rem);
+    line-height: 1.05;
+}
+#reservierung .reservation-menu-heading h3 em {
+    color: var(--primary-red);
+    font-style: italic;
+}
+#reservierung .reservation-menu-heading p {
+    margin-top: 10px;
+    color: #6b5b51;
+    font-size: 1rem;
+    line-height: 1.55;
+}
+#reservierung .reservation-menu-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+#reservierung .reservation-menu-price {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 18px;
+    padding: 17px 18px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(158,42,43,0.10), rgba(212,175,55,0.11));
+    border: 1px solid rgba(158,42,43,0.11);
+}
+#reservierung .reservation-menu-price span {
+    color: #6b5b51;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+}
+#reservierung .reservation-menu-price strong {
+    color: var(--primary-red);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.65rem, 2.4vw, 2.2rem);
+    line-height: 1;
+}
+#reservierung .reservation-contact-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 2px 0 20px;
+    color: #78675d;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+}
+#reservierung .reservation-contact-divider::before,
+#reservierung .reservation-contact-divider::after {
+    content: "";
+    flex: 1 1 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(158,42,43,0.18));
+}
+#reservierung .reservation-contact-divider::after {
+    background: linear-gradient(90deg, rgba(158,42,43,0.18), transparent);
+}
+
+#reservierung .reservation-step-panel {
+    animation: reservationReveal 0.42s ease both;
+}
+#reservierung .reservation-step-panel.is-hidden {
+    display: none !important;
+}
+#reservierung .reservation-next-button {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 54px;
+    margin-top: 18px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--primary-red);
+    color: #fff;
+    font-size: 1.03rem;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 16px 32px rgba(158,42,43,0.26);
+    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+#reservierung .reservation-next-button:hover {
+    transform: translateY(-2px);
+    background: var(--dark-red);
+    box-shadow: 0 20px 40px rgba(158,42,43,0.32);
+}
+#reservierung .reservation-contact-panel {
+    margin-top: 4px;
+}
+@media (max-width: 640px) {
+    #reservierung .reservation-menu-grid {
+        grid-template-columns: 1fr;
+    }
+    #reservierung .reservation-menu-price {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@keyframes reservationReveal {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 640px) {
+    #reservierung .reservation-location-step {
+        grid-template-columns: 1fr;
+    }
+    #reservierung .reservation-location-option {
+        min-height: 0;
+    }
+    #reservierung .reservation-location-photo {
+        height: 185px;
+    }
+    #reservierung .reservation-selected-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    #reservierung .reservation-change-location {
+        width: 100%;
+    }
+}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2465,15 +3146,146 @@ header nav ul li a {
 </section>
 </section>
 <!-- STORY / ÜBER UNS MIT ZÄHLERN -->
-<section class="fade-up image-bg-section" id="reservierung" style="--section-bg-image: url('images/reservierung-bg.png');">
-<h2 class="section-title">Tisch <span class="red-title-word">reservieren</span></h2>
-<p class="sub-text">Sichere dir deinen Platz – wir freuen uns auf dich!</p>
-<div class="reservation-box">
-<input id="resName" placeholder="Dein Name *" type="text"/>
-<input id="resEmail" placeholder="E-Mail *" type="email"/>
-<input id="resPhone" placeholder="Telefon" type="tel"/>
-<input id="resDate" type="date"/>
-<input id="resTime" type="time"/>
+<section class="fade-up image-bg-section reservation-section" id="reservierung" style="--section-bg-image: url('images/reservierung-bg.png');">
+<div class="reservation-shell">
+<div class="reservation-copy">
+<span class="reservation-kicker">Reservierung</span>
+<h2 class="reservation-title">Tisch <span>reservieren</span></h2>
+<p class="reservation-lead">Sichere dir deinen Platz – wir freuen uns auf dich!</p>
+<p class="reservation-text">Ob spontanes Abendessen, Familienrunde oder ein besonderer Anlass: Wähle Datum, Uhrzeit und Standort – wir bereiten alles für einen entspannten italienischen Genussmoment vor.</p>
+<div class="reservation-highlights" aria-label="Reservierung Vorteile">
+<div class="reservation-highlight"><strong>2</strong><span>Standorte<br/>Spandau &amp; Gatow</span></div>
+<div class="reservation-highlight"><strong>10+</strong><span>Personen<br/>auf Anfrage</span></div>
+<div class="reservation-highlight"><strong>✓</strong><span>Schnelle<br/>Bestätigung</span></div>
+</div>
+</div>
+<div class="reservation-card" aria-label="Reservierungsformular" data-selected-location="" data-step="location">
+<div class="reservation-view reservation-location-page" id="reservationLocationPage">
+<div class="reservation-card-header">
+<span>1. Standort wählen</span>
+<h3>Wo möchtest du reservieren?</h3>
+<p>Wähle zuerst deinen Standort. Danach öffnet sich eine eigene Seite mit Menü-Planer.</p>
+</div>
+<div class="reservation-location-step" aria-label="Standort zuerst auswählen">
+<button class="reservation-location-option" data-location="spandau" onclick="selectReservationLocation('spandau')" type="button" aria-pressed="false">
+<div class="reservation-location-photo">
+<img alt="Cappuccino Spandau" loading="lazy" onerror="this.onerror=null;this.src='images/standort-spandau.jpg';" src="images/reservation-spandau.jpg"/>
+</div>
+<div class="reservation-location-content">
+<span>Standort</span>
+<strong>Spandau</strong>
+<small>Restaurant Cappuccino</small>
+</div>
+</button>
+<button class="reservation-location-option" data-location="gatow" onclick="selectReservationLocation('gatow')" type="button" aria-pressed="false">
+<div class="reservation-location-photo">
+<img alt="Cappuccino Gatow" loading="lazy" onerror="this.onerror=null;this.src='images/standort-gatow.jpg';" src="images/reservation-gatow.jpg"/>
+</div>
+<div class="reservation-location-content">
+<span>Standort</span>
+<strong>Gatow</strong>
+<small>Restaurant Cappuccino</small>
+</div>
+</button>
+</div>
+<p class="reservation-location-hint">Bitte wähle erst <strong>Spandau</strong> oder <strong>Gatow</strong>. Danach wechselst du zur Menü-Seite.</p>
+</div>
+<div class="reservation-view reservation-details reservation-details-page is-hidden" id="reservationDetails">
+<button class="reservation-back-button" id="reservationBackButton" onclick="goReservationBack()" type="button" aria-label="Zurück">← Zurück</button>
+<div class="reservation-selected-row">
+<div>
+<span>Ausgewählter Standort</span>
+<strong id="selectedLocationText">—</strong>
+</div>
+<button class="reservation-change-location" onclick="resetReservationLocation()" type="button">Standort ändern</button>
+</div>
+<input id="resLocation" type="hidden" value=""/>
+<div class="reservation-step-panel reservation-menu-panel" id="reservationMenuPage">
+<div class="reservation-menu-planner" aria-label="Menü-Planer für Events und Catering">
+<div class="reservation-menu-heading">
+<span>2. Menü planen</span>
+<h3>Menü-Planer für <em>Events &amp; Catering</em></h3>
+<p>Wähle zuerst dein Wunschmenü. Erst danach geht es weiter zu Name und Kontaktdetails.</p>
+</div>
+<div class="reservation-menu-grid">
+<div class="reservation-field">
+<label for="resAntipasti">Antipasti</label>
+<select id="resAntipasti" data-res-menu="true">
+<option value="5">Bruschetta (+5€)</option>
+<option value="8">Carpaccio (+8€)</option>
+<option value="0">Keine Vorspeise (+0€)</option>
+</select>
+</div>
+<div class="reservation-field">
+<label for="resPrimo">Primo</label>
+<select id="resPrimo" data-res-menu="true">
+<option value="9">Spaghetti Carbonara (+9€)</option>
+<option value="11">Lasagna al Forno (+11€)</option>
+<option value="8">Penne Pomodoro (+8€)</option>
+</select>
+</div>
+<div class="reservation-field">
+<label for="resSecondo">Secondo</label>
+<select id="resSecondo" data-res-menu="true">
+<option value="15">Saltimbocca (+15€)</option>
+<option value="18">Filetto di Manzo (+18€)</option>
+<option value="12">Melanzane Parmigiana (+12€)</option>
+</select>
+</div>
+<div class="reservation-field">
+<label for="resDolce">Dolce</label>
+<select id="resDolce" data-res-menu="true">
+<option value="6">Tiramisu (+6€)</option>
+<option value="5">Panna Cotta (+5€)</option>
+<option value="0">Kein Dessert (+0€)</option>
+</select>
+</div>
+<div class="reservation-field reservation-field-wide">
+<label for="resBevanda">Getränke</label>
+<select id="resBevanda" data-res-menu="true">
+<option value="4">Hauswein / Softdrink (+4€)</option>
+<option value="7">Prosecco-Empfang (+7€)</option>
+<option value="0">Keine Getränkepauschale (+0€)</option>
+</select>
+</div>
+</div>
+<div class="reservation-menu-price">
+<span>Geschätzter Menüpreis pro Person</span>
+<strong id="resMenuTotal">39.00 €</strong>
+</div>
+<button class="reservation-next-button" onclick="showReservationContact()" type="button">Weiter zu Name &amp; Details</button>
+</div>
+</div>
+<div class="reservation-step-panel reservation-contact-panel is-hidden" id="reservationContactPage">
+<div class="reservation-contact-divider">Name &amp; Details</div>
+<div class="reservation-card-header reservation-details-header">
+<span>3. Name &amp; Details eintragen</span>
+<h3>Fast geschafft</h3>
+<p>Trage jetzt deine Kontaktdaten und die wichtigsten Reservierungsdetails ein.</p>
+</div>
+<div class="reservation-form-grid">
+<div class="reservation-field reservation-field-wide">
+<label for="resName">Name *</label>
+<input id="resName" placeholder="Dein Name" required="" type="text"/>
+</div>
+<div class="reservation-field">
+<label for="resEmail">E-Mail *</label>
+<input id="resEmail" placeholder="name@email.de" required="" type="email"/>
+</div>
+<div class="reservation-field">
+<label for="resPhone">Telefon</label>
+<input id="resPhone" placeholder="Optional" type="tel"/>
+</div>
+<div class="reservation-field">
+<label for="resDate">Datum *</label>
+<input id="resDate" required="" type="date"/>
+</div>
+<div class="reservation-field">
+<label for="resTime">Uhrzeit *</label>
+<input id="resTime" required="" type="time"/>
+</div>
+<div class="reservation-field">
+<label for="resPersons">Personen</label>
 <select id="resPersons">
 <option value="1">1 Person</option>
 <option selected="" value="2">2 Personen</option>
@@ -2485,13 +3297,18 @@ header nav ul li a {
 <option value="8">8 Personen</option>
 <option value="10">10+ Personen</option>
 </select>
-<select id="resLocation">
-<option value="spandau">Spandau</option>
-<option value="gatow">Gatow</option>
-</select>
-<textarea id="resMessage" placeholder="Wünsche / Anmerkungen (z.B. Hochzeit, Geburtstag, Allergien)" rows="3"></textarea>
-<button class="btn" onclick="makeReservation()">Jetzt verbindlich <span class="red-title-word">reservieren</span></button>
-<div id="resStatus" style="text-align:center; margin-top:15px; font-weight:600; color:var(--primary-red); min-height:30px;"></div>
+</div>
+<div class="reservation-field reservation-field-wide">
+<label for="resMessage">Wünsche / Anmerkungen</label>
+<textarea id="resMessage" placeholder="z.B. Hochzeit, Geburtstag, Allergien" rows="3"></textarea>
+</div>
+</div>
+<button class="btn reservation-submit" onclick="makeReservation()" type="button">Jetzt verbindlich reservieren</button>
+<p class="reservation-note">Pflichtfelder sind mit * markiert. Für größere Gruppen melden wir uns persönlich zurück.</p>
+</div>
+<div class="reservation-status" id="resStatus"></div>
+</div>
+</div>
 </div>
 </section>
 <!-- MENÜ-KONFIGURATOR (SINNVOLLER PIZZA BAUER) -->
@@ -2593,6 +3410,20 @@ header nav ul li a {
         document.querySelectorAll('#config select').forEach(sel => sel.addEventListener('change', updatePrice));
         updatePrice(); // Initial
 
+
+        function updateReservationMenuPrice() {
+            const fields = ['resAntipasti', 'resPrimo', 'resSecondo', 'resDolce', 'resBevanda'];
+            let total = 0;
+            fields.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) total += parseFloat(element.value || '0');
+            });
+            const totalElement = document.getElementById('resMenuTotal');
+            if (totalElement) totalElement.textContent = total.toFixed(2) + ' €';
+        }
+        document.querySelectorAll('#reservierung [data-res-menu="true"]').forEach(sel => sel.addEventListener('change', updateReservationMenuPrice));
+        updateReservationMenuPrice();
+
         // 2. MENÜ-ANFRAGE FÜR EVENT
         function sendMenuInquiry() {
             const price = document.getElementById('totalPrice').textContent;
@@ -2601,6 +3432,102 @@ header nav ul li a {
         }
 
         // 3. RESERVIERUNG (FUNKTIONAL)
+        function setReservationStep(step) {
+            const locationPage = document.getElementById('reservationLocationPage');
+            const details = document.getElementById('reservationDetails');
+            const menuPage = document.getElementById('reservationMenuPage');
+            const contactPage = document.getElementById('reservationContactPage');
+            const backButton = document.getElementById('reservationBackButton');
+            const card = document.querySelector('#reservierung .reservation-card');
+            const status = document.getElementById('resStatus');
+
+            if (card) card.dataset.step = step;
+            if (status) status.textContent = '';
+
+            if (step === 'location') {
+                if (locationPage) locationPage.classList.remove('is-hidden');
+                if (details) details.classList.add('is-hidden');
+                if (menuPage) menuPage.classList.remove('is-hidden');
+                if (contactPage) contactPage.classList.add('is-hidden');
+                if (card) card.classList.remove('is-details-mode');
+                if (backButton) backButton.textContent = '← Zurück';
+                return;
+            }
+
+            if (locationPage) locationPage.classList.add('is-hidden');
+            if (details) details.classList.remove('is-hidden');
+            if (card) card.classList.add('is-details-mode');
+
+            if (step === 'contact') {
+                if (menuPage) menuPage.classList.add('is-hidden');
+                if (contactPage) contactPage.classList.remove('is-hidden');
+                if (backButton) backButton.textContent = '← Zurück zum Menü';
+            } else {
+                if (menuPage) menuPage.classList.remove('is-hidden');
+                if (contactPage) contactPage.classList.add('is-hidden');
+                if (backButton) backButton.textContent = '← Zurück';
+            }
+        }
+
+        function selectReservationLocation(location) {
+            const normalizedLocation = location === 'gatow' ? 'gatow' : 'spandau';
+            const locationInput = document.getElementById('resLocation');
+            const selectedText = document.getElementById('selectedLocationText');
+            const card = document.querySelector('#reservierung .reservation-card');
+
+            if (locationInput) locationInput.value = normalizedLocation;
+            if (selectedText) selectedText.textContent = normalizedLocation === 'spandau' ? 'Spandau' : 'Gatow';
+
+            document.querySelectorAll('#reservierung .reservation-location-option').forEach(button => {
+                const isActive = button.dataset.location === normalizedLocation;
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+
+            setReservationStep('menu');
+            if (card) setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+
+            const firstField = document.getElementById('resAntipasti');
+            if (firstField) setTimeout(() => firstField.focus({ preventScroll: true }), 240);
+        }
+
+        function showReservationContact() {
+            const card = document.querySelector('#reservierung .reservation-card');
+            setReservationStep('contact');
+            if (card) setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+            const firstField = document.getElementById('resName');
+            if (firstField) setTimeout(() => firstField.focus({ preventScroll: true }), 240);
+        }
+
+        function goReservationBack() {
+            const card = document.querySelector('#reservierung .reservation-card');
+            const currentStep = card ? card.dataset.step : 'location';
+            if (currentStep === 'contact') {
+                setReservationStep('menu');
+                if (card) setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+            } else {
+                resetReservationLocation();
+            }
+        }
+
+        function resetReservationLocation() {
+            const locationInput = document.getElementById('resLocation');
+            const selectedText = document.getElementById('selectedLocationText');
+            const card = document.querySelector('#reservierung .reservation-card');
+            const status = document.getElementById('resStatus');
+
+            if (locationInput) locationInput.value = '';
+            if (selectedText) selectedText.textContent = '—';
+            setReservationStep('location');
+            if (card) setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+            if (status) status.textContent = 'Bitte wähle zuerst Spandau oder Gatow.';
+
+            document.querySelectorAll('#reservierung .reservation-location-option').forEach(button => {
+                button.classList.remove('active');
+                button.setAttribute('aria-pressed', 'false');
+            });
+        }
+
         function makeReservation() {
             const name = document.getElementById('resName').value.trim();
             const email = document.getElementById('resEmail').value.trim();
@@ -2608,13 +3535,20 @@ header nav ul li a {
             const time = document.getElementById('resTime').value;
             const location = document.getElementById('resLocation').value;
             const persons = document.getElementById('resPersons').value;
+            const menuTotal = document.getElementById('resMenuTotal') ? document.getElementById('resMenuTotal').textContent : '';
             const status = document.getElementById('resStatus');
 
-            if(!name || !email || !date || !time) {
-                status.textContent = '⚠️ Bitte fülle alle Pflichtfelder aus (Name, E-Mail, Datum, Uhrzeit).';
+            if(!location) {
+                status.textContent = '⚠️ Bitte wähle zuerst Spandau oder Gatow.';
+                setReservationStep('location');
                 return;
             }
-            status.textContent = `✅ Buon Appetito, ${name}! Deine Reservierung für ${persons} Personen am ${date} um ${time} in ${location === 'spandau' ? 'Spandau' : 'Gatow'} ist gebucht. Wir freuen uns auf dich!`;
+            if(!name || !email || !date || !time) {
+                status.textContent = '⚠️ Bitte fülle alle Pflichtfelder aus (Name, E-Mail, Datum, Uhrzeit).';
+                setReservationStep('contact');
+                return;
+            }
+            status.textContent = `✅ Danke ${name}! Deine Anfrage für ${persons} Personen am ${date} um ${time} in ${location === 'spandau' ? 'Spandau' : 'Gatow'} wurde gesendet. Menüpreis pro Person: ${menuTotal}. Wir melden uns in Kürze!`;
             setTimeout(() => status.textContent = '', 8000);
         }
 
