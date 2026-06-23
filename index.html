@@ -3573,5 +3573,81 @@ header nav ul li a {
 }
 </style>
 
+
+
+<style>
+/* === FINAL MOBILE TWEAK – requested: bigger top event images, smaller cards underneath === */
+@media (max-width: 700px) {
+    /* Only the 3 Havel event images on phones */
+    #events .event-gallery {
+        width: min(calc(100% + 34px), 540px) !important;
+        max-width: none !important;
+        padding: 0 !important;
+        gap: 4px !important;
+        margin: 22px auto 0 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    #events .event-thumb.havel-card-gallery {
+        aspect-ratio: 0.62 / 1 !important;
+        min-height: 0 !important;
+    }
+
+    #events .event-thumb.havel-card-gallery figcaption {
+        left: 8px !important;
+        right: 8px !important;
+        bottom: 10px !important;
+        padding: 6px 8px !important;
+        font-size: clamp(.56rem, 2.45vw, .78rem) !important;
+        line-height: 1.15 !important;
+    }
+
+    /* The 3 feature cards directly underneath, smaller only on phones */
+    #events .event-features {
+        margin-top: 18px !important;
+        padding: 0 6px !important;
+    }
+
+    #events .event-features-inner {
+        gap: 5px !important;
+        padding: 0 !important;
+    }
+
+    #events .event-feature-card,
+    #events .event-feature-card:nth-child(even),
+    #events .event-feature-card:nth-child(odd) {
+        padding: 7px 4px 8px !important;
+        gap: 5px !important;
+        border-radius: 12px !important;
+        min-height: auto !important;
+    }
+
+    #events .event-feature-card .event-feature-icon,
+    #events .event-feature-card:nth-child(even) .event-feature-icon,
+    #events .event-feature-card:nth-child(odd) .event-feature-icon {
+        width: clamp(38px, 12vw, 54px) !important;
+        height: clamp(38px, 12vw, 54px) !important;
+        border-radius: 12px !important;
+    }
+
+    #events .event-feature-card .event-feature-icon img {
+        border-radius: 10px !important;
+    }
+
+    #events .event-feature-card h3 {
+        margin: 0 0 3px !important;
+        font-size: clamp(.62rem, 2.55vw, .80rem) !important;
+        line-height: 1.08 !important;
+    }
+
+    #events .event-feature-card p {
+        font-size: clamp(.52rem, 2.15vw, .66rem) !important;
+        line-height: 1.18 !important;
+        -webkit-line-clamp: 4 !important;
+    }
+}
+</style>
+
 </body>
 </html>
