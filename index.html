@@ -1673,7 +1673,8 @@ header nav ul li a {
     font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #b9ad3f;
+    color: #e45768;
+    text-shadow: 0 4px 16px rgba(0,0,0,0.30);
 }
 
 #events .event-fullscreen-copy h3 {
@@ -2140,7 +2141,7 @@ header nav ul li a {
 <div class="event-fullscreen-copy">
 <div class="event-fullscreen-kicker">Veranstaltungen</div>
 <h3>Garten, Saal &amp; Terrasse</h3>
-<p>Unser Außenbereich mit direktem Havelblick ist ein Traum für Sommerfeste. Der angrenzende Festsaal bietet Platz für bis zu 150 Personen. Wir kümmern uns um das Catering, den Service und die Dekoration – du genießt einfach.</p>
+<p>Unser Garten mit direktem Havelblick ist ideal für Sommerfeste. Der angrenzende Festsaal bietet Platz für bis zu 150 Personen. Catering, Service und Dekoration übernehmen wir – du genießt einfach.</p>
 </div>
 <div class="event-flex">
 <div class="event-gallery">
@@ -3712,6 +3713,71 @@ header nav ul li a {
     #events .event-thumb.havel-card-gallery {
         aspect-ratio: 0.64 / 1 !important;
     }
+}
+</style>
+
+
+
+<style>
+/* === MOBILE ONLY – Eventlocation Text besser lesbar auf Handys === */
+@media (max-width: 700px) {
+    #events .event-fullscreen-copy {
+        width: min(calc(100% - 28px), 390px) !important;
+        margin: 0 auto 20px !important;
+        padding: 0 !important;
+        text-align: left !important;
+    }
+
+    #events .event-fullscreen-kicker {
+        margin-bottom: 7px !important;
+        font-size: clamp(.72rem, 3vw, .86rem) !important;
+        line-height: 1.15 !important;
+        letter-spacing: 1.35px !important;
+        font-weight: 700 !important;
+        color: #e45768 !important;
+        text-shadow: 0 3px 14px rgba(0,0,0,0.35) !important;
+    }
+
+    #events .event-fullscreen-copy h3 {
+        max-width: 100% !important;
+        font-size: clamp(1.55rem, 7vw, 2rem) !important;
+        line-height: 1.08 !important;
+        letter-spacing: .2px !important;
+        margin: 0 0 11px !important;
+        text-wrap: balance;
+    }
+
+    #events .event-fullscreen-copy p {
+        max-width: 100% !important;
+        font-size: clamp(.96rem, 3.8vw, 1.06rem) !important;
+        line-height: 1.48 !important;
+        color: rgba(255,255,255,0.92) !important;
+        text-wrap: pretty;
+        hyphens: auto;
+    }
+}
+
+@media (max-width: 380px) {
+    #events .event-fullscreen-copy {
+        width: calc(100% - 24px) !important;
+        margin-bottom: 18px !important;
+    }
+
+    #events .event-fullscreen-copy h3 {
+        font-size: clamp(1.45rem, 7.3vw, 1.78rem) !important;
+    }
+
+    #events .event-fullscreen-copy p {
+        font-size: .94rem !important;
+        line-height: 1.45 !important;
+    }
+}
+</style>
+
+<style>
+/* === EVENTLOCATION KICKER COLOR – same as Geschichte on desktop & mobile === */
+#events .event-fullscreen-kicker {
+    color: #e45768 !important;
 }
 </style>
 
