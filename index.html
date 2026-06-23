@@ -2075,18 +2075,30 @@ header nav ul li a {
 </div>
 <div class="event-flex">
 <div class="event-gallery">
-<!-- Nur 3 Bilder im Bogen-Design -->
-<figure class="event-thumb">
-<img alt="Hochzeits-Catering" loading="lazy" src="images/event-catering.jpg"/>
+<!-- 4 Bilder im Bogen-Design -->
+<figure class="event-thumb havel-card-gallery" data-gallery-index="0">
+<img class="havel-slide is-active" alt="Hochzeits-Catering" loading="lazy" src="images/event-catering.jpg"/>
+<img class="havel-slide" alt="Hochzeits-Catering 2" loading="lazy" src="images/event-catering-2.jpg"/>
+<img class="havel-slide" alt="Hochzeits-Catering 3" loading="lazy" src="images/event-catering-3.jpg"/>
 <figcaption>🍕 Hochzeits-Catering</figcaption>
 </figure>
-<figure class="event-thumb">
-<img alt="Festsaal" loading="lazy" src="images/event-festsaal.jpg"/>
+<figure class="event-thumb havel-card-gallery" data-gallery-index="1">
+<img class="havel-slide is-active" alt="Festsaal" loading="lazy" src="images/event-festsaal.jpg"/>
+<img class="havel-slide" alt="Festsaal 2" loading="lazy" src="images/event-festsaal-2.jpg"/>
+<img class="havel-slide" alt="Festsaal 3" loading="lazy" src="images/event-festsaal-3.jpg"/>
 <figcaption>🏛️ Festsaal</figcaption>
 </figure>
-<figure class="event-thumb">
-<img alt="Garten an der Havel" loading="lazy" src="images/event-garten-havel.jpg"/>
+<figure class="event-thumb havel-card-gallery" data-gallery-index="2">
+<img class="havel-slide is-active" alt="Garten an der Havel" loading="lazy" src="images/event-garten-havel.jpg"/>
+<img class="havel-slide" alt="Garten an der Havel 2" loading="lazy" src="images/event-garten-havel-2.jpg"/>
+<img class="havel-slide" alt="Garten an der Havel 3" loading="lazy" src="images/event-garten-havel-3.jpg"/>
 <figcaption>🌿 Garten an der <span class="red-title-word">Havel</span></figcaption>
+</figure>
+<figure class="event-thumb havel-card-gallery" data-gallery-index="3">
+<img class="havel-slide is-active" alt="Party und Musik" loading="lazy" src="images/event-party-musik.jpg"/>
+<img class="havel-slide" alt="Party und Musik 2" loading="lazy" src="images/event-party-musik-2.jpg"/>
+<img class="havel-slide" alt="Party und Musik 3" loading="lazy" src="images/event-party-musik-3.jpg"/>
+<figcaption>🎉 Party &amp; Musik</figcaption>
 </figure>
 </div>
 </div>
@@ -2558,7 +2570,161 @@ header nav ul li a {
         animation: none !important;
     }
 }
+
+
+/* === EVENTLOCATION HAVEL – BILDER WECHSELN MIT WARMER LICHT-LAMPE === */
+#events .event-thumb img {
+    transition:
+        opacity 0.55s ease,
+        transform 0.75s ease,
+        filter 0.75s ease;
+}
+
+#events .event-thumb.havel-image-changing img {
+    opacity: 0.18;
+    transform: scale(1.12) translate3d(0, -1.5%, 0) !important;
+    filter: brightness(1.16) saturate(1.12) blur(1px) !important;
+}
+
+#events .event-thumb.havel-image-changing::before {
+    opacity: 0.95 !important;
+}
 </style>
+
+
+<style>
+/* === EVENTLOCATION HAVEL – FINAL 4 BILDER PRO BEREICH === */
+#events .event-gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+#events .event-thumb:nth-child(4) {
+    animation-delay: 1.05s;
+}
+
+#events .event-thumb:nth-child(4) img {
+    animation-delay: 2s;
+}
+
+#events .event-thumb:nth-child(4)::before {
+    animation-delay: 3s;
+}
+
+@media (max-width: 1100px) {
+    #events .event-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+    #events .event-thumb,
+    #events .event-thumb.event-thumb-large {
+        min-height: clamp(420px, 54vh, 620px) !important;
+    }
+}
+
+@media (max-width: 700px) {
+    #events .event-gallery {
+        grid-template-columns: 1fr !important;
+    }
+}
+</style>
+
+
+<style>
+/* === EVENTLOCATION HAVEL – 4 KARTEN, JEDE KARTE MIT 3 WECHSELBILDERN === */
+#events .event-thumb.havel-card-gallery .havel-slide {
+    opacity: 0;
+    z-index: 0;
+    transition:
+        opacity 1.05s ease,
+        transform 1.2s ease,
+        filter 1.2s ease;
+}
+
+#events .event-thumb.havel-card-gallery .havel-slide.is-active {
+    opacity: 1;
+    z-index: 1;
+}
+
+#events .event-thumb.havel-card-gallery.havel-image-changing .havel-slide.is-active {
+    opacity: 0.18;
+}
+
+#events .event-thumb.havel-card-gallery .havel-slide.is-next {
+    opacity: 1;
+    z-index: 1;
+    transform: scale(1.08) translate3d(-0.6%, -0.6%, 0);
+    filter: saturate(1.08) brightness(1.03);
+}
+
+#events .event-thumb.havel-card-gallery figcaption {
+    z-index: 4;
+}
+</style>
+
+<script>
+(function () {
+    function prepareHavelCardGalleries() {
+        var cards = Array.prototype.slice.call(document.querySelectorAll('#events .havel-card-gallery'));
+        if (!cards.length) return;
+
+        cards.forEach(function (card) {
+            var slides = Array.prototype.slice.call(card.querySelectorAll('.havel-slide'));
+
+            // Falls ein zusätzliches Bild noch nicht im Ordner liegt, wird es automatisch ausgeblendet.
+            slides.forEach(function (img) {
+                img.addEventListener('error', function () {
+                    img.remove();
+                    var remaining = card.querySelectorAll('.havel-slide');
+                    if (remaining.length && !card.querySelector('.havel-slide.is-active')) {
+                        remaining[0].classList.add('is-active');
+                    }
+                });
+            });
+        });
+    }
+
+    function rotateOneHavelCard(card) {
+        var slides = Array.prototype.slice.call(card.querySelectorAll('.havel-slide'));
+        if (slides.length < 2) return;
+
+        var active = card.querySelector('.havel-slide.is-active') || slides[0];
+        var currentIndex = slides.indexOf(active);
+        var next = slides[(currentIndex + 1) % slides.length];
+
+        card.classList.add('havel-image-changing');
+        next.classList.add('is-next');
+
+        setTimeout(function () {
+            active.classList.remove('is-active');
+            next.classList.remove('is-next');
+            next.classList.add('is-active');
+        }, 520);
+
+        setTimeout(function () {
+            card.classList.remove('havel-image-changing');
+        }, 1050);
+    }
+
+    window.addEventListener('load', function () {
+        prepareHavelCardGalleries();
+
+        var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        var cards = Array.prototype.slice.call(document.querySelectorAll('#events .havel-card-gallery'));
+        cards.forEach(function (card, index) {
+            var startDelay = 2600 + (index * 850);
+            var interval = 7200;
+
+            setTimeout(function () {
+                rotateOneHavelCard(card);
+                setInterval(function () {
+                    rotateOneHavelCard(card);
+                }, interval);
+            }, startDelay);
+        });
+    });
+})();
+</script>
 
 </body>
 </html>
