@@ -1725,12 +1725,161 @@ header nav ul li a {
 }
 </style>
 
+
+
+<style>
+/* === MOBILE ONLY: Burger button rechts neben dem Logo – same style as reference === */
+.mobile-menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    header {
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+        overflow: visible !important;
+        padding-top: 18px !important;
+        padding-left: 4% !important;
+        padding-right: 4% !important;
+    }
+
+    header .logo {
+        max-width: calc(100% - 78px) !important;
+        flex: 0 1 auto !important;
+        z-index: 1002;
+    }
+
+    .mobile-menu-toggle {
+        width: 54px;
+        height: 54px;
+        margin-left: auto;
+        margin-right: 0;
+        margin-top: 0;
+        flex: 0 0 54px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 6px;
+        padding: 0 15px 0 0;
+        border: 0;
+        border-radius: 13px;
+        background: rgba(0,0,0,0.62);
+        color: #fff;
+        cursor: pointer;
+        z-index: 1003;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mobile-menu-toggle span {
+        height: 2.5px;
+        border-radius: 999px;
+        background: #fff;
+        display: block;
+        transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+        transform-origin: center;
+    }
+
+    /* Mirrored direction: lines are right-aligned so the arrow points the correct opposite way */
+    .mobile-menu-toggle span:nth-child(1) { width: 28px; }
+    .mobile-menu-toggle span:nth-child(2) { width: 22px; }
+    .mobile-menu-toggle span:nth-child(3) { width: 14px; }
+
+    body.mobile-menu-open .mobile-menu-toggle span:nth-child(1) {
+        width: 27px;
+        transform: translateY(8.5px) rotate(45deg);
+    }
+
+    body.mobile-menu-open .mobile-menu-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
+        width: 27px;
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
+
+    header nav {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 4%;
+        width: min(270px, 92vw);
+        padding: 16px;
+        border: 1px solid rgba(255,255,255,0.13) !important;
+        border-radius: 20px;
+        background: rgba(18, 13, 11, 0.94) !important;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.34) !important;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+        z-index: 1001;
+    }
+
+    body.mobile-menu-open header nav {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    header nav ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        gap: 0 !important;
+        font-size: 0.95rem !important;
+        color: #fff !important;
+    }
+
+    header nav ul li a {
+        display: block;
+        padding: 12px 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.09);
+    }
+
+    header nav ul li:last-child a {
+        border-bottom: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+}
+</style>
+
+
+
+<style>
+/* === MOBILE ONLY: move full hero logo (cappuccino + RISTORANTE) slightly down === */
+@media (max-width: 768px) {
+    .hero .hero-svg-wrap {
+        transform: translateY(16px) !important;
+    }
+}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
 <header>
 <div class="logo"><img alt="" src="images/logo.png"/></div>
-<nav>
+<button class="mobile-menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+<nav id="main-navigation">
 <ul>
 <li><a href="#home">Home</a></li>
 <li><a href="#locations">Filialen</a></li>
@@ -3872,6 +4021,36 @@ header nav ul li a {
     }
 }
 </style>
+
+
+<script>
+(function () {
+    const menuButton = document.querySelector('.mobile-menu-toggle');
+    const menuLinks = document.querySelectorAll('#main-navigation a');
+
+    if (!menuButton) return;
+
+    function closeMobileMenu() {
+        document.body.classList.remove('mobile-menu-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Menü öffnen');
+    }
+
+    menuButton.addEventListener('click', function () {
+        const isOpen = document.body.classList.toggle('mobile-menu-open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+    });
+
+    menuLinks.forEach(function (link) {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 768) closeMobileMenu();
+    });
+})();
+</script>
 
 </body>
 </html>
