@@ -984,7 +984,6 @@ header .logo img {
     height: 178px;
     max-width: 420px;
     text-shadow: 0 3px 14px rgba(0,0,0,0.65);
-    transform: translateY(16px);
     transition: height 0.32s ease, max-width 0.32s ease, transform 0.32s ease, filter 0.32s ease;
 }
 header.header-scrolled .logo {
@@ -995,7 +994,6 @@ header.header-scrolled .logo {
 header.header-scrolled .logo img {
     height: 98px;
     max-width: 240px;
-    transform: translateY(7px);
 }
 
 header .logo,
@@ -1036,7 +1034,6 @@ header nav ul li a {
     header .logo img {
         height: 142px;
         max-width: 290px;
-        transform: translateY(13px);
     }
     header.header-scrolled .logo {
         width: 170px;
@@ -1046,7 +1043,6 @@ header nav ul li a {
     header.header-scrolled .logo img {
         height: 84px;
         max-width: 170px;
-        transform: translateY(6px);
     }
 }
 
@@ -1730,78 +1726,134 @@ header nav ul li a {
 </style>
 
 
+
 <style>
-/* === HERO → UNSERE STANDORTE: connected full section under the arc === */
-.hero {
-    margin-bottom: 0 !important;
+/* === MOBILE ONLY: Burger button rechts neben dem Logo – same style as reference === */
+.mobile-menu-toggle {
+    display: none;
 }
-.hero::after {
-    background: linear-gradient(180deg, #fffaf2 0%, #f8f1e7 100%) !important;
-    box-shadow: 0 -18px 46px rgba(0,0,0,0.10) !important;
-}
-#locations.locations-showcase {
-    position: relative !important;
-    z-index: 2 !important;
-    margin-top: -1px !important;
-    padding-top: 0 !important;
-    background: #f8f1e7 !important;
-    overflow: hidden !important;
-}
-#locations .locations-intro {
-    position: relative !important;
-    isolation: isolate;
-    padding-top: clamp(72px, 8vw, 112px) !important;
-    padding-bottom: 34px !important;
-    background:
-        radial-gradient(circle at 50% -12%, rgba(255,255,255,0.78), transparent 32%),
-        radial-gradient(circle at 18% 12%, rgba(158,42,43,0.08), transparent 28%),
-        linear-gradient(180deg, #fffaf2 0%, #f8f1e7 100%) !important;
-}
-#locations .locations-intro::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: -58px;
-    width: min(780px, 92vw);
-    height: 118px;
-    transform: translateX(-50%);
-    border-radius: 0 0 999px 999px;
-    background:
-        radial-gradient(ellipse at center, rgba(255,255,255,0.62) 0%, rgba(255,250,242,0.54) 44%, rgba(255,250,242,0) 72%);
-    z-index: -1;
-    pointer-events: none;
-}
-#locations .locations-intro::after {
-    content: "";
-    display: block;
-    width: min(480px, 72vw);
-    height: 1px;
-    margin: 28px auto 0;
-    background: linear-gradient(90deg, transparent, rgba(158,42,43,0.42), transparent);
-    box-shadow: 0 0 16px rgba(158,42,43,0.14);
-}
-#locations .section-title,
-#locations .location-band {
-    scroll-margin-top: 92px;
-}
-.btn-hero-standorte:hover {
-    background: rgba(255,255,255,0.20) !important;
-    border-color: #fff !important;
-}
+
 @media (max-width: 768px) {
-    #locations .locations-intro {
-        padding-top: 64px !important;
-        padding-bottom: 20px !important;
+    header {
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+        overflow: visible !important;
+        padding-top: 18px !important;
+        padding-left: 4% !important;
+        padding-right: 4% !important;
     }
-    #locations .locations-intro::before {
-        top: -42px;
-        height: 86px;
-        width: 118%;
+
+    header .logo {
+        max-width: calc(100% - 78px) !important;
+        flex: 0 1 auto !important;
+        z-index: 1002;
+    }
+
+    .mobile-menu-toggle {
+        width: 54px;
+        height: 54px;
+        margin-left: auto;
+        margin-right: 0;
+        margin-top: 0;
+        flex: 0 0 54px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 6px;
+        padding: 0 15px 0 0;
+        border: 0;
+        border-radius: 13px;
+        background: rgba(0,0,0,0.62);
+        color: #fff;
+        cursor: pointer;
+        z-index: 1003;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mobile-menu-toggle span {
+        height: 2.5px;
+        border-radius: 999px;
+        background: #fff;
+        display: block;
+        transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+        transform-origin: center;
+    }
+
+    /* Mirrored direction: lines are right-aligned so the arrow points the correct opposite way */
+    .mobile-menu-toggle span:nth-child(1) { width: 28px; }
+    .mobile-menu-toggle span:nth-child(2) { width: 22px; }
+    .mobile-menu-toggle span:nth-child(3) { width: 14px; }
+
+    body.mobile-menu-open .mobile-menu-toggle span:nth-child(1) {
+        width: 27px;
+        transform: translateY(8.5px) rotate(45deg);
+    }
+
+    body.mobile-menu-open .mobile-menu-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
+        width: 27px;
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
+
+    header nav {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 4%;
+        width: min(270px, 92vw);
+        padding: 16px;
+        border: 1px solid rgba(255,255,255,0.13) !important;
+        border-radius: 20px;
+        background: rgba(18, 13, 11, 0.94) !important;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.34) !important;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+        z-index: 1001;
+    }
+
+    body.mobile-menu-open header nav {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    header nav ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        gap: 0 !important;
+        font-size: 0.95rem !important;
+        color: #fff !important;
+    }
+
+    header nav ul li a {
+        display: block;
+        padding: 12px 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.09);
+    }
+
+    header nav ul li:last-child a {
+        border-bottom: 0;
     }
 }
-@media (max-width: 420px) {
-    #locations .locations-intro {
-        padding-top: 56px !important;
+
+@media (min-width: 769px) {
+    .mobile-menu-toggle {
+        display: none !important;
     }
 }
 </style>
@@ -1809,33 +1861,11 @@ header nav ul li a {
 
 
 <style>
-/* === FINAL FIX: HERO ARC + UNSERE STANDORTE SAME CREAM COLOR === */
-:root {
-    --standorte-cream-unified: #fbf5ec;
-}
-
-.hero::after {
-    background: var(--standorte-cream-unified) !important;
-    box-shadow: none !important;
-}
-
-#locations.locations-showcase,
-#locations .locations-intro {
-    background: var(--standorte-cream-unified) !important;
-}
-
-#locations .locations-intro {
-    background-image:
-        radial-gradient(circle at 18% 12%, rgba(158,42,43,0.055), transparent 28%) !important;
-}
-
-#locations .locations-intro::before {
-    background: var(--standorte-cream-unified) !important;
-    opacity: 1 !important;
-}
-
-#locations .locations-intro::after {
-    background: linear-gradient(90deg, transparent, rgba(158,42,43,0.30), transparent) !important;
+/* === MOBILE ONLY: move full hero logo (cappuccino + RISTORANTE) slightly down === */
+@media (max-width: 768px) {
+    .hero .hero-svg-wrap {
+        transform: translateY(28px) !important;
+    }
 }
 </style>
 
@@ -1844,10 +1874,15 @@ header nav ul li a {
 <!-- NAVIGATION -->
 <header>
 <div class="logo"><img alt="" src="images/logo.png"/></div>
-<nav>
+<button class="mobile-menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+<nav id="main-navigation">
 <ul>
 <li><a href="#home">Home</a></li>
-<li><a href="#locations">Unsere Standorte</a></li>
+<li><a href="#locations">Filialen</a></li>
 <li><a href="#story">Story</a></li>
 <li><a href="#events">Events</a></li>
 <li><a href="#reservierung">Reservierung</a></li>
@@ -2121,7 +2156,6 @@ header nav ul li a {
 </div>
 <div class="hero-actions" style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap; justify-content:center;">
 <button class="btn-hero" onclick="document.getElementById('reservierung').scrollIntoView({behavior:'smooth'})">📅 Jetzt <span class="red-title-word">reservieren</span></button>
-<button class="btn-hero btn-hero-standorte" onclick="document.getElementById('locations').scrollIntoView({behavior:'smooth'})" style="background: rgba(255,255,255,0.10); border: 2px solid rgba(255,255,255,0.86); box-shadow:none;">📍 Unsere Standorte</button>
 <button class="btn-hero" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})" style="background: transparent; border: 2px solid white; box-shadow:none;">Unsere Geschichte</button>
 </div>
 <div aria-hidden="true" class="hero-ornament"><span></span></div>
@@ -3989,86 +4023,34 @@ header nav ul li a {
 </style>
 
 
-<style>
-/* === FINAL USER FIX: vollständige Verbindung Hero → Unsere Standorte ab der Kurve === */
-.hero {
-    margin-bottom: 0 !important;
-}
+<script>
+(function () {
+    const menuButton = document.querySelector('.mobile-menu-toggle');
+    const menuLinks = document.querySelectorAll('#main-navigation a');
 
-.hero::after {
-    height: 118px !important;
-    bottom: -1px !important;
-    width: 112% !important;
-    background: linear-gradient(180deg, #fffaf2 0%, #f8f1e7 100%) !important;
-    clip-path: ellipse(58% 46% at 50% 100%) !important;
-    box-shadow: none !important;
-}
+    if (!menuButton) return;
 
-#locations.locations-showcase {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    background: #f8f1e7 !important;
-}
-
-#locations .locations-intro {
-    margin-top: 0 !important;
-    padding-top: 26px !important;
-    padding-bottom: 18px !important;
-    background:
-        radial-gradient(circle at 18% 6%, rgba(158,42,43,0.07), transparent 24%),
-        linear-gradient(180deg, #fffaf2 0%, #f8f1e7 100%) !important;
-}
-
-#locations .locations-intro::before {
-    display: none !important;
-}
-
-#locations .section-title {
-    margin-top: 0 !important;
-    margin-bottom: 10px !important;
-}
-
-#locations .sub-text {
-    margin-bottom: 0 !important;
-}
-
-#locations .location-band {
-    padding-top: 58px !important;
-}
-
-@media (min-width: 769px) {
-    .hero {
-        padding-bottom: 96px !important;
+    function closeMobileMenu() {
+        document.body.classList.remove('mobile-menu-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Menü öffnen');
     }
-    .hero-ornament {
-        bottom: 30px !important;
-    }
-    #locations .locations-intro {
-        padding-top: 30px !important;
-    }
-}
 
-@media (max-width: 768px) {
-    .hero {
-        padding-bottom: 68px !important;
-    }
-    .hero::after {
-        height: 92px !important;
-        bottom: -1px !important;
-        width: 118% !important;
-    }
-    .hero-ornament {
-        bottom: 22px !important;
-    }
-    #locations .locations-intro {
-        padding-top: 18px !important;
-        padding-bottom: 12px !important;
-    }
-    #locations .location-band {
-        padding-top: 42px !important;
-    }
-}
-</style>
+    menuButton.addEventListener('click', function () {
+        const isOpen = document.body.classList.toggle('mobile-menu-open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+    });
+
+    menuLinks.forEach(function (link) {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 768) closeMobileMenu();
+    });
+})();
+</script>
 
 </body>
 </html>
