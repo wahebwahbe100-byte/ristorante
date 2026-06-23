@@ -3350,183 +3350,36 @@ header nav ul li a {
 </style>
 
 
-
 <style>
-/* === FINAL MOBILE FIX: kleine Bild oben, Text darunter === */
-@media (max-width: 700px) {
-    #events .event-features {
-        width: min(560px, 100%) !important;
-        margin: 30px auto 0 !important;
-        padding: 0 !important;
-    }
-
-    #events .event-features-inner {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 18px !important;
-        padding: 0 16px !important;
-    }
-
-    #events .event-feature-card,
-    #events .event-feature-card:nth-child(even),
-    #events .event-feature-card:nth-child(odd) {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 14px !important;
-        padding: 18px 18px 22px !important;
-        min-height: auto !important;
-        border-radius: 22px !important;
-        text-align: left !important;
-    }
-
-    #events .event-feature-card .event-feature-icon,
-    #events .event-feature-card:nth-child(even) .event-feature-icon,
-    #events .event-feature-card:nth-child(odd) .event-feature-icon {
-        order: 1 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-        width: 92px !important;
-        height: 92px !important;
-        aspect-ratio: 1 / 1 !important;
-        margin: 0 auto 2px !important;
-        border-radius: 22px !important;
-    }
-
-    #events .event-feature-card .event-feature-icon img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center !important;
-        border-radius: 20px !important;
-        filter: none !important;
-        opacity: 1 !important;
-    }
-
-    #events .event-feature-card > div:last-child,
-    #events .event-feature-card:nth-child(even) > div:last-child,
-    #events .event-feature-card:nth-child(odd) > div:last-child {
-        order: 2 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-        padding: 0 !important;
-        text-align: center !important;
-    }
-
-    #events .event-feature-card h3 {
-        margin: 0 0 8px !important;
-        font-size: 1.12rem !important;
-        line-height: 1.25 !important;
-    }
-
-    #events .event-feature-card p {
-        margin: 0 !important;
-        font-size: .98rem !important;
-        line-height: 1.6 !important;
-    }
-}
-</style>
-
-
-<style>
-/* === FINAL MOBILE FIX: 3 Vorteil-Karten nebeneinander === */
-@media (max-width: 700px) {
-    #events .event-features {
-        width: 100% !important;
-        margin: 26px auto 0 !important;
-        padding: 0 10px !important;
-    }
-
-    #events .event-features-inner {
-        display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 8px !important;
-        padding: 0 !important;
-        align-items: stretch !important;
-    }
-
-    #events .event-feature-card,
-    #events .event-feature-card:nth-child(even),
-    #events .event-feature-card:nth-child(odd) {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        gap: 8px !important;
-        min-height: auto !important;
-        padding: 10px 6px 12px !important;
-        border-radius: 16px !important;
-        text-align: center !important;
-        margin: 0 !important;
-        overflow: hidden !important;
-    }
-
-    #events .event-feature-card .event-feature-icon,
-    #events .event-feature-card:nth-child(even) .event-feature-icon,
-    #events .event-feature-card:nth-child(odd) .event-feature-icon {
-        order: 1 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-        width: clamp(48px, 16vw, 68px) !important;
-        height: clamp(48px, 16vw, 68px) !important;
-        aspect-ratio: 1 / 1 !important;
-        margin: 0 auto !important;
-        border-radius: 16px !important;
-    }
-
-    #events .event-feature-card .event-feature-icon img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center !important;
-        border-radius: 14px !important;
-        filter: none !important;
-        opacity: 1 !important;
-    }
-
-    #events .event-feature-card > div:last-child,
-    #events .event-feature-card:nth-child(even) > div:last-child,
-    #events .event-feature-card:nth-child(odd) > div:last-child {
-        order: 2 !important;
-        grid-column: auto !important;
-        grid-row: auto !important;
-        padding: 0 !important;
-        text-align: center !important;
-        width: 100% !important;
-    }
-
-    #events .event-feature-card h3 {
-        margin: 0 0 5px !important;
-        font-size: clamp(.72rem, 3vw, .92rem) !important;
-        line-height: 1.12 !important;
-        word-break: normal !important;
-    }
-
-    #events .event-feature-card p {
-        margin: 0 !important;
-        font-size: clamp(.62rem, 2.55vw, .76rem) !important;
-        line-height: 1.28 !important;
-        display: -webkit-box !important;
-        -webkit-line-clamp: 5 !important;
-        -webkit-box-orient: vertical !important;
-        overflow: hidden !important;
-    }
-}
-</style>
-
-<style>
-/* === MOBILE ONLY – TOP 3 EVENT IMAGES SLIGHTLY BIGGER (features untouched) === */
+/* === MOBILE FIX: تكبير صور الثلاثة فوق فقط === */
 @media (max-width: 700px) {
     #events .event-gallery {
-        width: min(100%, 470px) !important;
-        max-width: 470px !important;
-        padding: 0 8px !important;
-        gap: 6px !important;
-        margin-top: 22px !important;
+        width: min(100%, 460px) !important;
+        max-width: 460px !important;
+        margin: 22px auto 0 !important;
+        padding: 0 10px !important;
+        gap: 5px !important;
     }
 
     #events .event-thumb.havel-card-gallery {
-        aspect-ratio: 0.76 / 1 !important;
+        aspect-ratio: 0.58 / 1 !important;
+        min-height: 184px !important;
+        max-height: 230px !important;
+    }
+}
+
+@media (max-width: 420px) {
+    #events .event-thumb.havel-card-gallery {
+        min-height: 178px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    #events .event-gallery {
+        padding: 0 8px !important;
+    }
+    #events .event-thumb.havel-card-gallery {
+        min-height: 166px !important;
     }
 }
 </style>
