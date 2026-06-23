@@ -2455,5 +2455,110 @@ header nav ul li a {
 }
 </style>
 
+
+<style>
+/* === EVENTLOCATION HAVEL – ELEGANTE RESTAURANT-BILDANIMATION === */
+#events .event-gallery {
+    perspective: 1200px;
+}
+
+#events .event-thumb,
+#events .event-thumb.event-thumb-large {
+    isolation: isolate;
+    transform-origin: center bottom;
+    animation: havelPhotoFloat 7.5s ease-in-out infinite;
+    transition: transform 0.55s ease, filter 0.55s ease;
+}
+
+#events .event-thumb:nth-child(2) {
+    animation-delay: 0.35s;
+}
+
+#events .event-thumb:nth-child(3) {
+    animation-delay: 0.7s;
+}
+
+#events .event-thumb img {
+    animation: havelRestaurantKenburns 14s ease-in-out infinite alternate;
+    transform-origin: center center;
+    will-change: transform, filter;
+}
+
+#events .event-thumb:nth-child(2) img {
+    animation-delay: 0.8s;
+}
+
+#events .event-thumb:nth-child(3) img {
+    animation-delay: 1.4s;
+}
+
+#events .event-thumb::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 0%, rgba(255,248,237,0.06) 34%, rgba(255,248,237,0.26) 48%, rgba(255,248,237,0.05) 62%, transparent 100%);
+    transform: translateX(-135%) skewX(-10deg);
+    animation: havelWarmLightSweep 6.5s ease-in-out infinite;
+    mix-blend-mode: screen;
+}
+
+#events .event-thumb:nth-child(2)::before {
+    animation-delay: 1.2s;
+}
+
+#events .event-thumb:nth-child(3)::before {
+    animation-delay: 2.1s;
+}
+
+#events .event-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 16%, rgba(255,248,237,0.10), transparent 34%),
+        linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.18));
+}
+
+#events .event-thumb:hover,
+#events .event-thumb.event-thumb-large:hover {
+    transform: translateY(-12px) scale(1.015) rotateX(1deg);
+    filter: drop-shadow(0 26px 38px rgba(0,0,0,0.28));
+}
+
+#events .event-thumb:hover img {
+    transform: scale(1.09) !important;
+    filter: saturate(1.06) brightness(0.96) !important;
+}
+
+@keyframes havelPhotoFloat {
+    0%, 100% { transform: translateY(0) rotateX(0deg); }
+    50% { transform: translateY(-9px) rotateX(0.7deg); }
+}
+
+@keyframes havelRestaurantKenburns {
+    0% { transform: scale(1.02) translate3d(0, 0, 0); filter: saturate(1) brightness(0.98); }
+    50% { transform: scale(1.07) translate3d(-1.2%, -0.8%, 0); filter: saturate(1.06) brightness(1.02); }
+    100% { transform: scale(1.04) translate3d(1.1%, 0.7%, 0); filter: saturate(1.03) brightness(1); }
+}
+
+@keyframes havelWarmLightSweep {
+    0%, 42% { transform: translateX(-135%) skewX(-10deg); opacity: 0; }
+    52% { opacity: 0.75; }
+    68%, 100% { transform: translateX(135%) skewX(-10deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #events .event-thumb,
+    #events .event-thumb img,
+    #events .event-thumb::before {
+        animation: none !important;
+    }
+}
+</style>
+
 </body>
 </html>
