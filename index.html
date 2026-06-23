@@ -1705,6 +1705,26 @@ header nav ul li a {
     }
 }
 </style>
+
+<style>
+/* === FINAL FIX REQUEST: DESKTOP 4 EVENT IMAGES / MOBILE 3, FEATURE THUMBNAILS UNCHANGED === */
+#events .event-gallery {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+#events .event-thumb.havel-card-gallery {
+    display: block !important;
+}
+@media (max-width: 700px) {
+    #events .event-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+    #events .event-thumb.havel-card-gallery:nth-child(n+4) {
+        display: none !important;
+    }
+}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2138,13 +2158,13 @@ header nav ul li a {
 <figcaption>🏛️ Festsaal</figcaption>
 </figure>
 <figure class="event-thumb havel-card-gallery" data-gallery-index="2">
-<img class="havel-slide is-active" alt="Garten an der Havel" loading="lazy" src="images/dekoration.png"/>
+<img class="havel-slide is-active" alt="Garten an der Havel" loading="lazy" src="images/event-garten-havel.jpg"/>
 <img class="havel-slide" alt="Garten an der Havel 2" loading="lazy" src="images/event-garten-havel-2.jpg"/>
 <img class="havel-slide" alt="Garten an der Havel 3" loading="lazy" src="images/event-garten-havel-3.jpg"/>
 <figcaption>🌿 Garten an der <span class="red-title-word">Havel</span></figcaption>
 </figure>
 <figure class="event-thumb havel-card-gallery" data-gallery-index="3">
-<img class="havel-slide is-active" alt="Party und Musik" loading="lazy" src="images/weine.png"/>
+<img class="havel-slide is-active" alt="Party und Musik" loading="lazy" src="images/event-party-musik.jpg"/>
 <img class="havel-slide" alt="Party und Musik 2" loading="lazy" src="images/event-party-musik-2.jpg"/>
 <img class="havel-slide" alt="Party und Musik 3" loading="lazy" src="images/event-party-musik-3.jpg"/>
 <figcaption>🎉 Party &amp; Musik</figcaption>
