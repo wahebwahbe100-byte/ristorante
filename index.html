@@ -3312,7 +3312,7 @@ header nav ul li a {
 <div class="reservation-card-header">
 <span>1. Standort wählen</span>
 <h3>Wo möchtest du reservieren?</h3>
-<p>Wähle zuerst deinen Standort. Danach kannst du direkt deine Reservierungsdetails eintragen.</p>
+<p>Wähle zuerst deinen Standort. Danach öffnet sich Schritt 2 mit dem Menü-Planer.</p>
 </div>
 <div class="reservation-location-step" aria-label="Standort zuerst auswählen">
 <button class="reservation-location-option" data-location="spandau" onclick="selectReservationLocation('spandau')" type="button" aria-pressed="false">
@@ -3336,7 +3336,7 @@ header nav ul li a {
 </div>
 </button>
 </div>
-<p class="reservation-location-hint">Bitte wähle erst <strong>Spandau</strong> oder <strong>Gatow</strong>. Danach geht es direkt zu deinen Reservierungsdetails.</p>
+<p class="reservation-location-hint">Bitte wähle erst <strong>Spandau</strong> oder <strong>Gatow</strong>. Danach wechselst du zur Menü-Seite.</p>
 </div>
 <div class="reservation-view reservation-details reservation-details-page is-hidden" id="reservationDetails">
 <button class="reservation-back-button" id="reservationBackButton" onclick="goReservationBack()" type="button" aria-label="Zurück">← Zurück</button>
@@ -3348,10 +3348,66 @@ header nav ul li a {
 <button class="reservation-change-location" onclick="resetReservationLocation()" type="button">Standort ändern</button>
 </div>
 <input id="resLocation" type="hidden" value=""/>
+<div class="reservation-step-panel reservation-menu-panel" id="reservationMenuPage">
+<div class="reservation-menu-planner" aria-label="Menü-Planer für Events und Catering">
+<div class="reservation-menu-heading">
+<span>2. Menü planen</span>
+<h3>Menü-Planer für <em>Events &amp; Catering</em></h3>
+<p>Wähle zuerst dein Wunschmenü. Erst danach geht es weiter zu Name und Kontaktdetails.</p>
+</div>
+<div class="reservation-menu-grid">
+<div class="reservation-field">
+<label for="resAntipasti">Antipasti</label>
+<select id="resAntipasti" data-res-menu="true">
+<option value="5">Bruschetta (+5€)</option>
+<option value="8">Carpaccio (+8€)</option>
+<option value="0">Keine Vorspeise (+0€)</option>
+</select>
+</div>
+<div class="reservation-field">
+<label for="resPrimo">Primo</label>
+<select id="resPrimo" data-res-menu="true">
+<option value="9">Spaghetti Carbonara (+9€)</option>
+<option value="11">Lasagna al Forno (+11€)</option>
+<option value="8">Penne Pomodoro (+8€)</option>
+</select>
+</div>
+<div class="reservation-field">
+<label for="resSecondo">Secondo</label>
+<select id="resSecondo" data-res-menu="true">
+<option value="15">Saltimbocca (+15€)</option>
+<option value="18">Filetto di Manzo (+18€)</option>
+<option value="12">Melanzane Parmigiana (+12€)</option>
+</select>
+</div>
+<div class="reservation-field">
+<label for="resDolce">Dolce</label>
+<select id="resDolce" data-res-menu="true">
+<option value="6">Tiramisu (+6€)</option>
+<option value="5">Panna Cotta (+5€)</option>
+<option value="0">Kein Dessert (+0€)</option>
+</select>
+</div>
+<div class="reservation-field reservation-field-wide">
+<label for="resBevanda">Getränke</label>
+<select id="resBevanda" data-res-menu="true">
+<option value="4">Hauswein / Softdrink (+4€)</option>
+<option value="7">Prosecco-Empfang (+7€)</option>
+<option value="0">Keine Getränkepauschale (+0€)</option>
+</select>
+</div>
+</div>
+<div class="reservation-menu-price">
+<span>Geschätzter Menüpreis pro Person</span>
+<strong id="resMenuTotal">39,00 €</strong>
+</div>
+<button class="reservation-next-button" onclick="showReservationContact()" type="button">Weiter zu Name &amp; Details</button>
+</div>
+</div>
 <div class="reservation-step-panel reservation-contact-panel is-hidden" id="reservationContactPage">
 <div class="reservation-contact-divider">Name &amp; Details</div>
 <div class="reservation-card-header reservation-details-header">
-<span>2. Name &amp; Details eintragen</span>
+<span>3. Name &amp; Details eintragen</span>
 <h3>Fast geschafft</h3>
 <p>Trage jetzt deine Kontaktdaten und die wichtigsten Reservierungsdetails ein.</p>
 </div>
@@ -3445,9 +3501,25 @@ header nav ul li a {
 <!-- === JAVASCRIPT – ALLE SINNVOLLEN INTERAKTIONEN === -->
 <script>
         // RESERVIERUNG (FUNKTIONAL)
+        function updateReservationMenuPrice() {
+            const fields = ['resAntipasti', 'resPrimo', 'resSecondo', 'resDolce', 'resBevanda'];
+            let total = 0;
+            fields.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) total += parseFloat(element.value || '0');
+            });
+            const totalElement = document.getElementById('resMenuTotal');
+            if (totalElement) {
+                totalElement.textContent = total.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+            }
+        }
+        document.querySelectorAll('#reservierung [data-res-menu="true"]').forEach(sel => sel.addEventListener('change', updateReservationMenuPrice));
+        updateReservationMenuPrice();
+
         function setReservationStep(step) {
             const locationPage = document.getElementById('reservationLocationPage');
             const details = document.getElementById('reservationDetails');
+            const menuPage = document.getElementById('reservationMenuPage');
             const contactPage = document.getElementById('reservationContactPage');
             const backButton = document.getElementById('reservationBackButton');
             const card = document.querySelector('#reservierung .reservation-card');
@@ -3459,6 +3531,7 @@ header nav ul li a {
             if (step === 'location') {
                 if (locationPage) locationPage.classList.remove('is-hidden');
                 if (details) details.classList.add('is-hidden');
+                if (menuPage) menuPage.classList.remove('is-hidden');
                 if (contactPage) contactPage.classList.add('is-hidden');
                 if (card) card.classList.remove('is-details-mode');
                 if (backButton) backButton.textContent = '← Zurück';
@@ -3467,9 +3540,17 @@ header nav ul li a {
 
             if (locationPage) locationPage.classList.add('is-hidden');
             if (details) details.classList.remove('is-hidden');
-            if (contactPage) contactPage.classList.remove('is-hidden');
             if (card) card.classList.add('is-details-mode');
-            if (backButton) backButton.textContent = '← Zurück zur Standortwahl';
+
+            if (step === 'contact') {
+                if (menuPage) menuPage.classList.add('is-hidden');
+                if (contactPage) contactPage.classList.remove('is-hidden');
+                if (backButton) backButton.textContent = '← Zurück zum Menü';
+            } else {
+                if (menuPage) menuPage.classList.remove('is-hidden');
+                if (contactPage) contactPage.classList.add('is-hidden');
+                if (backButton) backButton.textContent = '← Zurück';
+            }
         }
 
         function selectReservationLocation(location) {
@@ -3487,10 +3568,10 @@ header nav ul li a {
                 button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
             });
 
-            setReservationStep('contact');
+            setReservationStep('menu');
             if (card) setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
 
-            const firstField = document.getElementById('resName');
+            const firstField = document.getElementById('resAntipasti');
             if (firstField) setTimeout(() => firstField.focus({ preventScroll: true }), 240);
         }
 
@@ -3503,7 +3584,14 @@ header nav ul li a {
         }
 
         function goReservationBack() {
-            resetReservationLocation();
+            const card = document.querySelector('#reservierung .reservation-card');
+            const currentStep = card ? card.dataset.step : 'location';
+            if (currentStep === 'contact') {
+                setReservationStep('menu');
+                if (card) setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+            } else {
+                resetReservationLocation();
+            }
         }
 
         function resetReservationLocation() {
@@ -3531,6 +3619,7 @@ header nav ul li a {
             const time = document.getElementById('resTime').value;
             const location = document.getElementById('resLocation').value;
             const persons = document.getElementById('resPersons').value;
+            const menuTotal = document.getElementById('resMenuTotal') ? document.getElementById('resMenuTotal').textContent : '';
             const status = document.getElementById('resStatus');
 
             if(!location) {
@@ -3543,7 +3632,7 @@ header nav ul li a {
                 setReservationStep('contact');
                 return;
             }
-            status.textContent = `✅ Danke ${name}! Deine Anfrage für ${persons} Personen am ${date} um ${time} in ${location === 'spandau' ? 'Spandau' : 'Gatow'} wurde gesendet. Wir melden uns in Kürze!`;
+            status.textContent = `✅ Danke ${name}! Deine Anfrage für ${persons} Personen am ${date} um ${time} in ${location === 'spandau' ? 'Spandau' : 'Gatow'} wurde gesendet. Menüpreis pro Person: ${menuTotal}. Wir melden uns in Kürze!`;
             setTimeout(() => status.textContent = '', 8000);
         }
 
