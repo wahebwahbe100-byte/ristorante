@@ -2154,21 +2154,21 @@ header nav ul li a {
 <section aria-label="Eventlocation Vorteile" class="event-features fade-up">
 <div class="event-features-inner">
 <article class="event-feature-card">
-<div class="event-feature-icon"><img alt="Italienisches Catering" loading="lazy" src="images/catering.png"/></div>
+<div class="event-feature-icon"><img alt="Italienisches Catering" loading="lazy" src="images/event-catering.jpg"/></div>
 <div>
 <h3>Italienisches Catering</h3>
 <p>Frische italienische Küche nach Wunsch – vom Empfang bis zum Menü passend zu Hochzeit, Geburtstag oder Firmenfeier.</p>
 </div>
 </article>
 <article class="event-feature-card">
-<div class="event-feature-icon"><img alt="Premium Weine und Getränke" loading="lazy" src="images/weine.png"/></div>
+<div class="event-feature-icon"><img alt="Premium Weine und Getränke" loading="lazy" src="images/event-party-musik.jpg"/></div>
 <div>
 <h3>Premium Weine &amp; Getränke</h3>
 <p>Ausgewählte Weine, Aperitifs und Getränke sorgen für den passenden Genuss während der gesamten Veranstaltung.</p>
 </div>
 </article>
 <article class="event-feature-card">
-<div class="event-feature-icon"><img alt="Individuelle Dekoration" loading="lazy" src="images/dekoration.png"/></div>
+<div class="event-feature-icon"><img alt="Individuelle Dekoration" loading="lazy" src="images/event-garten-havel.jpg"/></div>
 <div>
 <h3>Individuelle Dekoration</h3>
 <p>Die Dekoration kann auf Anlass, Stil und Wünsche abgestimmt werden – elegant, romantisch oder festlich.</p>
@@ -2955,6 +2955,579 @@ header nav ul li a {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     mix-blend-mode: screen;
+}
+</style>
+
+
+<style>
+/* === MOBILE ONLY – EVENTLOCATION HAVEL: 3 صور مثل المثال وكل صورة تتبدل === */
+@media (max-width: 700px) {
+    #events {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    #events .event-gallery {
+        width: min(100%, 430px) !important;
+        max-width: 430px !important;
+        margin: 18px auto 0 !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 4px !important;
+        padding: 0 16px !important;
+        align-items: stretch !important;
+    }
+
+    /* في الجوال نعرض 3 كروت فقط مثل الصورة المرسلة */
+    #events .event-thumb.havel-card-gallery:nth-child(n+4) {
+        display: none !important;
+    }
+
+    #events .event-thumb.havel-card-gallery {
+        min-height: 0 !important;
+        height: auto !important;
+        aspect-ratio: 0.72 / 1 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        background: #2d241f !important;
+        overflow: hidden !important;
+    }
+
+    /* اليسار منحني من الأسفل لليسار */
+    #events .event-thumb.havel-card-gallery:nth-child(1) {
+        border-radius: 0 0 0 48% / 0 0 0 18% !important;
+    }
+
+    /* الوسط عادي */
+    #events .event-thumb.havel-card-gallery:nth-child(2) {
+        border-radius: 0 !important;
+    }
+
+    /* اليمين منحني من الأسفل لليمين */
+    #events .event-thumb.havel-card-gallery:nth-child(3) {
+        border-radius: 0 0 48% 0 / 0 0 18% 0 !important;
+    }
+
+    #events .event-thumb.havel-card-gallery .havel-slide {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        filter: none !important;
+        opacity: 0 !important;
+        transition: opacity 1.15s ease-in-out, transform 1.6s ease-in-out !important;
+        transform: scale(1.015) translate3d(0,0,0) !important;
+    }
+
+    #events .event-thumb.havel-card-gallery .havel-slide.is-active,
+    #events .event-thumb.havel-card-gallery .havel-slide.is-next {
+        opacity: 1 !important;
+        transform: scale(1.025) translate3d(0,0,0) !important;
+    }
+
+    #events .event-thumb.havel-card-gallery .havel-slide.is-leaving {
+        opacity: 0 !important;
+        transform: scale(1.025) translate3d(0,0,0) !important;
+    }
+
+    #events .event-thumb.havel-card-gallery figcaption {
+        display: none !important;
+    }
+
+    #events .event-thumb.havel-card-gallery::before {
+        pointer-events: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+</style>
+
+
+<style>
+/* === EVENTLOCATION HAVEL – FEATURE CARDS IM GLEICHEN BILD-LOOK === */
+#events .event-features {
+    width: min(1480px, 100%) !important;
+    margin: clamp(34px, 5vw, 70px) auto 0 !important;
+    padding: 0 !important;
+}
+
+#events .event-features-inner {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(22px, 2.7vw, 44px) !important;
+    align-items: stretch !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+#events .event-feature-card {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto 1fr !important;
+    gap: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: rgba(255, 253, 248, 0.96) !important;
+    border: 1px solid rgba(255,248,237,0.22) !important;
+    border-radius: 0 0 34% 34% / 0 0 9% 9% !important;
+    box-shadow: 0 28px 70px rgba(0,0,0,0.26) !important;
+    transition: transform .45s ease, box-shadow .45s ease !important;
+}
+
+#events .event-feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 36px 86px rgba(0,0,0,0.32) !important;
+}
+
+#events .event-feature-icon {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+    border-radius: 0 0 34% 34% / 0 0 18% 18% !important;
+    overflow: hidden !important;
+    background: #1f1714 !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+#events .event-feature-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.22)),
+        radial-gradient(circle at 50% 16%, rgba(255,248,237,0.12), transparent 36%);
+}
+
+#events .event-feature-icon img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    filter: none !important;
+    transform: scale(1.025);
+    transition: transform 1.2s cubic-bezier(.22,.61,.36,1) !important;
+}
+
+#events .event-feature-card:hover .event-feature-icon img {
+    transform: scale(1.075);
+}
+
+#events .event-feature-card > div:last-child {
+    padding: 26px 28px 34px !important;
+}
+
+#events .event-feature-card h3 {
+    color: #241815 !important;
+    font-size: clamp(1.14rem, 1.55vw, 1.34rem) !important;
+    line-height: 1.2 !important;
+    margin: 0 0 12px !important;
+}
+
+#events .event-feature-card p {
+    color: #5b4a42 !important;
+    font-size: clamp(.98rem, 1.2vw, 1.06rem) !important;
+    line-height: 1.72 !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 980px) {
+    #events .event-features {
+        width: min(900px, 100%) !important;
+    }
+    #events .event-features-inner {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        padding: 0 16px !important;
+    }
+    #events .event-feature-card {
+        max-width: 560px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 700px) {
+    #events .event-features {
+        margin-top: 28px !important;
+    }
+    #events .event-feature-card {
+        border-radius: 0 0 28% 28% / 0 0 7% 7% !important;
+    }
+    #events .event-feature-icon {
+        aspect-ratio: 16 / 9 !important;
+        border-radius: 0 0 28% 28% / 0 0 15% 15% !important;
+    }
+    #events .event-feature-card > div:last-child {
+        padding: 22px 22px 28px !important;
+    }
+}
+</style>
+
+
+<style>
+/* === FIX: Eventlocation Vorteile wieder wie vorher + nur Handy rechts/links === */
+#events .event-features {
+    display: block !important;
+    width: min(1180px, 100%) !important;
+    margin: 54px auto 0 !important;
+    padding: 0 !important;
+}
+
+#events .event-features-inner {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+    align-items: stretch !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+}
+
+#events .event-feature-card {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: 64px 1fr !important;
+    grid-template-rows: auto !important;
+    gap: 22px !important;
+    align-items: start !important;
+    min-height: 245px !important;
+    padding: 34px 30px !important;
+    overflow: visible !important;
+    background: rgba(255, 253, 248, 0.94) !important;
+    border: 1px solid rgba(212,175,55,0.30) !important;
+    border-radius: 26px !important;
+    box-shadow: 0 18px 44px rgba(0,0,0,0.18) !important;
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease !important;
+    max-width: none !important;
+    margin: 0 !important;
+}
+
+#events .event-feature-card:hover {
+    transform: translateY(-7px) !important;
+    box-shadow: 0 24px 58px rgba(0,0,0,0.22) !important;
+}
+
+#events .event-feature-icon {
+    position: relative !important;
+    width: 64px !important;
+    height: 64px !important;
+    aspect-ratio: auto !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+    background: linear-gradient(135deg, rgba(158,42,43,0.10), rgba(212,175,55,0.22)) !important;
+    border: 1px solid rgba(212,175,55,0.26) !important;
+    box-shadow: 0 10px 24px rgba(158,42,43,0.08) !important;
+}
+
+#events .event-feature-icon::after {
+    display: none !important;
+}
+
+#events .event-feature-icon img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 16px !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+#events .event-feature-card:hover .event-feature-icon img {
+    transform: none !important;
+}
+
+#events .event-feature-card > div:last-child {
+    padding: 0 !important;
+}
+
+#events .event-feature-card h3 {
+    color: #241815 !important;
+    font-size: 1.18rem !important;
+    line-height: 1.25 !important;
+    margin: 0 0 14px !important;
+}
+
+#events .event-feature-card p {
+    color: #5b4a42 !important;
+    font-size: 1.03rem !important;
+    line-height: 1.72 !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 980px) {
+    #events .event-features {
+        width: min(620px, 100%) !important;
+        margin-top: 34px !important;
+    }
+
+    #events .event-features-inner {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        padding: 0 16px !important;
+    }
+
+    #events .event-feature-card {
+        min-height: auto !important;
+        padding: 24px 20px !important;
+        border-radius: 22px !important;
+    }
+}
+
+/* فقط على الهاتف: الكروت تحت بعض، ومرة أيقونة يسار ومرة يمين */
+@media (max-width: 700px) {
+    #events .event-features {
+        margin-top: 28px !important;
+    }
+
+    #events .event-feature-card {
+        grid-template-columns: 56px 1fr !important;
+        gap: 16px !important;
+        align-items: start !important;
+        padding: 22px 18px !important;
+        border-radius: 20px !important;
+    }
+
+    #events .event-feature-card:nth-child(even) {
+        grid-template-columns: 1fr 56px !important;
+    }
+
+    #events .event-feature-card:nth-child(even) .event-feature-icon {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+    }
+
+    #events .event-feature-card:nth-child(even) > div:last-child {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        text-align: right !important;
+    }
+
+    #events .event-feature-card:nth-child(odd) .event-feature-icon {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+    }
+
+    #events .event-feature-card:nth-child(odd) > div:last-child {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        text-align: left !important;
+    }
+
+    #events .event-feature-icon {
+        width: 56px !important;
+        height: 56px !important;
+        border-radius: 16px !important;
+    }
+
+    #events .event-feature-icon img {
+        border-radius: 14px !important;
+    }
+
+    #events .event-feature-card h3 {
+        font-size: 1.08rem !important;
+        margin-bottom: 8px !important;
+    }
+
+    #events .event-feature-card p {
+        font-size: .96rem !important;
+        line-height: 1.55 !important;
+    }
+}
+</style>
+
+
+
+<style>
+/* === FINAL MOBILE FIX: kleine Bild oben, Text darunter === */
+@media (max-width: 700px) {
+    #events .event-features {
+        width: min(560px, 100%) !important;
+        margin: 30px auto 0 !important;
+        padding: 0 !important;
+    }
+
+    #events .event-features-inner {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+        padding: 0 16px !important;
+    }
+
+    #events .event-feature-card,
+    #events .event-feature-card:nth-child(even),
+    #events .event-feature-card:nth-child(odd) {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 14px !important;
+        padding: 18px 18px 22px !important;
+        min-height: auto !important;
+        border-radius: 22px !important;
+        text-align: left !important;
+    }
+
+    #events .event-feature-card .event-feature-icon,
+    #events .event-feature-card:nth-child(even) .event-feature-icon,
+    #events .event-feature-card:nth-child(odd) .event-feature-icon {
+        order: 1 !important;
+        grid-column: auto !important;
+        grid-row: auto !important;
+        width: 92px !important;
+        height: 92px !important;
+        aspect-ratio: 1 / 1 !important;
+        margin: 0 auto 2px !important;
+        border-radius: 22px !important;
+    }
+
+    #events .event-feature-card .event-feature-icon img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        border-radius: 20px !important;
+        filter: none !important;
+        opacity: 1 !important;
+    }
+
+    #events .event-feature-card > div:last-child,
+    #events .event-feature-card:nth-child(even) > div:last-child,
+    #events .event-feature-card:nth-child(odd) > div:last-child {
+        order: 2 !important;
+        grid-column: auto !important;
+        grid-row: auto !important;
+        padding: 0 !important;
+        text-align: center !important;
+    }
+
+    #events .event-feature-card h3 {
+        margin: 0 0 8px !important;
+        font-size: 1.12rem !important;
+        line-height: 1.25 !important;
+    }
+
+    #events .event-feature-card p {
+        margin: 0 !important;
+        font-size: .98rem !important;
+        line-height: 1.6 !important;
+    }
+}
+</style>
+
+
+<style>
+/* === FINAL MOBILE FIX: 3 Vorteil-Karten nebeneinander === */
+@media (max-width: 700px) {
+    #events .event-features {
+        width: 100% !important;
+        margin: 26px auto 0 !important;
+        padding: 0 10px !important;
+    }
+
+    #events .event-features-inner {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        padding: 0 !important;
+        align-items: stretch !important;
+    }
+
+    #events .event-feature-card,
+    #events .event-feature-card:nth-child(even),
+    #events .event-feature-card:nth-child(odd) {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 8px !important;
+        min-height: auto !important;
+        padding: 10px 6px 12px !important;
+        border-radius: 16px !important;
+        text-align: center !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+    }
+
+    #events .event-feature-card .event-feature-icon,
+    #events .event-feature-card:nth-child(even) .event-feature-icon,
+    #events .event-feature-card:nth-child(odd) .event-feature-icon {
+        order: 1 !important;
+        grid-column: auto !important;
+        grid-row: auto !important;
+        width: clamp(48px, 16vw, 68px) !important;
+        height: clamp(48px, 16vw, 68px) !important;
+        aspect-ratio: 1 / 1 !important;
+        margin: 0 auto !important;
+        border-radius: 16px !important;
+    }
+
+    #events .event-feature-card .event-feature-icon img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        border-radius: 14px !important;
+        filter: none !important;
+        opacity: 1 !important;
+    }
+
+    #events .event-feature-card > div:last-child,
+    #events .event-feature-card:nth-child(even) > div:last-child,
+    #events .event-feature-card:nth-child(odd) > div:last-child {
+        order: 2 !important;
+        grid-column: auto !important;
+        grid-row: auto !important;
+        padding: 0 !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    #events .event-feature-card h3 {
+        margin: 0 0 5px !important;
+        font-size: clamp(.72rem, 3vw, .92rem) !important;
+        line-height: 1.12 !important;
+        word-break: normal !important;
+    }
+
+    #events .event-feature-card p {
+        margin: 0 !important;
+        font-size: clamp(.62rem, 2.55vw, .76rem) !important;
+        line-height: 1.28 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 5 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+}
+</style>
+
+<style>
+/* === MOBILE ONLY – TOP 3 EVENT IMAGES SLIGHTLY BIGGER (features untouched) === */
+@media (max-width: 700px) {
+    #events .event-gallery {
+        width: min(100%, 470px) !important;
+        max-width: 470px !important;
+        padding: 0 8px !important;
+        gap: 6px !important;
+        margin-top: 22px !important;
+    }
+
+    #events .event-thumb.havel-card-gallery {
+        aspect-ratio: 0.76 / 1 !important;
+    }
 }
 </style>
 
