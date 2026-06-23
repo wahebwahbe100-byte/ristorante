@@ -1503,9 +1503,8 @@ header nav ul li a {
 /* === MOBILE IMAGE OVERRIDES ===
    ضع هذه الصور داخل مجلد images:
    hero-mobile.png
-   standort-spandau-mobile.png / standort-spandau-mobile.jpg
-   standort-gatow-mobile.png / standort-gatow-mobile.jpg
-   على الشاشات الكبيرة تبقى الصور الأصلية كما هي. */
+   ملاحظة: صور Spandau و Gatow تبقى نفس صور الحاسوب على الهاتف أيضاً.
+   فقط صورة hero تستخدم نسخة الهاتف. */
 @media (max-width: 768px) {
     .hero {
         background-image: url('images/hero-mobile.png');
@@ -1513,11 +1512,11 @@ header nav ul li a {
     }
 
     .location-spandau {
-        --location-bg-image: url('images/standort-spandau-mobile.png') !important;
+        --location-bg-image: url('images/standort-spandau.png') !important;
     }
 
     .location-gatow {
-        --location-bg-image: url('images/standort-gatow-mobile.png') !important;
+        --location-bg-image: url('images/standort-gatow.png') !important;
     }
 
     .location-polaroid picture {
@@ -2023,7 +2022,7 @@ header nav ul li a {
 <div class="location-handnote">Mitten in Spandau genießen <span>♡</span></div>
 <figure class="location-polaroid">
 <picture>
-<source media="(max-width: 768px)" srcset="images/standort-spandau-mobile.jpg"/>
+<source media="(max-width: 768px)" srcset="images/standort-spandau.jpg"/>
 <img alt="Cappuccino Spandau Restaurant" loading="lazy" onerror="this.onerror=null;this.src='images/event-festsaal.jpg';" src="images/standort-spandau.jpg"/>
 </picture>
 <div class="location-badge-round"><small>Standort</small><strong>Spandau</strong></div>
@@ -2059,7 +2058,7 @@ header nav ul li a {
 <div class="location-handnote">Feiern an der <span class="red-title-word">Havel</span> <span>♡</span></div>
 <figure class="location-polaroid">
 <picture>
-<source media="(max-width: 768px)" srcset="images/standort-gatow-mobile.jpg"/>
+<source media="(max-width: 768px)" srcset="images/standort-gatow.jpg"/>
 <img alt="Cappuccino Gatow Restaurant und Eventlocation" loading="lazy" onerror="this.onerror=null;this.src='images/event-garten-havel.jpg';" src="images/standort-gatow.jpg"/>
 </picture>
 <div class="location-badge-round"><small>Standort</small><strong>Gatow</strong></div>
@@ -2147,19 +2146,19 @@ header nav ul li a {
 <div class="event-gallery">
 <!-- 4 Bilder im Bogen-Design -->
 <figure class="event-thumb havel-card-gallery" data-gallery-index="0">
-<img class="havel-slide is-active" alt="Hochzeits-Catering" loading="lazy" src="images/event-catering.jpg"/>
+<img class="havel-slide is-active" alt="Hochzeits-Catering" loading="eager" decoding="async" fetchpriority="high" src="images/event-catering.jpg"/>
 <img class="havel-slide" alt="Hochzeits-Catering 2" loading="lazy" src="images/event-catering-2.jpg"/>
 <img class="havel-slide" alt="Hochzeits-Catering 3" loading="lazy" src="images/event-catering-3.jpg"/>
 <figcaption>🍕 Hochzeits-Catering</figcaption>
 </figure>
 <figure class="event-thumb havel-card-gallery" data-gallery-index="1">
-<img class="havel-slide is-active" alt="Festsaal" loading="lazy" src="images/event-festsaal.jpg"/>
+<img class="havel-slide is-active" alt="Festsaal" loading="eager" decoding="async" fetchpriority="high" src="images/event-festsaal.jpg"/>
 <img class="havel-slide" alt="Festsaal 2" loading="lazy" src="images/event-festsaal-2.jpg"/>
 <img class="havel-slide" alt="Festsaal 3" loading="lazy" src="images/event-festsaal-3.jpg"/>
 <figcaption>🏛️ Festsaal</figcaption>
 </figure>
 <figure class="event-thumb havel-card-gallery" data-gallery-index="2">
-<img class="havel-slide is-active" alt="Garten an der Havel" loading="lazy" src="images/event-garten-havel.jpg"/>
+<img class="havel-slide is-active" alt="Garten an der Havel" loading="eager" decoding="async" fetchpriority="high" src="images/event-garten-havel.jpg"/>
 <img class="havel-slide" alt="Garten an der Havel 2" loading="lazy" src="images/event-garten-havel-2.jpg"/>
 <img class="havel-slide" alt="Garten an der Havel 3" loading="lazy" src="images/event-garten-havel-3.jpg"/>
 <figcaption>🌿 Garten an der <span class="red-title-word">Havel</span></figcaption>
@@ -3780,6 +3779,88 @@ header nav ul li a {
     color: #e45768 !important;
 }
 </style>
+
+
+<style>
+/* === MOBILE ONLY – HAVEL GALLERY STABLE IMAGE FIX ===
+   Auf Handys bleiben die drei Bogen-Bilder immer sichtbar.
+   Die automatische Bildrotation wird dort deaktiviert, damit keine dunklen Platzhalter erscheinen. */
+@media (max-width: 700px) {
+    #events .event-thumb.havel-card-gallery .havel-slide {
+        position: absolute !important;
+        inset: 0 !important;
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        opacity: 0 !important;
+        z-index: 0 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+
+    #events .event-thumb.havel-card-gallery .havel-slide:first-of-type {
+        opacity: 1 !important;
+        z-index: 3 !important;
+    }
+
+    #events .event-thumb.havel-card-gallery .havel-slide:not(:first-of-type) {
+        opacity: 0 !important;
+        z-index: 1 !important;
+    }
+
+    #events .event-thumb.havel-card-gallery.havel-image-changing::before {
+        display: none !important;
+        opacity: 0 !important;
+        animation: none !important;
+    }
+}
+</style>
+
+<script>
+(function () {
+    function stabilizeHavelMobileGallery() {
+        var isMobile = window.matchMedia && window.matchMedia('(max-width: 700px)').matches;
+        var cards = Array.prototype.slice.call(document.querySelectorAll('#events .havel-card-gallery'));
+
+        cards.forEach(function (card) {
+            var slides = Array.prototype.slice.call(card.querySelectorAll('.havel-slide'));
+
+            if (!isMobile) {
+                slides.forEach(function (img) { img.style.opacity = ''; });
+                return;
+            }
+
+            card.classList.remove('havel-image-changing');
+            card.dataset.isChanging = '1';
+            card.dataset.currentSlide = '0';
+
+            slides.forEach(function (img, index) {
+                img.classList.remove('is-next', 'is-leaving');
+                img.loading = index === 0 ? 'eager' : 'lazy';
+                img.decoding = 'async';
+
+                if (index === 0) {
+                    img.classList.add('is-active');
+                    img.style.opacity = '1';
+                } else {
+                    img.classList.remove('is-active');
+                    img.style.opacity = '0';
+                }
+            });
+        });
+    }
+
+    stabilizeHavelMobileGallery();
+    window.addEventListener('DOMContentLoaded', stabilizeHavelMobileGallery);
+    window.addEventListener('load', stabilizeHavelMobileGallery);
+    window.addEventListener('resize', stabilizeHavelMobileGallery);
+})();
+</script>
 
 </body>
 </html>
