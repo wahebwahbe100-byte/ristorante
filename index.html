@@ -3649,5 +3649,27 @@ header nav ul li a {
 }
 </style>
 
+
+<style>
+/* === MOBILE ONLY – Eventlocation Vorteil-Bilder etwas kleiner === */
+@media (max-width: 700px) {
+    #events .event-feature-card .event-feature-icon,
+    #events .event-feature-card:nth-child(even) .event-feature-icon,
+    #events .event-feature-card:nth-child(odd) .event-feature-icon {
+        width: clamp(32px, 10vw, 46px) !important;
+        height: clamp(32px, 10vw, 46px) !important;
+        border-radius: 10px !important;
+    }
+
+    #events .event-feature-card .event-feature-icon img {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 8px !important;
+        font-size: .62rem !important;
+        line-height: 1 !important;
+    }
+}
+</style>
+
 </body>
 </html>
