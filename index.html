@@ -3780,5 +3780,98 @@ header nav ul li a {
 }
 </style>
 
+
+
+<style>
+/* === MOBILE HERO – sauberer Übergang ohne großen Leerraum === */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100svh !important;
+        padding-top: 108px !important;
+        padding-bottom: 58px !important;
+        background-position: center top !important;
+    }
+
+    .hero::after {
+        height: 86px !important;
+        bottom: -38px !important;
+        width: 118% !important;
+        clip-path: ellipse(62% 58% at 50% 100%) !important;
+    }
+
+    .hero-ornament {
+        bottom: 15px !important;
+    }
+
+    .hero-ornament::before,
+    .hero-ornament::after {
+        width: min(118px, 28vw) !important;
+    }
+
+    .locations-intro {
+        padding-top: 44px !important;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero {
+        padding-bottom: 52px !important;
+    }
+
+    .hero::after {
+        height: 78px !important;
+        bottom: -34px !important;
+    }
+
+    .locations-intro {
+        padding-top: 38px !important;
+    }
+}
+</style>
+
+
+
+<style>
+/* === HERO – sauberer Übergang auch auf dem Computer === */
+@media (min-width: 769px) {
+    .hero {
+        min-height: 100vh !important;
+        padding-top: 124px !important;
+        padding-bottom: 72px !important;
+        background-position: center center !important;
+    }
+
+    .hero::after {
+        height: 90px !important;
+        bottom: -34px !important;
+        width: 116% !important;
+        clip-path: ellipse(58% 56% at 50% 100%) !important;
+    }
+
+    .hero-ornament {
+        bottom: 18px !important;
+    }
+
+    .locations-intro {
+        padding-top: 64px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero {
+        padding-bottom: 78px !important;
+    }
+
+    .hero::after {
+        height: 96px !important;
+        bottom: -36px !important;
+    }
+
+    .locations-intro {
+        padding-top: 70px !important;
+    }
+}
+</style>
+
 </body>
 </html>
