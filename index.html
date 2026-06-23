@@ -1535,31 +1535,32 @@ header nav ul li a {
 
 
 
-/* === FIX: EVENTLOCATION HAVEL – 5ER BILDER-GRID RICHTIGES FORMAT ===
-   Lösung für das Problem beim Hinzufügen von Bildern:
-   - 1 großes Bild oben (16:9)
-   - 4 Bilder darunter (4:3)
-   - keine Verzerrung, alle Bilder sauber gleich groß zugeschnitten
+/* === EVENTLOCATION HAVEL – 3 BILDER MIT BOGEN-DESIGN ===
+   Nur 3 Bilder im Eventlocation-Grid:
+   - Hochzeits-Catering
+   - Festsaal
+   - Garten an der Havel
+   Design wie Referenz: 3 vertikale Bildkarten mit runder Bogenkante unten.
 */
 #events .event-gallery {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
     align-items: stretch;
+    width: 100%;
 }
 
-#events .event-thumb {
+#events .event-thumb,
+#events .event-thumb.event-thumb-large {
     position: relative;
+    grid-column: auto !important;
     min-height: 0 !important;
     height: auto !important;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     overflow: hidden;
-}
-
-#events .event-thumb.event-thumb-large {
-    grid-column: 1 / -1;
-    min-height: 0 !important;
-    aspect-ratio: 16 / 9;
+    border-radius: 0 0 42% 42% / 0 0 18% 18%;
+    background: #2d251f;
+    box-shadow: 0 24px 62px rgba(0,0,0,0.28);
 }
 
 #events .event-thumb img {
@@ -1571,22 +1572,87 @@ header nav ul li a {
     display: block;
     object-fit: cover;
     object-position: center;
+    transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+#events .event-thumb:hover img {
+    transform: scale(1.06);
+    filter: brightness(0.92);
 }
 
 #events .event-thumb figcaption {
     z-index: 2;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 980px) {
+    #events .event-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+    }
+}
+
+@media (max-width: 700px) {
     #events .event-gallery {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 18px;
     }
 
     #events .event-thumb,
     #events .event-thumb.event-thumb-large {
         aspect-ratio: 4 / 3;
-        min-height: 0 !important;
+        border-radius: 0 0 34% 34% / 0 0 16% 16%;
+    }
+}
+</style>
+
+<style>
+/* === EVENTLOCATION HAVEL – TEXTBLOCK GARTEN, SAAL & TERRASSE === */
+#events .event-fullscreen-copy {
+    width: min(100%, 1180px);
+    margin: 0 auto clamp(28px, 4vw, 56px);
+    color: #fff;
+    text-align: left;
+}
+
+#events .event-fullscreen-kicker {
+    margin-bottom: 12px;
+    font-size: clamp(0.95rem, 1.2vw, 1.25rem);
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b9ad3f;
+}
+
+#events .event-fullscreen-copy h3 {
+    max-width: 980px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: clamp(2rem, 3.2vw, 3.25rem);
+    line-height: 1.06;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin: 0 0 18px;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.28);
+}
+
+#events .event-fullscreen-copy p {
+    max-width: 920px;
+    font-size: clamp(1.05rem, 1.35vw, 1.35rem);
+    line-height: 1.65;
+    color: rgba(255,255,255,0.88);
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    #events .event-fullscreen-copy {
+        margin-bottom: 24px;
+    }
+    #events .event-fullscreen-copy h3 {
+        font-size: clamp(1.7rem, 8vw, 2.25rem);
     }
 }
 </style>
@@ -1696,6 +1762,98 @@ header nav ul li a {
 #catering .section-title .red-title-word,
 #team .section-title .red-title-word {
     color: #e45768 !important;
+}
+
+
+/* === EVENTLOCATION HAVEL – FULLSCREEN 3-BILD DESIGN OHNE LINKEN TEXT === */
+#events.event-section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 72px 5vw 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #2d251f !important;
+}
+
+#events.image-bg-section {
+    background-image: none !important;
+}
+
+#events.image-bg-section::before,
+#events.image-bg-section::after {
+    display: none !important;
+}
+
+#events .section-title,
+#events .sub-text {
+    display: none !important;
+}
+
+#events .event-flex {
+    width: min(100%, 1520px);
+    margin: 0 auto;
+    display: block !important;
+}
+
+#events .event-text {
+    display: none !important;
+}
+
+#events .event-gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(14px, 1.4vw, 24px);
+    align-items: stretch;
+}
+
+#events .event-thumb,
+#events .event-thumb.event-thumb-large {
+    aspect-ratio: 0.72 / 1;
+    min-height: clamp(520px, 72vh, 760px) !important;
+    border: 0 !important;
+    border-radius: 0 0 42% 42% / 0 0 18% 18% !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+#events .event-thumb img {
+    object-fit: cover;
+    object-position: center;
+}
+
+#events .event-thumb figcaption {
+    display: none !important;
+}
+
+#events .event-features {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    #events.event-section {
+        padding: 56px 4vw;
+    }
+    #events .event-thumb,
+    #events .event-thumb.event-thumb-large {
+        min-height: clamp(360px, 58vh, 620px) !important;
+    }
+}
+
+@media (max-width: 700px) {
+    #events.event-section {
+        min-height: auto;
+        padding: 40px 5vw;
+    }
+    #events .event-gallery {
+        grid-template-columns: 1fr;
+    }
+    #events .event-thumb,
+    #events .event-thumb.event-thumb-large {
+        aspect-ratio: 0.82 / 1;
+        min-height: auto !important;
+    }
 }
 </style>
 <g class="logo-main">
@@ -1910,39 +2068,25 @@ header nav ul li a {
 <section class="event-section fade-up image-bg-section" id="events" style="--section-bg-image: url('images/eventlocation-havel-bg.png');">
 <h2 class="section-title">Eventlocation an der <span class="red-title-word">Havel</span></h2>
 <p class="sub-text">Ob Hochzeit, Geburtstag oder Firmenfeier – in Gatow wird jeder Moment unvergesslich.</p>
-<div class="event-flex">
-<div class="event-text">
+<div class="event-fullscreen-copy">
+<div class="event-fullscreen-kicker">Veranstaltungen</div>
 <h3>Garten, Saal &amp; Terrasse</h3>
-<p>Unser Außenbereich mit direktem <span class="red-title-word">Havel</span>blick ist ein Traum für Sommerfeste. Der angrenzende Festsaal bietet Platz für bis zu <strong>150 Personen</strong>. Wir kümmern uns um das Catering, den <span class="red-title-word">Service</span> und die Dekoration – du genießt einfach.</p>
-<ul style="margin: 15px 0;">
-<li>✅ Exklusive Nutzung des gesamten Areals</li>
-<li>✅ Italienisches Catering nach Wunsch</li>
-<li>✅ Premium Weine &amp; Getränke</li>
-<li>✅ Individuelle Dekoration möglich</li>
-</ul>
-<a class="btn-hero" href="#reservierung" style="padding: 12px 30px; font-size:1rem;">Jetzt Event anfragen</a>
+<p>Unser Außenbereich mit direktem Havelblick ist ein Traum für Sommerfeste. Der angrenzende Festsaal bietet Platz für bis zu 150 Personen. Wir kümmern uns um das Catering, den Service und die Dekoration – du genießt einfach.</p>
 </div>
+<div class="event-flex">
 <div class="event-gallery">
-<!-- Bilder im Ordner /images ablegen und Dateinamen bei src bei Bedarf anpassen -->
-<figure class="event-thumb event-thumb-large">
-<img alt="Garten an der Havel" loading="lazy" src="images/event-garten-havel.jpg"/>
-<figcaption>🌿 Garten an der <span class="red-title-word">Havel</span></figcaption>
+<!-- Nur 3 Bilder im Bogen-Design -->
+<figure class="event-thumb">
+<img alt="Hochzeits-Catering" loading="lazy" src="images/event-catering.jpg"/>
+<figcaption>🍕 Hochzeits-Catering</figcaption>
 </figure>
 <figure class="event-thumb">
 <img alt="Festsaal" loading="lazy" src="images/event-festsaal.jpg"/>
 <figcaption>🏛️ Festsaal</figcaption>
 </figure>
 <figure class="event-thumb">
-<img alt="Terrasse" loading="lazy" src="images/event-terrasse.jpg"/>
-<figcaption>🍷 Terrasse</figcaption>
-</figure>
-<figure class="event-thumb">
-<img alt="Hochzeits-Catering" loading="lazy" src="images/event-catering.jpg"/>
-<figcaption>🍕 Hochzeits-Catering</figcaption>
-</figure>
-<figure class="event-thumb">
-<img alt="Party und Musik" loading="lazy" src="images/event-party-musik.jpg"/>
-<figcaption>🎉 Party &amp; Musik</figcaption>
+<img alt="Garten an der Havel" loading="lazy" src="images/event-garten-havel.jpg"/>
+<figcaption>🌿 Garten an der <span class="red-title-word">Havel</span></figcaption>
 </figure>
 </div>
 </div>
@@ -2233,6 +2377,83 @@ header nav ul li a {
     }
 })();
 </script>
+
+
+<style>
+/* === EVENTLOCATION HAVEL – VORTEILE WIEDER EINBLENDEN === */
+#events .event-features {
+    display: block !important;
+    width: min(100%, 1180px);
+    margin: 54px auto 0;
+    padding: 0 !important;
+}
+
+#events .event-features-inner {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+}
+
+#events .event-feature-card {
+    display: grid !important;
+    grid-template-columns: 64px 1fr;
+    gap: 22px;
+    align-items: start;
+    min-height: 245px;
+    padding: 34px 30px;
+    background: rgba(255, 253, 248, 0.94);
+    border: 1px solid rgba(212,175,55,0.30) !important;
+    border-radius: 26px;
+    box-shadow: 0 18px 44px rgba(0,0,0,0.18);
+}
+
+#events .event-feature-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+#events .event-feature-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#events .event-feature-card h3 {
+    color: #241815;
+    font-size: 1.18rem;
+    margin-bottom: 14px;
+}
+
+#events .event-feature-card p {
+    color: #5b4a42;
+    font-size: 1.03rem;
+    line-height: 1.72;
+}
+
+@media (max-width: 900px) {
+    #events .event-features-inner {
+        grid-template-columns: 1fr;
+    }
+    #events .event-feature-card {
+        min-height: auto;
+        grid-template-columns: 56px 1fr;
+        gap: 16px;
+        padding: 24px 20px;
+    }
+    #events .event-feature-icon {
+        width: 56px;
+        height: 56px;
+    }
+}
+</style>
 
 </body>
 </html>
