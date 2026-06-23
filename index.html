@@ -3693,5 +3693,27 @@ header nav ul li a {
 }
 </style>
 
+
+
+<style>
+/* === MOBILE ONLY – Havel Bilder wieder etwas größer, Rand bleibt sichtbar === */
+@media (max-width: 700px) {
+    #events .event-gallery {
+        width: min(calc(100% - 10px), 455px) !important;
+        max-width: 455px !important;
+        padding: 0 !important;
+        gap: 4px !important;
+        margin: 22px auto 0 !important;
+        left: auto !important;
+        transform: none !important;
+        position: relative !important;
+    }
+
+    #events .event-thumb.havel-card-gallery {
+        aspect-ratio: 0.64 / 1 !important;
+    }
+}
+</style>
+
 </body>
 </html>
