@@ -1951,6 +1951,35 @@ header nav ul li a {
     }
 }
 </style>
+
+
+<style>
+/* === MOBILE SCROLLED MENU BUTTON: white lines only, no glow/background === */
+@media (max-width: 768px) {
+    header.header-scrolled .mobile-menu-toggle {
+        background: transparent !important;
+        box-shadow: none !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 0 !important;
+    }
+
+    header.header-scrolled .mobile-menu-toggle::before,
+    header.header-scrolled .mobile-menu-toggle::after {
+        content: none !important;
+        box-shadow: none !important;
+        filter: none !important;
+    }
+
+    header.header-scrolled .mobile-menu-toggle span {
+        background: #ffffff !important;
+        box-shadow: none !important;
+        filter: none !important;
+    }
+}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
