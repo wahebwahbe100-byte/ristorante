@@ -1606,6 +1606,55 @@ header nav ul li a {
         border-radius: 0 0 34% 34% / 0 0 16% 16%;
     }
 }
+
+
+/* === EVENTLOCATION HAVEL – LEFT / MIDDLE / RIGHT SHAPE FIX ===
+   اليمين مثل المثال، اليسار معكوس بشكل صحيح، والوسط عادي */
+#events .event-gallery {
+    gap: clamp(18px, 2.3vw, 34px) !important;
+}
+
+#events .event-thumb.havel-card-gallery {
+    border-radius: 0 !important;
+}
+
+/* الصورة الأولى: انحناء من أسفل اليسار */
+#events .event-thumb.havel-card-gallery:nth-child(1) {
+    border-radius: 0 0 0 42% / 0 0 0 18% !important;
+}
+
+/* الصور الوسط: عادية ومستقيمة */
+#events .event-thumb.havel-card-gallery:nth-child(2),
+#events .event-thumb.havel-card-gallery:nth-child(3) {
+    border-radius: 0 !important;
+}
+
+/* الصورة اليمين: انحناء من أسفل اليمين مثل المثال */
+#events .event-thumb.havel-card-gallery:nth-child(4) {
+    border-radius: 0 0 42% 0 / 0 0 18% 0 !important;
+}
+
+@media (max-width: 1180px) {
+    #events .event-thumb.havel-card-gallery:nth-child(1) {
+        border-radius: 0 0 0 36% / 0 0 0 15% !important;
+    }
+    #events .event-thumb.havel-card-gallery:nth-child(2) {
+        border-radius: 0 0 36% 0 / 0 0 15% 0 !important;
+    }
+    #events .event-thumb.havel-card-gallery:nth-child(3) {
+        border-radius: 0 0 0 36% / 0 0 0 15% !important;
+    }
+    #events .event-thumb.havel-card-gallery:nth-child(4) {
+        border-radius: 0 0 36% 0 / 0 0 15% 0 !important;
+    }
+}
+
+@media (max-width: 700px) {
+    #events .event-thumb.havel-card-gallery:nth-child(n) {
+        border-radius: 0 0 38% 38% / 0 0 14% 14% !important;
+    }
+}
+
 </style>
 
 <style>
