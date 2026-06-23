@@ -2909,5 +2909,54 @@ header nav ul li a {
 })();
 </script>
 
+
+
+<style>
+/* === EVENTLOCATION HAVEL – SHARP IMAGE FIX / NO BLUR === */
+#events .event-thumb.havel-card-gallery,
+#events .event-thumb.havel-card-gallery * {
+    -webkit-font-smoothing: antialiased;
+}
+
+#events .event-thumb.havel-card-gallery .havel-slide,
+#events .event-thumb.havel-card-gallery .havel-slide.is-active,
+#events .event-thumb.havel-card-gallery .havel-slide.is-next,
+#events .event-thumb.havel-card-gallery .havel-slide.is-leaving,
+#events .event-thumb.havel-card-gallery.havel-image-changing img,
+#events .event-thumb.havel-card-gallery.havel-image-changing .havel-slide {
+    filter: none !important;
+    image-rendering: auto !important;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* أثناء تبديل الصور لا نخفّض الشفافية كثيراً حتى لا تظهر الصورة ضبابية */
+#events .event-thumb.havel-card-gallery.havel-image-changing .havel-slide.is-active {
+    opacity: 1 !important;
+}
+
+#events .event-thumb.havel-card-gallery .havel-slide.is-active {
+    opacity: 1 !important;
+    transform: scale(1.035) translate3d(0, 0, 0) !important;
+}
+
+#events .event-thumb.havel-card-gallery .havel-slide.is-next {
+    opacity: 1 !important;
+    transform: scale(1.035) translate3d(0, 0, 0) !important;
+}
+
+#events .event-thumb.havel-card-gallery .havel-slide.is-leaving {
+    opacity: 0 !important;
+    transform: scale(1.035) translate3d(0, 0, 0) !important;
+}
+
+/* لمعة دافئة فقط بدون أي blur */
+#events .event-thumb.havel-card-gallery::before {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    mix-blend-mode: screen;
+}
+</style>
+
 </body>
 </html>
